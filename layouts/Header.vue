@@ -602,7 +602,7 @@
                                 class="dropdown-item ps-3 border-radius-md mb-1"
                                 href="./pages/reset/reset-illustration.html"
                               >
-                                <span>Illustration</span>
+                                <span>Illustration</span> 
                               </a>
                               <a
                                 class="dropdown-item ps-3 border-radius-md mb-1"
