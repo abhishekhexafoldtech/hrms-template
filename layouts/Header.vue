@@ -1678,8 +1678,7 @@
     </div>
     <header class="header-2">
       <div
-        class="page-header min-vh-75"
-        style="background-image: url('./assets/img/bg0.jpg')"
+        class="page-header min-vh-75 bg-img-desktop"
         loading="lazy"
       >
         <span class="mask bg-gradient-primary opacity-4"></span>
@@ -1701,3 +1700,9 @@
   
 <script setup>
 </script>
+
+<style scoped>
+.bg-img-desktop {
+  background-image: url('@/assets/img/bg0.jpg') !important
+}
+</style>
