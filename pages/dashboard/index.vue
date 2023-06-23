@@ -1811,7 +1811,7 @@
           class="bg-gradient-primary position-relative mx-n3 overflow-hidden"
         >
           <img
-            src="./assets/img/shapes/pattern-lines.svg"
+            src="@/assets/img/shapes/pattern-lines.svg"
             alt="pattern-lines"
             class="position-absolute start-0 top-md-0 w-100 opacity-6"
           />

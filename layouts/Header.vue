@@ -70,7 +70,7 @@
                         class="arrow ms-2 d-lg-block d-none"
                       />
                       <img
-                        src="./assets/img/down-arrow-dark.svg"
+                        src="@/assets/img/down-arrow-dark.svg"
                         alt="down-arrow"
                         class="arrow ms-1 d-lg-none d-block ms-auto"
                       />
@@ -794,12 +794,12 @@
                       >
                       Sections
                       <img
-                        src=" ./assets/img/down-arrow-dark.svg  "
+                        src="@/assets/img/down-arrow-dark.svg"
                         alt="down-arrow"
                         class="arrow ms-2 d-lg-block d-none"
                       />
                       <img
-                        src="./assets/img/down-arrow-dark.svg"
+                        src="@/assets/img/down-arrow-dark.svg"
                         alt="down-arrow"
                         class="arrow ms-1 d-lg-none d-block ms-auto"
                       />
@@ -1488,12 +1488,12 @@
                       >
                       Docs
                       <img
-                        src=" ./assets/img/down-arrow-dark.svg  "
+                        src="@/assets/img/down-arrow-dark.svg"
                         alt="down-arrow"
                         class="arrow ms-2 d-lg-block d-none"
                       />
                       <img
-                        src="./assets/img/down-arrow-dark.svg"
+                        src="@/assets/img/down-arrow-dark.svg"
                         alt="down-arrow"
                         class="arrow ms-1 d-lg-none d-block ms-auto"
                       />
