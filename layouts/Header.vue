@@ -15,7 +15,7 @@
                 data-placement="bottom"
                 target="_blank"
               >
-                Material Kit 2 PRO
+                HexaFoldTech HRMS
               </a>
               <a
                 class="navbar-brand font-weight-bolder ms-sm-3 d-block d-md-none"
@@ -1659,14 +1659,161 @@
                     </div>
                   </li>
                 </ul>
+              
+                <!-- Button replace with avatar -->
                 <ul class="navbar-nav d-lg-block d-none">
-                  <li class="nav-item">
+                  <li class="nav-item dropdown dropdown-hover mx-2">
                     <a
-                      href="javascript:;"
-                      class="btn btn-sm bg-gradient-primary mb-0"
-                      onclick="smoothToPricing('pricing-soft-ui')"
-                      >Buy Now</a
+                      role="button"
+                      class="nav-link ps-2 d-flex cursor-pointer align-items-center"
+                      id="dropdownMenuDocs"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
+                      <!-- <i class="material-icons opacity-6 me-2 text-md"
+                        >article</i
+                      > -->
+                      <a href="javascript:;" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                      </a>
+                      <img
+                        src="@/assets/img/down-arrow-dark.svg"
+                        alt="down-arrow"
+                        class="arrow ms-2 d-lg-block d-none"
+                      />
+                      <img
+                        src="@/assets/img/down-arrow-dark.svg"
+                        alt="down-arrow"
+                        class="arrow ms-1 d-lg-none d-block ms-auto"
+                      />
+                    </a>
+                    <div
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg"
+                      aria-labelledby="dropdownMenuDocs"
+                    >
+                      <div class="d-none d-lg-block">
+                        <ul class="list-group">
+                          <li class="nav-item list-group-item border-0 p-0">
+                            <a
+                              class="dropdown-item py-2 ps-3 border-radius-md"
+                              href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit "
+                            >
+                              <h6
+                                class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                              >
+                               Profile
+                              </h6>
+                              <span class="text-sm"
+                                >Your Profile</span
+                              >
+                            </a>
+                          </li>
+                          <li class="nav-item list-group-item border-0 p-0">
+                            <a
+                              class="dropdown-item py-2 ps-3 border-radius-md"
+                              href=" https://www.creative-tim.com/learning-lab/bootstrap/colors/material-kit "
+                            >
+                              <h6
+                                class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                              >
+                              Settings
+                              </h6>
+                              <span class="text-sm"
+                                >Customise Your Profile</span
+                              >
+                            </a>
+                          </li>
+                          <li class="nav-item list-group-item border-0 p-0">
+                            <a
+                              class="dropdown-item py-2 ps-3 border-radius-md"
+                              href=" https://www.creative-tim.com/learning-lab/bootstrap/alerts/material-kit "
+                            >
+                              <h6
+                                class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                              >
+                              Logout
+                              </h6>
+                              <span class="text-sm"
+                                >Sign-out Account</span
+                              >
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                      <div class="row d-lg-none">
+                        <div class="col-md-12 g-0">
+                          <a
+                            class="dropdown-item py-2 ps-3 border-radius-md"
+                            href="./pages/about-us.html"
+                          >
+                            <h6
+                              class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                            >
+                              Getting Started
+                            </h6>
+                            <span class="text-sm"
+                              >All about overview, quick start, license and
+                              contents</span
+                            >
+                          </a>
+                          <a
+                            class="dropdown-item py-2 ps-3 border-radius-md"
+                            href="./pages/about-us.html"
+                          >
+                            <h6
+                              class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                            >
+                              Foundation
+                            </h6>
+                            <span class="text-sm"
+                              >See our colors, icons and typography</span
+                            >
+                          </a>
+                          <a
+                            class="dropdown-item py-2 ps-3 border-radius-md"
+                            href="./pages/about-us.html"
+                          >
+                            <h6
+                              class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                            >
+                              Components
+                            </h6>
+                            <span class="text-sm"
+                              >Explore our collection of fully designed
+                              components</span
+                            >
+                          </a>
+                          <a
+                            class="dropdown-item py-2 ps-3 border-radius-md"
+                            href="./pages/about-us.html"
+                          >
+                            <h6
+                              class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                            >
+                              Plugins
+                            </h6>
+                            <span class="text-sm"
+                              >Check how you can integrate our plugins</span
+                            >
+                          </a>
+                          <a
+                            class="dropdown-item py-2 ps-3 border-radius-md"
+                            href="./pages/about-us.html"
+                          >
+                            <h6
+                              class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                            >
+                              Utility Classes
+                            </h6>
+                            <span class="text-sm"
+                              >For those who want flexibility, use our utility
+                              classes</span
+                            >
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                 </ul>
               </div>

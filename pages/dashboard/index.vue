@@ -1844,11 +1844,9 @@
                       Good for a personal or client web/mobile app.
                     </p>
                     <h3 class="font-weight-bolder mt-3">$79</h3>
-                    <a
-                      href="https://secure.avangate.com/order/checkout.php?PRODS=37189144&OPTIONS37189144=FREELANCER&CART=1&CARD=2&CLEAN_CART=1&SHORT_FORM=1"
-                      class="btn btn-sm bg-gradient-dark w-100 border-radius-md mt-4 mb-2"
-                      >Buy now</a
-                    >
+                    <a href="javascript:;" class="avatar avatar-xl rounded-circle">
+                      <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                    </a>
                   </div>
                   <hr class="horizontal dark my-0" />
                   <div class="card-body">
@@ -1889,11 +1887,9 @@
                       Build your startup or client web/mobile app.
                     </p>
                     <h3 class="font-weight-bolder mt-3">$149</h3>
-                    <a
-                      href="https://secure.avangate.com/order/checkout.php?PRODS=37189144&OPTIONS37189144=STARTUP&CART=1&CARD=2&CLEAN_CART=1&SHORT_FORM=1"
-                      class="btn btn-sm bg-gradient-dark w-100 border-radius-md mt-4 mb-2"
-                      >Buy now</a
-                    >
+                    <a href="javascript:;" class="avatar avatar-xl rounded-circle">
+                      <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                    </a>
                   </div>
                   <hr class="horizontal dark my-0" />
                   <div class="card-body">
@@ -1934,11 +1930,9 @@
                       Perfect for web/mobile apps or SaaS projects.
                     </p>
                     <h3 class="font-weight-bolder mt-3 text-white">$249</h3>
-                    <a
-                      href="https://secure.avangate.com/order/checkout.php?PRODS=37189144&OPTIONS37189144=COMPANY&CART=1&CARD=2&CLEAN_CART=1&SHORT_FORM=1"
-                      class="btn btn-sm btn-white w-100 border-radius-md mt-4 mb-2"
-                      >Buy now</a
-                    >
+                    <a href="javascript:;" class="avatar avatar-xl rounded-circle">
+                      <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                    </a>
                   </div>
                   <hr class="horizontal light my-0" />
                   <div class="card-body z-index-2">
@@ -1994,11 +1988,9 @@
                       rights.
                     </p>
                     <h3 class="font-weight-bolder mt-3">$599</h3>
-                    <a
-                      href="https://secure.avangate.com/order/checkout.php?PRODS=37189144&OPTIONS37189144=ENTERPRISE&CART=1&CARD=2&CLEAN_CART=1&SHORT_FORM=1"
-                      class="btn btn-sm bg-gradient-dark w-100 border-radius-md mt-4 mb-2"
-                      >Buy now</a
-                    >
+                    <a href="javascript:;" class="avatar avatar-xl rounded-circle">
+                      <img alt="Image placeholder" src="../../assets/img/team-4.jpg">
+                    </a>
                   </div>
                   <hr class="horizontal dark my-0" />
                   <div class="card-body">
