@@ -106,12 +106,12 @@
                                         <div class="d-none d-lg-block" v-for="(product, id) in headerData.teams" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
+                                                  <nuxt-link class="dropdown-item py-2 ps-3 border-radius-md" :to="product.name">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
                                                             <i :class="product.icon" > </i>
-                                                            {{ product.name }}
+                                                             {{ product.name }}
                                                         </h6>
-                                                    </a>
+                                                  </nuxt-link>
                                                 </li>                                                             
                                             </ul>
                                         </div>
