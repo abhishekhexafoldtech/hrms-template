@@ -5,22 +5,13 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid px-0">
-                        <a class="navbar-brand font-weight-bolder ms-sm-3 d-none d-md-block" href=" https://demos.creative-tim.com/material-kit-pro/index " rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
-                            <img src="@/assets/img/companylogo.png" alt="">
-                        </a>
-                        <a class="navbar-brand font-weight-bolder ms-sm-3 d-block d-md-none" href=" https://demos.creative-tim.com/material-kit-pro/index " rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
-                            Material Design
-                        </a>
-                        <a href="https://www.creative-tim.com/product/material-kit-pro#pricingCard" class="btn btn-sm bg-gradient-primary mb-0 ms-auto d-lg-none d-block">
-
-                        </a>
-                        <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon mt-2">
-                                <span class="navbar-toggler-bar bar1"></span>
-                                <span class="navbar-toggler-bar bar2"></span>
-                                <span class="navbar-toggler-bar bar3"></span>
+                        <NuxtLink to="dashboard" >
+                            <span class="navbar-brand font-weight-bolder ms-sm-3 d-none d-md-block"  >
+                                <img src="@/assets/img/companylogo.png" alt="">
                             </span>
-                        </button>
+                        </NuxtLink>
+                      
+                     
                         <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
                             <ul class="navbar-nav navbar-nav-hover ms-auto">
 
@@ -33,15 +24,17 @@
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs">
-                                        <div class="d-none d-lg-block" v-for="(product, id) in headerData.org" :key="id">
+                                        <div class="d-none d-lg-block" v-for="(data, id) in headerData.org" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
+                                                <NuxtLink :to="data.url" >
+                                                    <span class="dropdown-item py-2 ps-3 border-radius-md" >
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                            <i :class="product.icon" > </i>
-                                                           {{ product.name }}
+                                                            <i :class="data.icon" > </i>
+                                                           {{ data.name }}
                                                         </h6>
-                                                    </a>
+                                                    </span>
+                                                </NuxtLink> 
                                                 </li>                                                
                                             </ul>
                                         </div>                                         
@@ -56,15 +49,17 @@
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs">
-                                        <div class="d-none d-lg-block" v-for="(product, id) in headerData.project" :key="id">
+                                        <div class="d-none d-lg-block" v-for="(data, id) in headerData.project" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
+                                                    <NuxtLink :to="data.url" >
+                                                    <span class="dropdown-item py-2 ps-3 border-radius-md" href="#">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                            <i :class="product.icon" > </i>
-                                                            {{ product.name }}
+                                                            <i :class="data.icon" > </i>
+                                                            {{ data.name }}
                                                         </h6>
-                                                    </a>
+                                                    </span>
+                                                    </NuxtLink>
                                                 </li>                                                
                                             </ul>
                                         </div>
@@ -80,15 +75,17 @@
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs">
-                                        <div class="d-none d-lg-block" v-for="(product, id) in headerData.interview" :key="id">
+                                        <div class="d-none d-lg-block" v-for="(data, id) in headerData.interview" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
+                                                    <NuxtLink :to="data.url" >
+                                                    <span class="dropdown-item py-2 ps-3 border-radius-md" href="#">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                            <i :class="product.icon" > </i>
-                                                            {{ product.name }}
+                                                            <i :class="data.icon" > </i>
+                                                            {{ data.name }}
                                                         </h6>
-                                                    </a>
+                                                    </span>
+                                                    </NuxtLink>
                                                 </li>                                               
                                             </ul>
                                         </div>
@@ -103,15 +100,17 @@
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs" >
-                                        <div class="d-none d-lg-block" v-for="(product, id) in headerData.teams" :key="id">
+                                        <div class="d-none d-lg-block" v-for="(data, id) in headerData.teams" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
-                                                        <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                            <i :class="product.icon" > </i>
-                                                            {{ product.name }}
-                                                        </h6>
-                                                    </a>
+                                                    <NuxtLink :to="data.url" >
+                                                        <span class="dropdown-item py-2 ps-3 border-radius-md" href="#">
+                                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                                <i :class="data.icon" > </i>
+                                                                {{ data.name }}
+                                                            </h6>
+                                                        </span>
+                                                    </NuxtLink>
                                                 </li>                                                             
                                             </ul>
                                         </div>
@@ -126,15 +125,17 @@
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs" >
-                                        <div class="d-none d-lg-block" v-for="(product, id) in headerData.payroll" :key="id">
+                                        <div class="d-none d-lg-block" v-for="(data, id) in headerData.payroll" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
-                                                        <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                            <i :class="product.icon" > </i>
-                                                            {{product.name}}
-                                                        </h6>
-                                                    </a>
+                                                    <NuxtLink :to="data.url" >
+                                                        <sapn class="dropdown-item py-2 ps-3 border-radius-md" href="#">
+                                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                                <i :class="data.icon" > </i>
+                                                                {{data.name}}
+                                                            </h6>
+                                                        </sapn>
+                                                    </NuxtLink>
                                                 </li>                                                
                                             </ul>
                                         </div>                                        
@@ -149,15 +150,17 @@
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs" >
-                                        <div class="d-none d-lg-block" v-for="(product, id) in headerData.docs" :key="id">
+                                        <div class="d-none d-lg-block" v-for="(data, id) in headerData.docs" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0" >
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
-                                                        <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                            <i :class="product.icon" > </i>
-                                                            {{ product.name }}
-                                                        </h6>
-                                                    </a>
+                                                    <NuxtLink :to="data.url" >
+                                                        <sapn class="dropdown-item py-2 ps-3 border-radius-md" href="#">
+                                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                                <i :class="data.icon" > </i>
+                                                                {{ data.name }}
+                                                            </h6>
+                                                        </sapn>
+                                                    </NuxtLink>
                                                 </li>
                                             </ul>
                                         </div>
@@ -179,7 +182,7 @@
                                         <div class="d-none d-lg-block">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
+                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href="#">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
                                                             Profile
                                                         </h6>
@@ -187,7 +190,7 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/colors/material-kit ">
+                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href="#">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
                                                             Settings
                                                         </h6>
@@ -195,12 +198,14 @@
                                                     </a>
                                                 </li>
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                    <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/alerts/material-kit ">
-                                                        <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
-                                                            Logout
-                                                        </h6>
-                                                        <span class="text-sm">Sign-out Account</span>
-                                                    </a>
+                                                    <NuxtLink to="/">
+                                                        <span class="dropdown-item py-2 ps-3 border-radius-md" href="#">
+                                                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                                Logout
+                                                            </h6>
+                                                            <span class="text-sm">Sign-out Account</span>
+                                                        </span>
+                                                    </NuxtLink>
                                                 </li>
 
                                             </ul>
@@ -253,27 +258,12 @@
         </div>
     </div>
     <!-- <pre>{{ headerData }}</pre> -->
-    <header class="header-2">
-        <div class="page-header min-vh-75 bg-img-desktop" loading="lazy">
-            <span class="mask bg-gradient-primary opacity-4"></span>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 text-center mx-auto">
-                        <h1 class="text-white pt-3 mt-n5">Material Kit 2 PRO</h1>
-                        <p class="lead text-white mt-3 px-5">
-                            Start the Development With A Bootstrap 5 Design System inspired
-                            by Material Design.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+   
 </div>
 </template>
 
 <script setup>
-import headerData from '~/data/header';
+import headerData from '@/data/header';
 const { org } = headerData
 // const {data : products, pending, error, refresh}= await useFetch("../data/data.json")
 console.log(headerData)

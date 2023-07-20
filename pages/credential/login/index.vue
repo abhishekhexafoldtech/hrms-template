@@ -32,12 +32,9 @@
                 </form>
               </div>
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                <RouterLink to="/credential/registration">
                 <p class="mb-4 text-sm mx-auto">
-                  Don't have an account?
-                  <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                  Forgot Password?
                 </p>
-                </RouterLink>
               </div>
             </div>
           </div>
