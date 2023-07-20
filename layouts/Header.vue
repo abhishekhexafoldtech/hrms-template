@@ -11,7 +11,9 @@
                         <a class="navbar-brand font-weight-bolder ms-sm-3 d-block d-md-none" href=" https://demos.creative-tim.com/material-kit-pro/index " rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
                             Material Design
                         </a>
-                        <a href="https://www.creative-tim.com/product/material-kit-pro#pricingCard" class="btn btn-sm bg-gradient-primary mb-0 ms-auto d-lg-none d-block">Buy Now</a>
+                        <a href="https://www.creative-tim.com/product/material-kit-pro#pricingCard" class="btn btn-sm bg-gradient-primary mb-0 ms-auto d-lg-none d-block">
+
+                        </a>
                         <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon mt-2">
                                 <span class="navbar-toggler-bar bar1"></span>
@@ -25,8 +27,8 @@
                                 <!-- Org -->
                                 <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="material-icons opacity-6 me-2 text-md">article</i>
-                                        Org
+                                        <i class="bi bi-buildings-fill opacity-6 me-2 text-md"></i>
+                                        Organization
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none" />
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
@@ -36,6 +38,7 @@
                                                 <li class="nav-item list-group-item border-0 p-0">
                                                     <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            <i :class="product.icon" > </i>
                                                            {{ product.name }}
                                                         </h6>
                                                     </a>
@@ -47,7 +50,7 @@
                                 <!-- Projects -->
                                 <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="material-icons opacity-6 me-2 text-md">article</i>
+                                        <i class="bi bi-file-earmark-code-fill opacity-6 me-2 text-md"></i>
                                         Projects
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none" />
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
@@ -58,6 +61,7 @@
                                                 <li class="nav-item list-group-item border-0 p-0">
                                                     <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            <i :class="product.icon" > </i>
                                                             {{ product.name }}
                                                         </h6>
                                                     </a>
@@ -70,7 +74,7 @@
                                 <!-- Interview -->
                                 <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="material-icons opacity-6 me-2 text-md">article</i>
+                                        <i class="bi bi-pen-fill opacity-6 me-2 text-md"></i>
                                         Interviews
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none" />
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
@@ -81,6 +85,7 @@
                                                 <li class="nav-item list-group-item border-0 p-0">
                                                     <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            <i :class="product.icon" > </i>
                                                             {{ product.name }}
                                                         </h6>
                                                     </a>
@@ -92,7 +97,7 @@
                                 <!-- Teams -->
                                 <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="material-icons opacity-6 me-2 text-md">article</i>
+                                        <i class="bi bi-people-fill opacity-6 me-2 text-md"></i>
                                         Teams
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none" />
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
@@ -103,6 +108,7 @@
                                                 <li class="nav-item list-group-item border-0 p-0">
                                                     <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            <i :class="product.icon" > </i>
                                                             {{ product.name }}
                                                         </h6>
                                                     </a>
@@ -114,7 +120,7 @@
                                 <!-- Payroles -->
                                 <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="material-icons opacity-6 me-2 text-md">article</i>
+                                        <i class="material-icons opacity-6 me-2 text-md">view_day</i>
                                         Payrole
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none" />
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
@@ -125,6 +131,7 @@
                                                 <li class="nav-item list-group-item border-0 p-0">
                                                     <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            <i :class="product.icon" > </i>
                                                             {{product.name}}
                                                         </h6>
                                                     </a>
@@ -147,6 +154,7 @@
                                                 <li class="nav-item list-group-item border-0 p-0" >
                                                     <a class="dropdown-item py-2 ps-3 border-radius-md" href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                            <i :class="product.icon" > </i>
                                                             {{ product.name }}
                                                         </h6>
                                                     </a>
