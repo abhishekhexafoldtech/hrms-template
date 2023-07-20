@@ -71,7 +71,7 @@ const headerData = {
             id: 4,
             name: "Onboarding",
             description: "Policies are here",
-            icon:`bi bi-file-arrow-down-fillst mx-2`,
+            icon:`bi bi-file-arrow-down-fill mx-2`,
             url: "",
         },
         {
