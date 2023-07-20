@@ -8,7 +8,7 @@
           <h1 class="display-1 text-bolder text-white">Under Development</h1>
           <h2 class="text-white"></h2>
           <p class="lead text-white">We are working on it</p>
-          <button type="button" class="btn bg-gradient-warning mt-4">Go to Homepage</button>
+          <RouterLink to="dashboard"><button type="button" class="btn bg-gradient-warning mt-4">Go to Homepage</button></RouterLink>
         </div>
       </div>
     </div>
