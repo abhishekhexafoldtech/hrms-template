@@ -30,7 +30,7 @@
               <div class="row">
                 <!-- first row -->
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="Email">
                       <el-input
                         style="width: 100%"
@@ -42,7 +42,7 @@
                     </el-form-item>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="Phone">
                       <el-input
                         style="width: 100%"
@@ -54,7 +54,7 @@
                     </el-form-item>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="Aadhaar Card Number">
                       <el-input
                         style="width: 100%"
@@ -69,7 +69,7 @@
                 <!-- second row -->
 
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="PAN Card Number">
                       <el-input
                         style="width: 100%"
@@ -80,7 +80,7 @@
                     </el-form-item>
                   </div>
 
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="Photo">
                       <el-upload
                         class="avatar-uploader photo_upload py-4 px-5"
@@ -126,7 +126,7 @@
                 <!-- Present Address Details -->
                 <p>Present address</p>
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-12 col-md-8">
                     <el-form-item label="Address">
                       <el-input
                         style="width: 100%"
@@ -138,7 +138,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="State">
                       <el-input
                         style="width: 100%"
@@ -148,7 +148,7 @@
                       ></el-input>
                     </el-form-item>
                   </div>
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="Country">
                       <el-input
                         style="width: 100%"
@@ -160,7 +160,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="PIN">
                       <el-input
                         style="width: 100%"
@@ -176,7 +176,7 @@
               <div class="row">
                 <p>Permanent address</p>
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-12 col-md-8">
                     <el-form-item label="Address">
                       <el-input
                         style="width: 100%"
@@ -188,7 +188,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="State">
                       <el-input
                         style="width: 100%"
@@ -198,7 +198,7 @@
                       ></el-input>
                     </el-form-item>
                   </div>
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="Country">
                       <el-input
                         style="width: 100%"
@@ -210,7 +210,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <el-form-item label="PIN">
                       <el-input
                         style="width: 100%"
