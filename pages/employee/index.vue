@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row d-flex justify-content-center mt-4">
+    <div class="row d-flex justify-content-center mt-4 pb-5">
       <el-steps :active="active" finish-status="success">
         <el-step title="Candidate Details" />
         <el-step title=" Address Details" />
@@ -12,12 +12,6 @@
     </div>
     <!-- Candidate Details start -->
     <div v-show="active === 0" class="row">
-      <h2
-        class="my-3"
-        style="font-family: sans-serif; color: rgb(82, 162, 164)"
-      >
-        Candidate Details
-      </h2>
       <div class="form-container">
         <div class="main-form-container">
           <div class="ms-3">
@@ -106,12 +100,6 @@
     <!-- Address Details start -->
 
     <div v-show="active === 1" class="row">
-      <h2
-        class="my-3"
-        style="font-family: sans-serif; color: rgb(82, 162, 164)"
-      >
-        Address Details
-      </h2>
       <div class="form-container">
         <div class="main-form-container">
           <div class="ms-3">
@@ -229,21 +217,415 @@
     </div>
 
     <div v-show="active === 2" class="row">
-      <h1>Professional Details</h1>
+      <div class="form-container">
+        <div class="main-form-container">
+          <div class="ms-3">
+            <el-form
+              :inline="true"
+              :model="professionalForm"
+              label-width="120px"
+              label-position="top"
+            >
+              <div class="row">
+                <!-- first row -->
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Experience">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Experience"
+                        v-model="professionalForm.experience"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Skill Set">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Skill Set"
+                        v-model="professionalForm.skill_set"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Highest Qualification">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Highest Qualification"
+                        v-model="professionalForm.highest_qualification"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+                </div>
+
+                <!-- second row -->
+
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Location">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Location"
+                        v-model="professionalForm.location"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Current Salary">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Current Salary"
+                        v-model="professionalForm.current_salary"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+                </div>
+              </div>
+            </el-form>
+          </div>
+        </div>
+      </div>
     </div>
     <div v-show="active === 3" class="row">
-      <h1>Education</h1>
+      <div class="form-container">
+        <div class="main-form-container">
+          <div class="ms-3">
+            <p @click="incrementEducation" class="float-end">
+              <i class="ri-add-circle-fill w-50"></i>
+            </p>
+
+            <el-form
+              v-for="item in education"
+              :inline="true"
+              :model="educationForm"
+              label-width="120px"
+              label-position="top"
+            >
+              <p class="w-95 text-bg-light">Education Detail</p>
+
+              <div class="row">
+                <!-- first row -->
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="School Name">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="School Name"
+                        v-model="educationForm.school_name"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Degree/Diploma">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Degree/Diploma"
+                        v-model="educationForm.degree_diploma"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Field(s) of Study">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Field(s) of Study"
+                        v-model="educationForm.field_of_Study"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+                </div>
+
+                <!-- second row -->
+
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Date of Completion">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Date of Completion"
+                        v-model="educationForm.date_of_completion"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Additional Notes">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Additional Notes"
+                        v-model="educationForm.aditional_notes"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+                </div>
+              </div>
+            </el-form>
+            <div class="row">
+              <div class="col-12">
+                <p
+                  v-show="minusIcon"
+                  @click="decrementEducation"
+                  class="float-end"
+                >
+                  <i class="ri-subtract-line"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div v-show="active === 4" class="row">
-      <h1>Experience</h1>
+      <div class="form-container">
+        <div class="main-form-container">
+          <div class="ms-3">
+            <span @click="incrementExperience" class="float-end">
+              <i class="ri-add-circle-fill"></i>
+            </span>
+
+            <el-form
+              v-for="item in experience"
+              :inline="true"
+              :model="experienceForm"
+              label-width="120px"
+              label-position="top"
+            >
+              <p class="w-95 text-bg-light">Experience Detail</p>
+              <div class="row">
+                <!-- first row -->
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Occupation">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Occupation"
+                        v-model="experienceForm.occupation"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Company">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Company"
+                        v-model="experienceForm.company"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Summary">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Summary"
+                        v-model="experienceForm.summary"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+                </div>
+
+                <!-- second row -->
+
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Duration">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Duration"
+                        v-model="experienceForm.duration"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Currently Work Here">
+                      <el-input
+                        style="width: 100%"
+                        placeholder="Currently Work Here"
+                        v-model="experienceForm.currently_work_here"
+                        required
+                      ></el-input>
+                    </el-form-item>
+                  </div>
+                </div>
+              </div>
+            </el-form>
+            <div class="row">
+              <div class="col-12">
+                <p
+                  v-show="minusIcon"
+                  @click="decrementExperience"
+                  class="float-end"
+                >
+                  <i class="ri-subtract-line"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Documents Details -->
+
     <div v-show="active === 5" class="row">
-      <h1>Documents</h1>
+      <div class="form-container">
+        <div class="main-form-container">
+          <div class="ms-3">
+            <el-form
+              :inline="true"
+              :model="candidateForm"
+              label-width="120px"
+              label-position="top"
+            >
+              <div class="row">
+                <!-- first row -->
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Adhar Card">
+                      <el-upload
+                        v-model:file-list="fileList"
+                        class="upload-demo"
+                        multiple="false"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :before-remove="beforeRemove"
+                        :limit="3"
+                        :on-exceed="handleExceed"
+                      >
+                        <el-button type="primary">Click to upload</el-button>
+                        <template #tip>
+                          <div class="el-upload__tip">
+                            jpg/png files with a size less than 500KB.
+                          </div>
+                        </template>
+                      </el-upload>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Pan Card">
+                      <el-upload
+                        v-model:file-list="fileList"
+                        class="upload-demo"
+                        multiple="false"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :before-remove="beforeRemove"
+                        :limit="3"
+                        :on-exceed="handleExceed"
+                      >
+                        <el-button type="primary">Click to upload</el-button>
+                        <template #tip>
+                          <div class="el-upload__tip">
+                            jpg/png files with a size less than 500KB.
+                          </div>
+                        </template>
+                      </el-upload>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Passport Size Photo">
+                      <el-upload
+                        v-model:file-list="fileList"
+                        class="upload-demo"
+                        multiple="false"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :before-remove="beforeRemove"
+                        :limit="3"
+                        :on-exceed="handleExceed"
+                      >
+                        <el-button type="primary">Click to upload</el-button>
+                        <template #tip>
+                          <div class="el-upload__tip">
+                            jpg/png files with a size less than 500KB.
+                          </div>
+                        </template>
+                      </el-upload>
+                    </el-form-item>
+                  </div>
+                </div>
+
+                <!-- second row -->
+
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Experience Letter">
+                      <el-upload
+                        v-model:file-list="fileList"
+                        class="upload-demo"
+                        multiple="false"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :before-remove="beforeRemove"
+                        :limit="3"
+                        :on-exceed="handleExceed"
+                      >
+                        <el-button type="primary">Click to upload</el-button>
+                        <template #tip>
+                          <div class="el-upload__tip">
+                            jpg/png files with a size less than 500KB.
+                          </div>
+                        </template>
+                      </el-upload>
+                    </el-form-item>
+                  </div>
+
+                  <div class="col-12 col-md-4">
+                    <el-form-item label="Other Certificate">
+                      <el-upload
+                        v-model:file-list="fileList"
+                        class="upload-demo"
+                        multiple="false"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :before-remove="beforeRemove"
+                        :limit="3"
+                        :on-exceed="handleExceed"
+                      >
+                        <el-button type="primary">Click to upload</el-button>
+                        <template #tip>
+                          <div class="el-upload__tip">
+                            jpg/png files with a size less than 500KB.
+                          </div>
+                        </template>
+                      </el-upload>
+                    </el-form-item>
+                  </div>
+                </div>
+              </div>
+            </el-form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <el-button
-      class="bg-gradient-faded-info-vertical float-end mb-5 px-4 py-3 fw-bold"
+      class="float-end mb-5 fw-bold"
       style="margin-top: 12px"
+      type="primary"
       @click="next"
       >Next step</el-button
     >
@@ -251,9 +633,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { Plus } from "@element-plus/icons-vue";
 const active = ref(0);
+const education = ref(1);
+const experience = ref(1);
+const minusIcon = ref(true);
+
+// candidateForm
 const candidateForm = reactive({
   firstName: "",
   lastName: "",
@@ -263,6 +650,7 @@ const candidateForm = reactive({
   pan: "",
 });
 
+// addressForm
 const addressForm = reactive({
   presentAddress: {
     address: "",
@@ -280,6 +668,35 @@ const addressForm = reactive({
   },
 });
 
+//  professionalForm
+const professionalForm = reactive({
+  experience: "",
+  skill_set: "",
+  highest_qualification: "",
+  location: "",
+  current_salary: "",
+});
+
+// educationForm
+const educationFormData = ref([]);
+const educationForm = reactive({
+  school_name: "",
+  degree_diploma: "",
+  field_of_Study: "",
+  date_of_completion: "",
+  aditional_notes: "",
+});
+
+// experienceForm
+const experienceFormData = ref([]);
+const experienceForm = reactive({
+  occupation: "",
+  company: "",
+  summary: "",
+  duration: "",
+  currently_work_here: "",
+});
+
 //change forms
 const next = () => {
   if (active.value++ > 5) active.value = 0;
@@ -288,13 +705,13 @@ const next = () => {
   } else if (active.value === 2) {
     handleAddressForm();
   } else if (active.value === 3) {
-    console.log("3");
+    handleProfessionalForm();
   } else if (active.value === 4) {
-    console.log("4");
+    handleEducationForm();
   } else if (active.value === 5) {
-    console.log("5");
+    handleExperienceForm();
   } else if (active.value === 6) {
-    console.log("6");
+    handleDocumentForm();
   }
 };
 
@@ -329,11 +746,51 @@ const handleAddressForm = () => {
 
 //Professional Details
 
+const handleProfessionalForm = () => {
+  console.log(JSON.stringify(professionalForm));
+};
+
 //Education
+
+const incrementEducation = () => {
+  educationFormData.value.push(educationForm);
+  console.log(educationFormData.value);
+  education.value = education.value + 1;
+};
+
+const decrementEducation = () => {
+  experienceFormData.value.pop();
+  console.log(educationFormData.value);
+  education.value = education.value - 1;
+};
+
+const handleEducationForm = () => {
+  console.log(educationFormData.value);
+};
 
 //Experience
 
+const incrementExperience = () => {
+  experienceFormData.value.push(experienceForm);
+  console.log(experienceFormData.value);
+  experience.value = experience.value + 1;
+};
+
+const decrementExperience = () => {
+  experienceFormData.value.pop();
+  console.log(experienceFormData.value);
+  experience.value = experience.value - 1;
+};
+
+const handleExperienceForm = () => {
+  onsole.log(experienceFormData.value);
+};
+
 //Documents
+
+const handleDocumentForm = () => {};
+
+// end
 </script>
 <style scoped>
 /* Form styling */
