@@ -69,6 +69,13 @@
           </div>
         </div>
       </section>
+      <section class="my-2 py-2">
+        <div class="container">
+          <div class="row">
+            <EventCalender/>
+          </div>
+        </div>
+      </section>
       <section class="my-5 py-5">
         <div class="container">
           <div class="row align-items-center">
@@ -2136,6 +2143,8 @@
 </template>
 
 <script setup>
+import EventCalender from "@/components/calender/EventCalender.vue"
+
 definePageMeta({
   layout: "layout",
 });
