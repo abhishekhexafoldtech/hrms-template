@@ -18,6 +18,8 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "axios": "^1.4.0",
+    "i": "^0.3.7",
+    "npm": "^9.8.1",
     "pinia": "^2.1.4",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2"
