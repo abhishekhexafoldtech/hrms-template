@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" },
         { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap"},
         { rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons+Round"},
+        { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' }
       ],
       script: [
         { src:"https://kit.fontawesome.com/42d5adcbca.js" },
@@ -33,6 +34,9 @@ export default defineNuxtConfig({
   modules: [
     '@element-plus/nuxt',
     '@pinia/nuxt',
+  ],
+  plugins: [
+    { src: '@/plugins/font-awesome.ts' },
   ],
   css: [
     "@/globals/global.css",

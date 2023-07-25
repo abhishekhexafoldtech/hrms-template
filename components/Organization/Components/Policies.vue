@@ -9,13 +9,13 @@
                             <div class="d-flex" v-if="props.user">
                                 <el-input type="text" v-if="policy.id == textCorrection.title.id"
                                     v-model="textCorrection.title.text" style="width:250px" />
-                                    <IconsCheck color="green" v-if="policy.id == textCorrection.title.id" class="cursor-pointer check-icon mx-2"
-                                    @click="handleCorrection('title')" />
+                                    <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -3px;" v-if="policy.id == textCorrection.title.id" class="cursor-pointer check-icon mx-2"
+                                    @click="handleCorrection('title')"/>
                             </div>
                             <div v-if="props.user" style="display: flex;gap:10px;margin-top: 8px;margin-left: 15px;width: 100%;justify-content: end;">
-                                <IconsEdit color="#C6CBBD" class="cursor-pointer" @click="handleEdit(policy.id, 'title')"
+                                <font-awesome-icon :icon="['fas', 'pen-to-square']" style="color: #b5b9bf;width:16px" class="cursor-pointer" @click="handleEdit(policy.id, 'title')"
                                     v-if="policy.id != textCorrection.title.id" />
-                                <IconsDelete color="#C6CBBD" class="cursor-pointer"
+                                    <font-awesome-icon :icon="['fas', 'trash']" style="color: #bf4040;width:14px" class="cursor-pointer"
                                     @click="handleDelete(policy.id, 'title')" />
                             </div>
                         </div>
@@ -27,13 +27,15 @@
                         <div class="d-flex" v-if="props.user">
                             <el-input type="text" v-if="policy.id == textCorrection.sub.id" v-model="textCorrection.sub.text"
                                 style="min-width:100%" />
-                                <IconsCheck color="green" v-if="policy.id == textCorrection.sub.id" class="cursor-pointer check-icon mx-2"
-                                @click="handleCorrection('sub')" />
+                                <div>
+                                   <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -5px;"  class="cursor-pointer check-icon mx-2" v-if="policy.id == textCorrection.sub.id"
+                                    @click="handleCorrection('sub')"/>
+                                </div>
                         </div>
                         <div v-if="props.user" style="display: flex;gap:10px;margin-top: 6px;margin-left: 15px;justify-content: end;width: 100%;">
-                            <IconsEdit color="#C6CBBD" class="cursor-pointer" @click="handleEdit(policy.id, 'sub')"
+                            <font-awesome-icon :icon="['fas', 'pen-to-square']" style="color: #b5b9bf;width:16px" class="cursor-pointer" @click="handleEdit(policy.id, 'sub')"
                                 v-if="policy.id != textCorrection.sub.id" />
-                            <IconsDelete color="#C6CBBD" class="cursor-pointer" @click="handleDelete(policy.id, 'sub')" />
+                            <font-awesome-icon :icon="['fas', 'trash']" style="color: #bf4040;width:14px" class="cursor-pointer" @click="handleDelete(policy.id, 'sub')" />
                         </div>
                     </div>
                     <div class="content" v-if="policy.content">
@@ -41,13 +43,13 @@
                         <div v-if="props.user">
                             <el-input type="textarea" :rows="4" v-if="policy.id == textCorrection.content.id"
                                 v-model="textCorrection.content.text" style="height: fit-content;" />
-                                <IconsCheck color="green" v-if="policy.id == textCorrection.content.id" class="cursor-pointer check-icon"
+                                <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -3px;" v-if="policy.id == textCorrection.content.id" class="cursor-pointer check-icon"
                                 @click="handleCorrection('content')" />
                         </div>
                         <div v-if="props.user" class="mt-2  w-100" style="display: flex;gap:10px;justify-content: end;">
-                            <IconsEdit color="#C6CBBD" class="cursor-pointer" @click="handleEdit(policy.id, 'content')"
+                            <font-awesome-icon :icon="['fas', 'pen-to-square']" style="color: #b5b9bf;width:16px" class="cursor-pointer" @click="handleEdit(policy.id, 'content')"
                                 v-if="policy.id != textCorrection.content.id" />
-                            <IconsDelete color="#C6CBBD" class="cursor-pointer"
+                            <font-awesome-icon :icon="['fas', 'trash']" style="color: #bf4040;width:14px" class="cursor-pointer"
                                 @click="handleDelete(policy.id, 'content')" />
                         </div>
                     </div>

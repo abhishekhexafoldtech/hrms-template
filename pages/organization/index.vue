@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-
-      <h1 class="text-primary">Overview</h1>
       <div style="width:340px">
         <el-tabs v-model="activeName" class="demo-tabs"  @tab-click="">
           <el-tab-pane label="Basic" name="first">

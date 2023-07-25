@@ -4,42 +4,42 @@
             <div class="d-flex" style="gap:10px">
                 <a :href="!edit ? link.link_linkedin : null" :target="!edit ? '__blank' : null">
                     <button class="btn btn-primary d-flex">
-                        <img :src="linkedin" alt="" />
+                        <font-awesome-icon :icon="['fab', 'linkedin']" style="width:23px"/>
                         <el-input class="mx-2" v-if="edit" v-model="link.link_linkedin"/>
                         <div class="mx-4" style="font-size: 17px;width:100px" v-if="!edit">Linkedin</div>
                     </button>
                 </a>
                 <el-tooltip class="box-item" effect="dark" content="Copy" placement="top-start" v-if="!edit">
-                    <button class="btn btn-primary" id="linkedin_copy" @click="handleCopy('linkedin')">
-                        <img :src="copy" alt="">
+                    <button class="btn btn-primary px-3" id="linkedin_copy" @click="handleCopy('linkedin')">
+                        <font-awesome-icon :icon="['fas', 'copy']" style="width:25px"/>
                     </button>
                 </el-tooltip>
             </div>
             <div class="d-flex" style="gap:10px">
                 <a :href="!edit ? link.link_facebook : null" :target="!edit ? '__blank' : null">
                     <button class="btn btn-primary d-flex">
-                        <img :src="facebook" alt="" />
+                        <font-awesome-icon :icon="['fab', 'square-facebook']" style="width:23px"/>
                         <el-input class="mx-2" v-if="edit" v-model="link.link_facebook"/>
                         <div class="mx-4" style="font-size: 17px;width:100px" v-if="!edit">Facebook</div>
                     </button>
                 </a>
                 <el-tooltip class="box-item" effect="dark" content="Copy" placement="top-start" v-if="!edit">
-                    <button class="btn btn-primary" id="facebook_copy" @click="handleCopy('facebook')">
-                        <img :src="copy" alt="">
+                    <button class="btn btn-primary px-3" id="facebook_copy" @click="handleCopy('facebook')">
+                        <font-awesome-icon :icon="['fas', 'copy']" style="width:25px"/>
                     </button>
                 </el-tooltip>
             </div>
             <div class="d-flex" style="gap:10px">
                 <a :href="!edit ? link.link_twitter : null" :target="!edit ? '__blank' : null">
                     <button class="btn btn-primary d-flex">
-                        <img :src="twitter" alt="" />
+                        <font-awesome-icon :icon="['fab', 'square-twitter']" style="width:23px"/>
                         <el-input class="mx-2" v-if="edit" v-model="link.link_twitter"/>
                         <div class="mx-4" style="font-size: 17px;width:100px" v-if="!edit">twitter</div>
                     </button>
                 </a>
                 <el-tooltip class="box-item" effect="dark" content="Copy" placement="top-start" v-if="!edit">
-                    <button class="btn btn-primary" id="twitter_copy" @click="handleCopy('twitter')">
-                        <img :src="copy" alt="">
+                    <button class="btn btn-primary px-3" id="twitter_copy" @click="handleCopy('twitter')">
+                        <font-awesome-icon :icon="['fas', 'copy']" style="width:25px"/>
                     </button>
                 </el-tooltip>
             </div>
@@ -51,9 +51,6 @@
 </template>
 
 <script setup>
-import linkedin from "@/assets/svg/linkedin.svg";
-import facebook from "@/assets/svg/facebook.svg";
-import twitter from "@/assets/svg/twitter.svg";
 import copy from "@/assets/svg/copy.svg";
 import { ElNotification } from 'element-plus';
 
