@@ -63,7 +63,17 @@
           </div>
           <!-- Permanent Address Details -->
           <div class="row">
-            <p>Permanent address</p>
+            <p>
+              Permanent address ( Address is same )
+              <el-switch
+                v-model="addressToggleButton"
+                class="ml-2"
+                style="
+                  --el-switch-on-color: #13ce66;
+                  --el-switch-off-color: #ff4949;
+                "
+              />
+            </p>
             <div class="row">
               <div class="col-12 col-md-8">
                 <el-form-item label="Address" prop="permanentAddress.address">
@@ -118,6 +128,7 @@
 </template>
 <script setup>
 import { ref, defineExpose, defineEmits } from "vue";
+const addressToggleButton = ref(false);
 const emit = defineEmits();
 // addressForm
 const addressForm = reactive({
@@ -213,9 +224,16 @@ const handleAddressForm = () => {
     return false;
   });
 };
-
+//call parent function
 defineExpose({
   handleAddressForm,
+});
+
+//Watch
+watch(addressToggleButton, (newValue) => {
+  if (newValue) {
+    addressForm.permanentAddress = { ...addressForm.presentAddress };
+  }
 });
 </script>
 <style></style>
