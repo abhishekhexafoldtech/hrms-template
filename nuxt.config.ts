@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   ],
   css: [
     
-    "bootstrap/dist/css/bootstrap.min.css",
+    // "bootstrap/dist/css/bootstrap.min.css",
     "@/globals/global.css",
     // "@/assets/scss/style.scss",
     "@/assets/img/apple-icon.png",
