@@ -1,58 +1,57 @@
 <template>
-  <div class="container pt-10">
-    <div class="row d-flex justify-content-center mt-4 pb-5">
-      <el-steps :active="active" finish-status="success">
-        <el-step title="Candidate Details" />
-        <el-step title="Address Details" />
-        <el-step title="Professional Details" />
-        <el-step title="Education" />
-        <el-step title="Experience" />
-        <el-step title="Documents" />
-      </el-steps>
+  <section class="emp_wrap">
+    <div class="container">
+      <div class="emp_steps">
+        <el-steps :active="active" finish-status="success" align-center>
+          <el-step title="Candidate Details" />
+          <el-step title="Address Details" />
+          <el-step title="Professional Details" />
+          <el-step title="Education" />
+          <el-step title="Experience" />
+          <el-step title="Documents" />
+        </el-steps>
+      </div>
+      <div class="input_form">
+        <!-- Candidate Details start -->
+        <div v-if="active === 0">
+          <candidateDetailForm ref="childRef" @changeForm="changeForm" />
+        </div>
+
+        <!-- Address Details start -->
+
+        <div v-if="active === 1">
+          <addressDetailForm ref="childRef" @changeForm="changeForm" />
+        </div>
+
+        <!-- professionalForm start -->
+
+        <div v-if="active === 2">
+          <profetionalDetailForm ref="childRef" @changeForm="changeForm" />
+        </div>
+
+        <!-- educationForm start -->
+
+        <div v-if="active === 3">
+          <educationForm ref="childRef" @changeForm="changeForm" />
+        </div>
+
+        <!-- experienceForm start -->
+
+        <div v-if="active === 4">
+          <experienceForm ref="childRef" @changeForm="changeForm" />
+        </div>
+
+        <!-- Documents Details -->
+
+        <div v-if="active === 5">
+          <documentsForm ref="childRef" @changeForm="changeForm" />
+        </div>
+
+        <el-button class="btn bg-gradient-primary" @click="next">Next
+          step</el-button>
+      </div>
     </div>
-    <!-- Candidate Details start -->
-    <div v-if="active === 0" class="row">
-      <candidateDetailForm ref="childRef" @changeForm="changeForm" />
-    </div>
-
-    <!-- Address Details start -->
-
-    <div v-if="active === 1" class="row">
-      <addressDetailForm ref="childRef" @changeForm="changeForm" />
-    </div>
-
-    <!-- professionalForm start -->
-
-    <div v-if="active === 2" class="row">
-      <profetionalDetailForm ref="childRef" @changeForm="changeForm" />
-    </div>
-
-    <!-- educationForm start -->
-
-    <div v-if="active === 3" class="row">
-      <educationForm ref="childRef" @changeForm="changeForm" />
-    </div>
-
-    <!-- experienceForm start -->
-
-    <div v-if="active === 4" class="row">
-      <experienceForm ref="childRef" @changeForm="changeForm" />
-    </div>
-
-    <!-- Documents Details -->
-
-    <div v-if="active === 5" class="row">
-      <documentsForm ref="childRef" @changeForm="changeForm" />
-    </div>
-
-    <el-button
-      class="float-end mb-5 fw-bold"
-      style="margin-top: 12px"
-      type="primary"
-      @click="next"
-      >Next step</el-button
-    >
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -96,16 +95,4 @@ definePageMeta({
 
 
 </script>
-<style scoped>
-/* Form styling */
-.form-container {
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-}
-
-
-/* Responsiveness */
-</style>
+<style scoped></style>

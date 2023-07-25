@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+// Style for Employee Module
+@import "employee/employee.scss";
+
+:root {
+    --font-primary: 'Hind Siliguri', sans-serif;
+    --white: #FFF;
+    --text: #333;
+    --red: #b72b2b;
+}
+
+body {
+    font-family: var(--font-primary);
+}
