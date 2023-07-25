@@ -1,116 +1,120 @@
 <template>
-<div class="form-container">
-        <div class="main-form-container">
-          <div class="ms-3">
-            <span @click="incrementExperience" class="float-end">
-              <i class="ri-add-circle-fill"></i>
-            </span>
+  <div class="form-container">
+    <div class="main-form-container">
+      <div class="ms-3">
+        <span @click="incrementExperience" class="float-end">
+          <i class="ri-add-circle-fill"></i>
+        </span>
 
-            <el-form
-              v-for="item in experience"
-              :inline="true"
-              :model="experienceForm"
-              :rules="experienceFormRules"
-              label-width="120px"
-              label-position="top"
-            >
-              <p class="w-95 text-bg-light">Experience Detail</p>
-              <div class="row">
-                <!-- first row -->
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <el-form-item label="Occupation" prop="occupation">
-                      <el-input
-                        style="width: 100%"
-                        placeholder="Occupation"
-                        v-model="experienceForm.occupation"
-                        required
-                      ></el-input>
-                    </el-form-item>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <el-form-item label="Company" prop="company">
-                      <el-input
-                        style="width: 100%"
-                        placeholder="Company"
-                        v-model="experienceForm.company"
-                        required
-                      ></el-input>
-                    </el-form-item>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <el-form-item label="Summary" prop="summary">
-                      <el-input
-                        style="width: 100%"
-                        placeholder="Summary"
-                        v-model="experienceForm.summary"
-                        required
-                      ></el-input>
-                    </el-form-item>
-                  </div>
-                </div>
-
-                <!-- second row -->
-
-                <div class="row">
-                  <div class="col-12 col-md-4">
-                    <el-form-item label="Duration" prop="duration">
-                      <el-input
-                        style="width: 100%"
-                        placeholder="Duration"
-                        v-model="experienceForm.duration"
-                        required
-                      ></el-input>
-                    </el-form-item>
-                  </div>
-
-                  <div class="col-12 col-md-4">
-                    <el-form-item
-                      label="Currently Work Here"
-                      prop="currently_work_here"
-                    >
-                      <el-input
-                        style="width: 100%"
-                        placeholder="Currently Work Here"
-                        v-model="experienceForm.currently_work_here"
-                        required
-                      ></el-input>
-                    </el-form-item>
-                  </div>
-                </div>
-              </div>
-            </el-form>
+        <el-form
+          v-for="(form, index) in experienceFormData"
+          :inline="true"
+          key="index"
+          ref="experienceFormRef"
+          :model="form"
+          :rules="experienceFormRules"
+          label-width="120px"
+          label-position="top"
+        >
+          <p class="w-95 text-bg-light">Experience Detail</p>
+          <div class="row">
+            <!-- first row -->
             <div class="row">
-              <div class="col-12">
-                <p
-                  v-show="minusIcon"
-                  @click="decrementExperience"
-                  class="float-end"
+              <div class="col-12 col-md-4">
+                <el-form-item label="Occupation" prop="occupation">
+                  <el-input
+                    style="width: 100%"
+                    placeholder="Occupation"
+                    v-model="form.occupation"
+                    required
+                  ></el-input>
+                </el-form-item>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <el-form-item label="Company" prop="company">
+                  <el-input
+                    style="width: 100%"
+                    placeholder="Company"
+                    v-model="form.company"
+                    required
+                  ></el-input>
+                </el-form-item>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <el-form-item label="Summary" prop="summary">
+                  <el-input
+                    style="width: 100%"
+                    placeholder="Summary"
+                    v-model="form.summary"
+                    required
+                  ></el-input>
+                </el-form-item>
+              </div>
+            </div>
+
+            <!-- second row -->
+
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <el-form-item label="Duration" prop="duration">
+                  <el-input
+                    style="width: 100%"
+                    placeholder="Duration"
+                    v-model="form.duration"
+                    required
+                  ></el-input>
+                </el-form-item>
+              </div>
+
+              <div class="col-12 col-md-4">
+                <el-form-item
+                  label="Currently Work Here"
+                  prop="currently_work_here"
                 >
-                  <i class="ri-subtract-line"></i>
-                </p>
+                  <el-input
+                    style="width: 100%"
+                    placeholder="Currently Work Here"
+                    v-model="form.currently_work_here"
+                    required
+                  ></el-input>
+                </el-form-item>
               </div>
             </div>
           </div>
+        </el-form>
+        <div class="row">
+          <div class="col-12">
+            <p
+              v-if="experience>1"
+              @click="decrementExperience"
+              class="float-end"
+            >
+              <i class="ri-subtract-line"></i>
+            </p>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
 </template>
 <script setup>
-import { ref ,defineExpose,defineEmits} from "vue";
+import { ref, defineExpose, defineEmits } from "vue";
 const experience = ref(1);
 const minusIcon = ref(true);
-const emit=defineEmits()
+const emit = defineEmits();
 // experienceForm
-const experienceFormData = ref([]);
-const experienceForm = reactive({
-  occupation: "",
-  company: "",
-  summary: "",
-  duration: "",
-  currently_work_here: "",
-});
+const experienceFormData = ref([
+  {
+    occupation: "",
+    company: "",
+    summary: "",
+    duration: "",
+    currently_work_here: "",
+  },
+]);
+const experienceForm = reactive();
 
 //experience form validation
 
@@ -147,27 +151,43 @@ const experienceFormRules = ref({
 //Experience
 
 const incrementExperience = () => {
-  experienceFormData.value.push(experienceForm);
-  console.log(experienceFormData.value);
+  experienceFormData.value.push({
+    occupation: "",
+    company: "",
+    summary: "",
+    duration: "",
+    currently_work_here: "",
+  });
   experience.value = experience.value + 1;
 };
 
 const decrementExperience = () => {
   experienceFormData.value.pop();
-  console.log(experienceFormData.value);
   experience.value = experience.value - 1;
 };
 
+const experienceFormRef=ref(null)
 const handleExperienceForm = () => {
-  console.log(experienceFormData.value);
-  emit("changeForm")
+  // emit("changeForm")
+  experienceFormData.value.forEach((e,i)=>{
+    experienceFormRef.value[i].validate((valid) => {
+    if (valid) {
+      console.log(
+        "ExperienceForm Data:",
+        JSON.stringify(experienceFormData.value)
+      );
+        emit("changeForm")
+      // Your form submission logic here...
+    } else {
+      // If form validation fails, prevent moving to the next step
+      return false;
+    }
+  });
+  })
 };
 
 defineExpose({
-  handleExperienceForm
-})
-
+  handleExperienceForm,
+});
 </script>
-<style>
-    
-</style>
+<style></style>

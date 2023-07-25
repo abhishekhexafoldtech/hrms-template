@@ -7,9 +7,9 @@
         </p>
 
         <el-form
+          ref="educationFormRef"
           v-for="(form, index) in educationFormData"
           :key="index"
-          :ref="`educationFormRef-${index}`" 
           :inline="true"
           :model="form"
           :rules="educationFormRules"
@@ -59,7 +59,10 @@
 
             <div class="row">
               <div class="col-12 col-md-4">
-                <el-form-item label="Date of Completion" prop="date_of_completion">
+                <el-form-item
+                  label="Date of Completion"
+                  prop="date_of_completion"
+                >
                   <el-input
                     style="width: 100%"
                     placeholder="Date of Completion"
@@ -84,7 +87,7 @@
         </el-form>
         <div class="row">
           <div class="col-12">
-            <p v-show="minusIcon" @click="decrementEducation" class="float-end">
+            <p v-if=" education>1" @click="decrementEducation" class="float-end">
               <i class="ri-subtract-line"></i>
             </p>
           </div>
@@ -97,7 +100,6 @@
 <script setup>
 import { ref, defineExpose, defineEmits, nextTick } from "vue";
 const education = ref(1);
-const minusIcon = ref(true);
 const emit = defineEmits();
 
 // educationForm
@@ -161,30 +163,33 @@ const incrementEducation = (index) => {
     date_of_completion: "",
     additional_notes: "",
   });
-  console.log(educationFormData.value);
   education.value = education.value + 1;
 };
 
 const decrementEducation = () => {
   educationFormData.value.pop();
-  console.log(educationFormData.value);
   education.value = education.value - 1;
 };
 
 const educationFormRef = ref(null);
 
 const handleEducationForm = () => {
-  emit("changeForm")
-  //   educationFormRef.value.validate((valid) => {
-  //   if (valid) {
-  //     console.log("EducationForm Data:", JSON.stringify(educationFormData.value));
-  //     // Your form submission logic here...
-  //   } else {
-  //     // If form validation fails, prevent moving to the next step
-  //     return false;
-  //   }
-  // });
-
+  // emit("changeForm")
+  educationFormData.value.forEach((e,i)=>{
+    educationFormRef.value[i].validate((valid) => {
+    if (valid) {
+      console.log(
+        "EducationForm Data:",
+        JSON.stringify(educationFormData.value)
+      );
+        emit("changeForm")
+      // Your form submission logic here...
+    } else {
+      // If form validation fails, prevent moving to the next step
+      return false;
+    }
+  });
+  })
 };
 
 defineExpose({
