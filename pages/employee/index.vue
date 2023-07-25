@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container pt-10">
     <div class="row d-flex justify-content-center mt-4 pb-5">
       <el-steps :active="active" finish-status="success">
         <el-step title="Candidate Details" />
@@ -89,6 +89,12 @@ const next = async () => {
 const changeForm = () => {
   active.value = active.value + 1;
 };
+
+definePageMeta({
+  layout: "layout",
+});
+
+
 </script>
 <style scoped>
 /* Form styling */
