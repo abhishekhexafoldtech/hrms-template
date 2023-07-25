@@ -21220,7 +21220,7 @@ fieldset:disabled .btn {
 
 .card.card-plain {
   background-color: transparent;
-  box-shadow: none;
+  /* box-shadow: none; */
 }
 
 .card .card-footer {
