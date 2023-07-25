@@ -1,95 +1,42 @@
 <template>
-  <div class="form-container">
-    <div class="main-form-container">
-      <div class="ms-3">
-        <el-form
-          ref="candidateDetailFormRef"
-          :inline="true"
-          :model="candidateForm"
-          label-width="120px"
-          label-position="top"
-          :rules="candidateFormRules"
-        >
-          <div class="row">
-            <!-- first row -->
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item label="Email" prop="email">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Email"
-                    v-model="candidateForm.email"
-                    type="email"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Phone" prop="phone">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Phone"
-                    v-model="candidateForm.phone"
-                    type="tel"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Aadhaar Card Number" prop="aadhaar">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Aadhaar Card"
-                    v-model="candidateForm.aadhaar"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-            </div>
-
-            <!-- second row -->
-
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item label="PAN Card Number" prop="pan">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="PAN Card"
-                    v-model="candidateForm.pan"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item  label="* Photo" prop="imageUrl">
-                  <el-upload
-                    class="avatar-uploader photo_upload py-4 px-5"
-                    :show-file-list="false"
-                    :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload"
-                  >
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                    <el-icon v-else class="avatar-uploader-icon"
-                      ><Plus
-                    /></el-icon>
-                  </el-upload>
-                </el-form-item>
-                <span v-show="isImageUploaded" class="text-danger"
-                  >plese upload image</span
-                >
-              </div>
-            </div>
-          </div>
-        </el-form>
-      </div>
-    </div>
-  </div>
+  <el-form ref="candidateDetailFormRef" :inline="true" :model="candidateForm" label-width="120px" label-position="top"
+    :rules="candidateFormRules">
+    <el-row>
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+        <el-form-item label="Email" prop="email">
+          <el-input placeholder="Email" v-model="candidateForm.email" type="email" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+        <el-form-item label="Phone" prop="phone">
+          <el-input placeholder="Phone" v-model="candidateForm.phone" type="tel" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+        <el-form-item label="Aadhaar Card Number" prop="aadhaar">
+          <el-input placeholder="Aadhaar Card" v-model="candidateForm.aadhaar" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+        <el-form-item label="PAN Card Number" prop="pan">
+          <el-input placeholder="PAN Card" v-model="candidateForm.pan" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+        <el-form-item label="* Photo" prop="imageUrl">
+          <el-upload :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+            <img v-if="imageUrl" :src="imageUrl" />
+            <el-icon v-else class="avatar-uploader-icon">
+              <i class="ri-add-line"></i>
+            </el-icon>
+          </el-upload>
+          <span v-show="isImageUploaded" class="input_error">plese upload image</span>
+        </el-form-item>
+      </el-col>
+    </el-row>
+  </el-form>
 </template>
 <script setup>
-import { Plus } from "@element-plus/icons-vue";
 import { ref, defineExpose, defineEmits } from "vue";
 // candidateForm
 const imageUrl = ref("");
@@ -203,9 +150,4 @@ defineExpose({
   handleCandidateDetail,
 });
 </script>
-<style>
-.photo_upload {
-  border: 1px solid rgb(232, 220, 220);
-  border-radius: 5px;
-}
-</style>
+<style></style>
