@@ -143,6 +143,7 @@ const professionalFormRules = ref({
 //Professional Details
 const professionalFormRef = ref(null);
 const handleProfessionalForm = () => {
+  //  emit("changeForm");
   professionalFormRef.value.validate((valid) => {
     if (valid) {
       console.log("Profetional Form Data:", JSON.stringify(professionalForm));

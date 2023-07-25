@@ -64,13 +64,12 @@
               </div>
 
               <div class="col-12 col-md-4">
-                <el-form-item label="Photo" prop="imageUrl">
+                <el-form-item  label="* Photo" prop="imageUrl">
                   <el-upload
                     class="avatar-uploader photo_upload py-4 px-5"
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload"
-                    :rules="[imageUrlRule]"
                   >
                     <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                     <el-icon v-else class="avatar-uploader-icon"
@@ -157,16 +156,6 @@ const candidateFormRules = ref({
 
 //imageUrl
 const isImageUploaded = ref(false);
-const imageUrlRule = ref({
-  validator: () => {
-    if (isImageUploaded.value) {
-      // isImageUploaded.value = false;
-    } else {
-      isImageUploaded.value = true;
-    }
-  },
-  trigger: "blur",
-});
 
 // Candidate Details start...........
 function handleAvatarSuccess(res, file) {
@@ -193,16 +182,18 @@ function beforeAvatarUpload(file) {
 
 const candidateDetailFormRef = ref(null);
 const handleCandidateDetail = () => {
+  // emit("changeForm");
   // Validate the candidateForm
   candidateDetailFormRef.value.validate((valid) => {
-    if (valid) {
+    if (valid && imageUrl.value) {
+      isImageUploaded.value = false;
       // Both form and image are valid, proceed with form submission logic
       console.log("Candidate Form Data:", JSON.stringify(candidateForm));
       console.log("Image URL:", imageUrl.value);
       emit("changeForm");
       // Your form submission logic here...
-    } else if (!isImageUploaded.value) {
-      // isImageUploaded.value = true;
+    } else if (!imageUrl.value) {
+      isImageUploaded.value = true;
     }
     // If form validation fails, prevent moving to the next step
     return false;
