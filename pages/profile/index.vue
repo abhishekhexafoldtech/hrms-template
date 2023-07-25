@@ -1,12 +1,6 @@
 <template>
-  <div class="container-fluid cbox mt-7">
+  <div class="container-fluid mt-7 mt-8">
     <div class="row">
-      <!-- <div class="col-sm-2 mt-4">
-                    <ul>
-                        <button class="btn btn-primary w-100"><i class="fa fa-home"></i> General</button>
-                        <button type="button" class="btn w-100"><i class="bi bi-calendar-week-fill"></i> Change Password</button>
-                    </ul>
-                </div> -->
       <el-tabs tab-position="left" style="height: 100%" class="demo-tabs">
         <!-- General -->
         <el-tab-pane label="General" class="">
@@ -107,35 +101,8 @@
   </div>
 </template>
 
-<style scoped>
-.cbox {
-  background-color: rgb(248, 248, 248);
-}
-
-.slct-avatar {
-  border: 1px solid rgb(203, 203, 203);
-}
-
-
-.demo-tabs > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-  width: 20%;
-}
-
-.el-tabs--right .el-tabs__content,
-.el-tabs--left .el-tabs__content {
-  height: 100%;
-}
-
-</style>
-
 <script setup>
-definePageMeta({
-  layout: "layout",
-});
+
 import { reactive,ref } from "vue";
 
 const size = ref("large")
@@ -207,4 +174,36 @@ const formValidationRules = reactive({
     },
   ],
 });
+
+definePageMeta({
+  layout: "layout",
+});
+
 </script>
+
+
+
+
+<style scoped>
+
+
+.slct-avatar {
+  border: 1px solid rgb(203, 203, 203);
+}
+
+
+.demo-tabs > .el-tabs__content {
+  padding: 32px;
+  color: #6b778c;
+  font-size: 32px;
+  font-weight: 600;
+  width: 20%;
+}
+
+.el-tabs--right .el-tabs__content,
+.el-tabs--left .el-tabs__content {
+  height: 100%;
+}
+
+</style>
+
