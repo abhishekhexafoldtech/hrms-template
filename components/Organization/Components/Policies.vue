@@ -9,8 +9,11 @@
                             <div class="d-flex" v-if="props.user">
                                 <el-input type="text" v-if="policy.id == textCorrection.title.id"
                                     v-model="textCorrection.title.text" style="width:250px" />
-                                    <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -3px;" v-if="policy.id == textCorrection.title.id" class="cursor-pointer check-icon mx-2"
-                                    @click="handleCorrection('title')"/>
+                                    <span @click="handleEdit(policy.id, 'sub')">
+                                        <i class="fa fa-check-square-o" aria-hidden="true" ></i>
+                                    </span>
+                                    <!-- <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -3px;" v-if="policy.id == textCorrection.title.id" class="cursor-pointer check-icon mx-2"
+                                    @click="handleCorrection('title')"/> -->
                             </div>
                             <div v-if="props.user" style="display: flex;gap:10px;margin-top: 8px;margin-left: 15px;width: 100%;justify-content: end;">
                                 <font-awesome-icon :icon="['fas', 'pen-to-square']" style="color: #b5b9bf;width:16px" class="cursor-pointer" @click="handleEdit(policy.id, 'title')"
@@ -161,6 +164,7 @@ const resetCorrection = (text) => {
 }
 // assigning proper values to the editing variable
 const handleCorrection = (text) => {
+
     policiesForm.value.map((e) => {
         if (e.id == textCorrection.title.id || e.id == textCorrection.sub.id || e.id === textCorrection.content.id) {
             if (textCorrection.title.type === 'title') {

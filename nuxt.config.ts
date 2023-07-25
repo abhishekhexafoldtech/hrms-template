@@ -35,9 +35,6 @@ export default defineNuxtConfig({
     '@element-plus/nuxt',
     '@pinia/nuxt',
   ],
-  plugins: [
-    { src: '@/plugins/font-awesome.ts' },
-  ],
   css: [
     "@/globals/global.css",
     // "@/assets/scss/style.scss",

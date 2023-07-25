@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container mt-10">
       <div style="width:340px">
-        <el-tabs v-model="activeName" class="demo-tabs"  @tab-click="">
+        <el-tabs v-model="activeName" class="demo-tabs" >
           <el-tab-pane label="Basic" name="first">
           </el-tab-pane>
           <el-tab-pane label="Address" name="second"></el-tab-pane>
