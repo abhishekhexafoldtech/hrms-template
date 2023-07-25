@@ -35,8 +35,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
   css: [
-    
-    // "bootstrap/dist/css/bootstrap.min.css",
     "@/globals/global.css",
     // "@/assets/scss/style.scss",
     "@/assets/img/apple-icon.png",
