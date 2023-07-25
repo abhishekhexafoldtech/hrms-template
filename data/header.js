@@ -8,18 +8,11 @@ const headerData = {
             url: "organization",
         },
         {
-            id: 2,
-            name: "Address",
-            description: "Address is here",
-            icon:`bi bi-building-fill-add mx-2`,
-            url: "blank-page",
-        },
-        {
             id: 3,
             name: "Policies",
             description: "Policies are here",
             icon:`bi bi-file-earmark-post mx-2`,
-            url: "blank-page",
+            url: "organization",
         },
     ],
     project: [

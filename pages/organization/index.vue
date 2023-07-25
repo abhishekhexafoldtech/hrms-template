@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-10">
+  <div class="container mt-8">
       <div>
         <el-tabs v-model="activeName" class="demo-tabs" >
           <el-tab-pane label="Basic" name="first">

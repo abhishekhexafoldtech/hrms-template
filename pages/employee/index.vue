@@ -2,6 +2,7 @@
   <section class="emp_wrap">
     <div class="container">
       <div class="emp_steps">
+       <center> <h3>Create Employee</h3></center>
         <el-steps :active="active" finish-status="success" align-center>
           <el-step title="Candidate Details" />
           <el-step title="Address Details" />

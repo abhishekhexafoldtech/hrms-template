@@ -1,10 +1,10 @@
 <template>
     <OrganizationLayout>
         <div class="mx-3 py-3">
-            <div v-if="form.logo">
+            <!-- <div v-if="form.logo">
                 <img :src="form.logo" alt="Hexafold Technologies" class="mt-3"
                     width="300" />
-            </div>
+            </div> -->
             <div class="w-90 mt-3">
                 <el-form v-model="form" class="form" :disabled="!edit">
                     <div>

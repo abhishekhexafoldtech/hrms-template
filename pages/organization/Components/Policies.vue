@@ -75,8 +75,8 @@
                             Content
                         </p>
                         <el-input type="textarea" :rows="5" placeholder="" v-model="policiesFillForm.content" />
-                        <div class="w-100" style="text-align: right;" v-if="formFilled">
-                            <el-button class="btn btn-primary mt-5" type="primary" @click="handleSave">
+                        <div class="w-100" style="text-align: right;" >
+                            <el-button class="btn btn-primary mt-5" type="primary" :disabled="!formFilled" @click="handleSave">
                                 Save
                             </el-button>
                         </div>

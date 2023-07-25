@@ -69,6 +69,73 @@
           </div>
         </div>
       </section>
+      <section class="mt-5">
+        <div class="col-lg-12">
+              <div class="row">
+                <div class="col-md-4 mt-md-0">
+                    <div class="card shadow-lg  min-height-160 min-height-160">
+                    <div class="mt-2 ms-2">
+                      <h6 class="mb-0">Imp Link</h6>
+                      <br/>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 1 Meeting with HR
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 1 Meeting with HR
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 1 Meeting with HR
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i> 1 Meeting with HR
+                      </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-md-0">
+                    <div class="card shadow-lg  min-height-160 min-height-160">
+                    <div class="mt-2 ms-2">
+                      <h6 class="mb-0">Task List</h6>
+                      <br/>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-tasks" aria-hidden="true"></i> Task One
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-tasks" aria-hidden="true"></i> Task One
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-tasks" aria-hidden="true"></i> Task One
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-tasks" aria-hidden="true"></i> Task One
+                      </p>
+                     
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-md-0">
+                    <div class="card shadow-lg  min-height-160 min-height-160">
+                    <div class="mt-2 ms-2">
+                      <h6 class="mb-0">Announcement</h6>
+                      <br/>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i> 1 Announcement
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i> 1 Announcement
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i> 1 Announcement
+                      </p>
+                      <p class="text-secondary text-sm font-weight-normal">
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i> 1 Announcement
+                      </p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+      </section>
       <section class="my-2 py-2">
         <div class="container">
           <div class="row">
@@ -76,6 +143,7 @@
           </div>
         </div>
       </section>
+      
       <section class="my-5 py-5">
         <div class="container">
           <div class="row align-items-center">
