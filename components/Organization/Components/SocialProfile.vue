@@ -51,7 +51,6 @@
 </template>
 
 <script setup>
-import copy from "@/assets/svg/copy.svg";
 import { ElNotification } from 'element-plus';
 
 const edit = ref(false)
