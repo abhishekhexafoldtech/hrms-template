@@ -9,17 +9,17 @@
                             <div class="d-flex" v-if="props.user">
                                 <el-input type="text" v-if="policy.id == textCorrection.title.id"
                                     v-model="textCorrection.title.text" style="width:250px" />
-                                    <span @click="handleEdit(policy.id, 'sub')">
-                                        <i class="fa fa-check-square-o" aria-hidden="true" ></i>
-                                    </span>
-                                    <!-- <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -3px;" v-if="policy.id == textCorrection.title.id" class="cursor-pointer check-icon mx-2"
-                                    @click="handleCorrection('title')"/> -->
+                                <i class="fa fa-check-square-o mx-2 mt-1 cursor-pointer" aria-hidden="true"
+                                    style="color: #3a7939;margin-top: -3px;font-size: 27px;"
+                                    v-if="policy.id == textCorrection.title.id" @click="handleCorrection('title')"></i>
                             </div>
-                            <div v-if="props.user" style="display: flex;gap:10px;margin-top: 8px;margin-left: 15px;width: 100%;justify-content: end;">
-                                <font-awesome-icon :icon="['fas', 'pen-to-square']" style="color: #b5b9bf;width:16px" class="cursor-pointer" @click="handleEdit(policy.id, 'title')"
-                                    v-if="policy.id != textCorrection.title.id" />
-                                    <font-awesome-icon :icon="['fas', 'trash']" style="color: #bf4040;width:14px" class="cursor-pointer"
-                                    @click="handleDelete(policy.id, 'title')" />
+                            <div v-if="props.user"
+                                style="display: flex;gap:10px;margin-top: 8px;margin-left: 15px;width: 100%;justify-content: end;">
+                                <i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true"
+                                    @click="handleEdit(policy.id, 'title')" style="color: #b5b9bf;font-size:16px"
+                                    v-if="policy.id != textCorrection.title.id"></i>
+                                <i class="fa fa-trash-o cursor-pointer" aria-hidden="true"
+                                    style="color: #bf4040;font-size:16px" @click="handleDelete(policy.id, 'title')"></i>
                             </div>
                         </div>
                     </div>
@@ -28,17 +28,19 @@
                             {{ policy.sub_title }}
                         </div>
                         <div class="d-flex" v-if="props.user">
-                            <el-input type="text" v-if="policy.id == textCorrection.sub.id" v-model="textCorrection.sub.text"
-                                style="min-width:100%" />
-                                <div>
-                                   <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -5px;"  class="cursor-pointer check-icon mx-2" v-if="policy.id == textCorrection.sub.id"
-                                    @click="handleCorrection('sub')"/>
-                                </div>
+                            <el-input type="text" v-if="policy.id == textCorrection.sub.id"
+                                v-model="textCorrection.sub.text" style="min-width:100%" />
+                            <i class="fa fa-check-square-o mx-2 mt-1 cursor-pointer" aria-hidden="true"
+                                style="color: #3a7939;font-size: 27px;" v-if="policy.id == textCorrection.sub.id"
+                                @click="handleCorrection('sub')"></i>
                         </div>
-                        <div v-if="props.user" style="display: flex;gap:10px;margin-top: 6px;margin-left: 15px;justify-content: end;width: 100%;">
-                            <font-awesome-icon :icon="['fas', 'pen-to-square']" style="color: #b5b9bf;width:16px" class="cursor-pointer" @click="handleEdit(policy.id, 'sub')"
-                                v-if="policy.id != textCorrection.sub.id" />
-                            <font-awesome-icon :icon="['fas', 'trash']" style="color: #bf4040;width:14px" class="cursor-pointer" @click="handleDelete(policy.id, 'sub')" />
+                        <div v-if="props.user"
+                            style="display: flex;gap:10px;margin-top: 6px;margin-left: 15px;justify-content: end;width: 100%;">
+                            <i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true"
+                                @click="handleEdit(policy.id, 'sub')" style="color: #b5b9bf;font-size:16px"
+                                v-if="policy.id != textCorrection.sub.id"></i>
+                            <i class="fa fa-trash-o cursor-pointer" aria-hidden="true" style="color: #bf4040;font-size:16px"
+                                @click="handleDelete(policy.id, 'sub')"></i>
                         </div>
                     </div>
                     <div class="content" v-if="policy.content">
@@ -46,14 +48,16 @@
                         <div v-if="props.user">
                             <el-input type="textarea" :rows="4" v-if="policy.id == textCorrection.content.id"
                                 v-model="textCorrection.content.text" style="height: fit-content;" />
-                                <font-awesome-icon :icon="['fas', 'square-check']" style="color: #3a7939;width:35px;height: 30px;margin-top: -3px;" v-if="policy.id == textCorrection.content.id" class="cursor-pointer check-icon"
-                                @click="handleCorrection('content')" />
+                            <i class="fa fa-check-square-o mx-1 mt-1 cursor-pointer" aria-hidden="true"
+                                style="color: #3a7939;margin-top: -3px;font-size: 27px;"
+                                v-if="policy.id == textCorrection.content.id" @click="handleCorrection('content')"></i>
                         </div>
                         <div v-if="props.user" class="mt-2  w-100" style="display: flex;gap:10px;justify-content: end;">
-                            <font-awesome-icon :icon="['fas', 'pen-to-square']" style="color: #b5b9bf;width:16px" class="cursor-pointer" @click="handleEdit(policy.id, 'content')"
-                                v-if="policy.id != textCorrection.content.id" />
-                            <font-awesome-icon :icon="['fas', 'trash']" style="color: #bf4040;width:14px" class="cursor-pointer"
-                                @click="handleDelete(policy.id, 'content')" />
+                            <i class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true"
+                                @click="handleEdit(policy.id, 'content')" style="color: #b5b9bf;font-size:16px"
+                                v-if="policy.id != textCorrection.content.id"></i>
+                            <i class="fa fa-trash-o cursor-pointer" aria-hidden="true" style="color: #bf4040;font-size:16px"
+                                @click="handleDelete(policy.id, 'content')"></i>
                         </div>
                     </div>
                 </div>
@@ -201,20 +205,20 @@ const handleDelete = (id, type) => {
     });
 };
 // form adding a new policy
-const handleSave = () =>{
+const handleSave = () => {
     const id = policiesForm.value[policiesForm.value.length - 1].id + 1;
     const new_policy = {
-        title:policiesFillForm.title,
-        sub_title:policiesFillForm.sub_title,
-        content:policiesFillForm.content,
-        id:id
+        title: policiesFillForm.title,
+        sub_title: policiesFillForm.sub_title,
+        content: policiesFillForm.content,
+        id: id
     };
-    policiesForm.value = [...policiesForm.value,new_policy];
+    policiesForm.value = [...policiesForm.value, new_policy];
     console.log(policiesForm.value);
-    policiesFillForm.title ='';
+    policiesFillForm.title = '';
     policiesFillForm.sub_title = '';
     policiesFillForm.content = '';
-    
+
 }
 const props = defineProps({
     user: {
@@ -241,21 +245,25 @@ const props = defineProps({
 .content {
     text-align: left;
 }
-.el-button{
-    width:150px;
+
+.el-button {
+    width: 150px;
     height: 42px;
 }
+
 .sub {
     color: rgb(101, 101, 101);
     font-weight: 500;
     font-size: 19px;
 }
-.check-icon{
-    position:relative;
-    top:4px;
+
+.check-icon {
+    position: relative;
+    top: 4px;
     width: 30px;
     height: 25px;
 }
+
 @media screen and (max-width:720px) {
     .form {
         padding: 20px;
