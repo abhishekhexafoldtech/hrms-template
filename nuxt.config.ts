@@ -26,7 +26,7 @@ export default defineNuxtConfig({
         { src:"@/assets/js/plugins/nouislider.min.js" },
         { src:"@/assets/js/plugins/anime.min.js" },
         { src:"https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI" },
-        { src:"assets/js/material-kit-pro.min.js?v=3.0.4" },
+        { src:"assets/js/material-kit-pro.min.js?v=3.0.4" }
       ],
     }
   },
@@ -35,6 +35,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
   css: [
+    
+    "bootstrap/dist/css/bootstrap.min.css",
     "@/globals/global.css",
     // "@/assets/scss/style.scss",
     "@/assets/img/apple-icon.png",

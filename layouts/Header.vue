@@ -266,10 +266,10 @@
 
 <script setup>
 import headerData from '@/data/header';
-const { org } = headerData
+// const { org } = headerData
 // const {data : products, pending, error, refresh}= await useFetch("../data/data.json")
 console.log(headerData)
-console.log(org)
+// console.log(org)
 </script>
 
 <style scoped>
