@@ -1,8 +1,8 @@
 <template>
   <section class="emp_wrap">
     <div class="container">
+      <h3 class="sec_title">Create Employee</h3>
       <div class="emp_steps">
-       <center> <h3>Create Employee</h3></center>
         <el-steps :active="active" finish-status="success" align-center>
           <el-step title="Candidate Details" />
           <el-step title="Address Details" />
