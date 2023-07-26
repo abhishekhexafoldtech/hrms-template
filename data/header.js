@@ -95,7 +95,7 @@ const headerData = {
             name: "Leave",
             description: "Policies are here",
             icon:`bi bi-x-square-fill mx-2`,
-            url: "blank-page",
+            url: "leave",
         },
         {
             id: 4,
