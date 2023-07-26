@@ -136,6 +136,9 @@
               </div>
         </div>
       </section>
+      <section>
+        <ToDoList />
+      </section>
       <section class="my-2 py-2">
         <div class="container">
           <div class="row">
@@ -2212,6 +2215,7 @@
 
 <script setup>
 import EventCalender from "@/components/calender/EventCalender.vue"
+import ToDoList from "@/components/todo/index.vue"
 
 definePageMeta({
   layout: "layout",
