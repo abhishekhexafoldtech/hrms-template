@@ -153,7 +153,7 @@ definePageMeta({
 });
 </script>
 
-<style>
+<style scoped>
 .form-container {
   max-width: 600px;
   margin: 0 auto;
