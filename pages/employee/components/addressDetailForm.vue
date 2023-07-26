@@ -236,4 +236,5 @@ watch(addressToggleButton, (newValue) => {
   }
 });
 </script>
-<style></style>
+<style>
+</style>
