@@ -12,7 +12,7 @@ const headerData = {
             name: "Policies",
             description: "Policies are here",
             icon:`bi bi-file-earmark-post mx-2`,
-            url: "organization",
+            url: "policies",
         },
         {
             id: 2,

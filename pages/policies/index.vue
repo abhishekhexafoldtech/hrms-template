@@ -1,28 +1,41 @@
 <template>
     <div class="container mt-8">
         <div class="p-2 w-100" style="text-align: right;">
-            <NuxtLink to="/policies/form">
-              <el-button>+ Add Policy</el-button>
-            </NuxtLink>
+            <el-button type="primary" @click="handleAddEditPolicy">+ Add Policy</el-button>
         </div>
         <Table tableHeading="Policies" 
               :tableConfig="policiesConfig" 
               :tableData="showRoleListData" 
               :tableQuery="listQuery"
-              :tableCheckBoxVisibility="true" 
               :tableSearchVisibility="false"
               :viewButtonVisibility="true"
+              :downloadButtonVisibility="true"
+              :editButtonVisibility="false"
+              :deleteButtonVisibility="false"
               @pagination="handlePagination()" 
-              @edit="handleEditRole($event)" 
-              @delete="handleDelete($event)"
-              @multipleSelection="handleMultipleSelection($event)"
-              
+              @view="handleViewDetails($event)" 
+              @dwonload="handleDownload($event)"
             />
     </div>
 </template>
 
 <script setup>
-import Table from '~/components/Table.vue';
+import Table from '@/components/Table.vue';
+import { useRouter } from "vue-router"
+const router = useRouter()
+
+function handleAddEditPolicy() {
+  let r = "add";
+  router.push(`policies/${r}`);
+}
+
+function handleViewDetails(data){
+  console.log('view', data)
+}
+
+function handleDownload(data){
+  console.log('download', data)
+}
 
 let roleListData = ref([
   {
