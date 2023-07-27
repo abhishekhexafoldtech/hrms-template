@@ -5,14 +5,16 @@
             <h6>Todo List</h6>
             <el-row :gutter="10">
               <el-col :span="18">
-                <el-form-item prop="name">
-                  <el-input
-                    v-model="input1"
-                    class="w-100 m-2"
-                    size="large"
-                    placeholder="Please Input"
-                  />
-                </el-form-item>
+                <el-form :rules="formValidationRules">
+                  <el-form-item prop="todo" :rules="formValidationRules" class="fw-bold">
+                    <el-input
+                      v-model="input1"
+                      class="w-100 m-2"
+                      size="large"
+                      placeholder="Please Input Todo Here..."
+                    />
+                  </el-form-item>
+                </el-form>
               </el-col>
               <el-col :span="4" class="mt-1">
                 <button class="btn btn-lg btn-primary w-100" @click="handleSubmit">Submit</button>
@@ -51,6 +53,15 @@ import { ref, onMounted } from 'vue';
 const todos = ref([]);
 const input1 = ref('');
 const editedTodoIndex = ref(-1); // New reactive variable to keep track of the edited todo index
+
+const formValidationRules = reactive({
+  todo: [{
+    required: true,
+        message: "Please enter Todo",
+        trigger: "blur",
+  }]
+})
+
 
 /// Function to handle form submission and save todo to local storage
 const handleSubmit = () => {
