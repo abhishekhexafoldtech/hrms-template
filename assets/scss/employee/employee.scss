@@ -3,6 +3,63 @@
     padding-top: 150px;
     min-height: 100vh;
     // background: linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2));
+
+    .sec_title {
+        font-size: 28px;
+        font-weight: 600;
+        text-align: center;
+        margin: 0;
+        margin-bottom: 30px;
+        color: var(--heading);
+    }
+
+    .emp_steps {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+        .el-step__head {
+            height: 25px;
+
+            .el-step__icon {
+                background-color: var(--white);
+                border-width: 1px;
+                width: 25px;
+                height: 25px;
+            }
+
+            &.is-success {
+                border-color: #D81B60;
+
+                .el-step__icon {
+                    color: var(--white);
+                    background-color: #D81B60;
+                    border-color: #D81B60;
+                    font-size: 17px;
+                }
+            }
+        }
+
+        .el-step__icon-inner {
+            padding-top: 1px;
+            font-weight: 700;
+        }
+
+        .el-step__title {
+            font-size: 15px;
+            font-weight: 500;
+
+            &.is-success {
+                color: #D81B60;
+            }
+        }
+
+        .el-step__title.is-process {
+            color: var(--heading);
+            font-weight: 600;
+        }
+    }
 }
 
 .el-button {
@@ -24,8 +81,18 @@
     overflow: hidden;
     box-shadow: 0px 3px 15px rgb(0 0 0 / 5%);
 
+    .form_title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        color: var(--heading);
+        margin: 0;
+        margin-bottom: 15px;
+    }
+
     .el-row {
         margin: -15px;
+        width: 100%;
 
         .el-col {
             padding: 15px;
@@ -59,7 +126,9 @@
     .el-form-item__content {
         display: block;
         width: 100%;
+    }
 
+    .el-form-item {
         .el-input__wrapper {
             height: 46px;
             width: 100%;
@@ -67,11 +136,10 @@
             font-size: 16px;
             font-weight: normal;
             color: var(--text);
+            background-color: #f1f1f1;
+            border-radius: 0;
+            box-shadow: none !important;
         }
-    }
-
-    .el-form-item.is-error .el-input__wrapper {
-        box-shadow: 0 0 0 1px var(--red) inset;
     }
 
     .el-upload {
