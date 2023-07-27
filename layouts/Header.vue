@@ -27,7 +27,7 @@
                                         <div class="d-none d-lg-block" v-for="(data, id) in headerData.org" :key="id">
                                             <ul class="list-group">
                                                 <li class="nav-item list-group-item border-0 p-0">
-                                                <NuxtLink :to="data.url" >
+                                                <NuxtLink :to="data.name == 'Policies' ? data.name : data.url" >
                                                     <span class="dropdown-item py-2 ps-3 border-radius-md" >
                                                         <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
                                                             <i :class="data.icon" > </i>
