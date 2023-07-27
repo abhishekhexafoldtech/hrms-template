@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
       <div class="d-flex justify-content-center">
-          <div class="container-fluid shadow p-3 bg-body rounded mt-2 w-60">
+          <div class="container-fluid shadow p-3 bg-body rounded mt-2 w-70">
             <h6>Todo List</h6>
             <el-row :gutter="10">
               <el-col :span="18">

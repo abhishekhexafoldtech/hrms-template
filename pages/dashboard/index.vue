@@ -136,9 +136,8 @@
               </div>
         </div>
       </section>
-      <section>
+      <section class="mt-5">
         <ToDoList />
-        <!-- <Table/> -->
       </section>
       <section class="my-2 py-2">
         <div class="container">
