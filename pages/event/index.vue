@@ -1,7 +1,7 @@
 <template>
     <div class="mt-8" style="margin: 15px;">
         <div class="p-2 w-100" style="text-align: right;">
-            <el-button type="primary" @click="handleAddEditEvent">Add Event</el-button>
+            <el-button type="primary" @click="handleAddEditEvent">+ Add Event</el-button>
         </div>
         <Table tableHeading="Events" 
               :tableConfig="policiesConfig" 
@@ -16,6 +16,7 @@
 </template>
 
 <script setup>
+import Table from '@/components/Table.vue';
 import { useRouter } from "vue-router"
 const router = useRouter()
 
