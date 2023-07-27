@@ -82,6 +82,7 @@ editedTodoIndex.value = index;
 input1.value = todos.value[index].description; // Populate the input with the todo's description
 };
 
+
 // Function to delete a todo
 const deleteTodo = (index) => {
   todos.value.splice(index, 1);
