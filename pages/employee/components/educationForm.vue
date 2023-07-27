@@ -1,100 +1,42 @@
 <template>
-  <div class="form-container">
-    <div class="main-form-container">
-      <div class="ms-3">
-        <p @click="incrementEducation" class="float-end">
-          <i class="ri-add-circle-fill w-50"></i>
-        </p>
+  <p @click="incrementEducation" class="float-end">
+    <i class="ri-add-circle-fill w-50"></i>
+  </p>
+  <h3 class="form_title">Education Details</h3>
 
-        <el-form
-          ref="educationFormRef"
-          v-for="(form, index) in educationFormData"
-          :key="index"
-          :inline="true"
-          :model="form"
-          :rules="educationFormRules"
-          label-width="120px"
-          label-position="top"
-        >
-          <p class="w-95 text-bg-light">Education Detail</p>
-
-          <div class="row">
-            <!-- first row -->
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item label="School Name" prop="school_name">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="School Name"
-                    v-model="form.school_name"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Degree/Diploma" prop="degree_diploma">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Degree/Diploma"
-                    v-model="form.degree_diploma"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Field(s) of Study" prop="field_of_study">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Field(s) of Study"
-                    v-model="form.field_of_study"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-            </div>
-
-            <!-- second row -->
-
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item
-                  label="Date of Completion"
-                  prop="date_of_completion"
-                >
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Date of Completion"
-                    v-model="form.date_of_completion"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Additional Notes" prop="additional_notes">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Additional Notes"
-                    v-model="form.additional_notes"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-            </div>
-          </div>
-        </el-form>
-        <div class="row">
-          <div class="col-12">
-            <p v-if=" education>1" @click="decrementEducation" class="float-end">
-              <i class="ri-subtract-line"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <el-form ref="educationFormRef" v-for="(form, index) in educationFormData" :key="index" :inline="true" :model="form"
+    :rules="educationFormRules" label-width="120px" label-position="top">
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="School Name" prop="school_name">
+          <el-input placeholder="School Name" v-model="form.school_name" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Degree/Diploma" prop="degree_diploma">
+          <el-input placeholder="Degree/Diploma" v-model="form.degree_diploma" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Field(s) of Study" prop="field_of_study">
+          <el-input placeholder="Field(s) of Study" v-model="form.field_of_study" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Date of Completion" prop="date_of_completion">
+          <el-input placeholder="Date of Completion" v-model="form.date_of_completion" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Additional Notes" prop="additional_notes">
+          <el-input placeholder="Additional Notes" v-model="form.additional_notes" required></el-input>
+        </el-form-item>
+      </el-col>
+    </el-row>
+  </el-form>
+  <p v-if="education > 1" @click="decrementEducation" class="float-end">
+    <i class="ri-subtract-line"></i>
+  </p>
 </template>
 
 <script setup>
@@ -175,20 +117,20 @@ const educationFormRef = ref(null);
 
 const handleEducationForm = () => {
   // emit("changeForm")
-  educationFormData.value.forEach((e,i)=>{
+  educationFormData.value.forEach((e, i) => {
     educationFormRef.value[i].validate((valid) => {
-    if (valid) {
-      console.log(
-        "EducationForm Data:",
-        JSON.stringify(educationFormData.value)
-      );
+      if (valid) {
+        console.log(
+          "EducationForm Data:",
+          JSON.stringify(educationFormData.value)
+        );
         emit("changeForm")
-      // Your form submission logic here...
-    } else {
-      // If form validation fails, prevent moving to the next step
-      return false;
-    }
-  });
+        // Your form submission logic here...
+      } else {
+        // If form validation fails, prevent moving to the next step
+        return false;
+      }
+    });
   })
 };
 

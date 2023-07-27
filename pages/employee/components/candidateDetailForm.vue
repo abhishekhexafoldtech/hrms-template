@@ -1,6 +1,7 @@
 <template>
   <el-form ref="candidateDetailFormRef" :inline="true" :model="candidateForm" label-width="120px" label-position="top"
     :rules="candidateFormRules">
+    <h3 class="form_title">Candidate Details</h3>
     <el-row>
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
         <el-form-item label="Email" prop="email">

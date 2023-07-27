@@ -1,85 +1,36 @@
 <template>
-  <div class="form-container">
-    <div class="main-form-container">
-      <div class="ms-3">
-        <el-form
-          :inline="true"
-          :model="professionalForm"
-          :rules="professionalFormRules"
-          ref="professionalFormRef"
-          label-width="120px"
-          label-position="top"
-        >
-          <div class="row">
-            <!-- first row -->
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item label="Experience" prop="experience">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Experience"
-                    v-model="professionalForm.experience"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Skill Set" prop="skill_set">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Skill Set"
-                    v-model="professionalForm.skill_set"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item
-                  label="Highest Qualification"
-                  prop="highest_qualification"
-                >
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Highest Qualification"
-                    v-model="professionalForm.highest_qualification"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-            </div>
-
-            <!-- second row -->
-
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item label="Location" prop="location">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Location"
-                    v-model="professionalForm.location"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Current Salary" prop="current_salary">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Current Salary"
-                    v-model="professionalForm.current_salary"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-            </div>
-          </div>
-        </el-form>
-      </div>
-    </div>
-  </div>
+  <el-form :inline="true" :model="professionalForm" :rules="professionalFormRules" ref="professionalFormRef"
+    label-width="120px" label-position="top">
+    <h3 class="form_title">Professional Details</h3>
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Experience" prop="experience">
+          <el-input placeholder="Experience" v-model="professionalForm.experience" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Skill Set" prop="skill_set">
+          <el-input placeholder="Skill Set" v-model="professionalForm.skill_set" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Highest Qualification" prop="highest_qualification">
+          <el-input placeholder="Highest Qualification" v-model="professionalForm.highest_qualification"
+            required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Location" prop="location">
+          <el-input placeholder="Location" v-model="professionalForm.location" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Current Salary" prop="current_salary">
+          <el-input placeholder="Current Salary" v-model="professionalForm.current_salary" required></el-input>
+        </el-form-item>
+      </el-col>
+    </el-row>
+  </el-form>
 </template>
 <script setup>
 import { ref, defineExpose, defineEmits } from "vue";

@@ -14,6 +14,20 @@ const headerData = {
             icon:`bi bi-file-earmark-post mx-2`,
             url: "organization",
         },
+        {
+            id: 2,
+            name: "Events",
+            description: "Events are here",
+            icon:`bi bi-calendar-event mx-2`,
+            url: "blank-page",
+        },
+        {
+            id: 22,
+            name: "Holidays",
+            description: "Holidays are here",
+            icon:`bi bi-calendar-event mx-2`,
+            url: "blank-page",
+        },
     ],
     project: [
         {
