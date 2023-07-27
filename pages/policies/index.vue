@@ -1,7 +1,8 @@
 <template>
-    <el-tabs v-model="activeName" class="demo-tabs container mt-8">
-        <el-tab-pane label="Policies">
-            <OrganizationLayout>
+    <div class="container mt-8">
+        <h3>Policies</h3>
+        <br/>
+        <OrganizationLayout>
                 <div class="policy-container">
                     <div>
                         <div v-for="policy in policiesForm" class="policy-main" :key="policy.id">
@@ -92,8 +93,7 @@
                     </div>
                 </div>
             </OrganizationLayout>
-        </el-tab-pane>
-    </el-tabs>
+    </div>
 </template>
 
 <script setup>
