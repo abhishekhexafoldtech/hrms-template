@@ -3,8 +3,8 @@
       <div class="d-flex justify-content-center">
           <div class="container-fluid shadow p-3 bg-body rounded mt-2 w-60">
             <h6>Todo List</h6>
-            <el-row :gutter="20">
-              <el-col :span="16">
+            <el-row :gutter="10">
+              <el-col :span="18">
                 <el-form-item prop="name">
                   <el-input
                     v-model="input1"
@@ -17,8 +17,8 @@
               <el-col :span="4" class="mt-1">
                 <button class="btn btn-lg btn-primary w-100" @click="handleSubmit">Submit</button>
               </el-col>
-              <el-col :span="4" class="mt-1">
-                <button class="btn btn-lg btn-warning w-100" @click="handleClearAll">Clear All</button>
+              <el-col :span="2" class="mt-1">
+                <button class="btn btn-lg btn-warning eraser-btn " @click="handleClearAll"><i class="bi bi-eraser-fill"></i></button>
               </el-col>
             </el-row>
             <el-row>
@@ -123,5 +123,9 @@ localStorage.removeItem('todos'); // Remove todos from localStorage
 <style>
 .completed-todo {
   text-decoration: line-through;
+}
+
+.eraser-btn{
+  height: 47px;
 }
 </style>
