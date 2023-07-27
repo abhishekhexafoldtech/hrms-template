@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-8">
+    <div class="mt-8" style="margin: 15px;">
         <div class="p-2 w-100" style="text-align: right;">
             <el-button type="primary" @click="handleAddEditPolicy">+ Add Policy</el-button>
         </div>
