@@ -19,7 +19,7 @@ const headerData = {
             name: "Events",
             description: "Events are here",
             icon:`bi bi-calendar-event mx-2`,
-            url: "blank-page",
+            url: "event",
         },
         {
             id: 22,
