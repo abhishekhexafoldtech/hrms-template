@@ -40,7 +40,7 @@
           <el-row class="d-flex">
             <h3 class="form_title">Permanent Address</h3>
             <p> (same permanent address) 
-              <el-switch  v-model="value2" class="ml-2" style=" --el-switch-on-color: #13ce66;  --el-switch-off-color: #ff4949; "></el-switch>
+              <el-switch  v-model="addressRef" class="ml-2" style=" --el-switch-on-color: #13ce66;  --el-switch-off-color: #ff4949; "></el-switch>
             </p>
           </el-row>
           <el-row>
@@ -76,7 +76,7 @@
 </template>
 <script setup>
 import { ref, defineExpose, defineEmits } from "vue";
-const value2 = ref(true);
+const addressRef = ref(false);
 const emit = defineEmits();
 // addressForm
 const addressForm = reactive({
@@ -174,7 +174,7 @@ const handleAddressForm = () => {
 };
 
 //set perment address
-watch(value2, (newValue) => {
+watch(addressRef, (newValue) => {
   if (newValue) {
     addressForm.permanentAddress = { ...addressForm.presentAddress };
   }

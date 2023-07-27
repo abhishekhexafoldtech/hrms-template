@@ -70,7 +70,7 @@ const candidateFormRules = ref({
       trigger: "blur",
     },
     {
-      pattern: /^\d{10}$/,
+      // pattern: /^\d{10}$/,
       message: "Please enter a valid 10-digit phone number",
       trigger: "blur",
     },
@@ -82,7 +82,7 @@ const candidateFormRules = ref({
       trigger: "blur",
     },
     {
-      pattern: /^\d{12}$/,
+      // pattern: /^\d{12}$/,
       message: "Please enter a valid 12-digit Aadhaar card number",
       trigger: "blur",
     },
@@ -94,7 +94,7 @@ const candidateFormRules = ref({
       trigger: "blur",
     },
     {
-      pattern: /^\d{4}$/,
+      // pattern: /^\d{4}$/,
       message: "Please enter a valid PAN card number",
       trigger: "blur",
     },
