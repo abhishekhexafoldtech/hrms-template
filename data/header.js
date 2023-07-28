@@ -116,7 +116,7 @@ const headerData = {
             name: "Expenses",
             description: "Policies are here",
             icon:`bi bi-currency-dollar mx-2`,
-            url: "blank-page",
+            url: "expense",
         },
     ],
     payroll: [
