@@ -1,36 +1,32 @@
 <template>
     <OrganizationLayout>
         <div class="mx-3 py-3">
-            <!-- <div v-if="form.logo">
-                <img :src="form.logo" alt="Hexafold Technologies" class="mt-3"
-                    width="300" />
-            </div> -->
             <div class="w-90 mt-3">
-                <el-form v-model="form" class="form" :disabled="!edit">
+                <el-form v-model="formData" class="form" :disabled="!edit">
                     <div>
                         <div>
                             Company Name :
-                        </div> <el-input type="text" v-model="form.name"  />
+                        </div> <el-input type="text" v-model="formData.name"  />
                     </div>
                     <div>
                         <div>
                             Email :
-                        </div> <el-input type="text" v-model="form.email" />
+                        </div> <el-input type="text" v-model="formData.email" />
                     </div>
                     <div>
                         <div>
                             Contact :
-                        </div> <el-input type="text" v-model="form.phone_number" />
+                        </div> <el-input type="text" v-model="formData.phone_number" />
                     </div>
-                    <div v-if="form.domain_name != '' || edit">
+                    <div v-if="formData.domain_name != '' || edit">
                         <div>
                             Domain :
-                        </div> <el-input type="text" v-model="form.domain_name" />
+                        </div> <el-input type="text" v-model="formData.domain_name" />
                     </div>
                     <div v-if="edit">
                         <div>
                             Logo :
-                        </div> <el-input type="text" v-model="form.logo" />
+                        </div> <el-input type="text" v-model="formData.logo" />
                     </div>
                 </el-form>
                     <div class="link-main">
@@ -38,7 +34,7 @@
                             Website :
                         </div> 
                         <a href="https://hexafoldtech.com/" v-if="!edit">https://hexafoldtech.com/</a>
-                        <el-input v-if="edit" v-model="form.website"/>
+                        <el-input v-if="edit" v-model="formData.website"/>
                     </div>
                 <div v-if="props.user" class="mt-3">
                     <el-button @click="handleEdit()" type="primary" class="mt-2 btn btn-primary" style="min-width:100px" >{{ edit ?
@@ -52,7 +48,7 @@
 
 <script setup>
 const edit = ref(false)
-const form = reactive({
+const formData = reactive({
     name: 'Hexafold Technologies Private Limited (Mumbai).',
     email: 'hexafold.tech@gmail.com',
     phone_number: '960636464',
