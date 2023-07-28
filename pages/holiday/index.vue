@@ -7,11 +7,12 @@
       :tableSearchVisibility="false" :viewButtonVisibility="true" :downloadButtonVisibility="true"
       :editButtonVisibility="true" :deleteButtonVisibility="true" @pagination="handlePagination()"
       @view="handleViewDetails($event)" @dwonload="handleDownload($event)" @edit="handleAddEditHoliday($event)" />
-    <HolidaysOverview v-if="overview" @close="handleOverviewClose" :data="overviewData" />
+    <Overview v-if="overview" @close="handleOverviewClose" :data="overviewData" />
   </div>
 </template>
 
 <script setup>
+import Overview from './components/Overview.vue';
 import Table from '@/components/Table.vue';
 import { useRouter } from "vue-router"
 const router = useRouter();
