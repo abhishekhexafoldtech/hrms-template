@@ -58,7 +58,7 @@ const headerData = {
             name: "Opening",
             description: "Name are here",
             icon:`bi bi-door-open-fill mx-2`,
-            url: "blank-page",
+            url: "job-opening",
         },
         {
             id: 2,
