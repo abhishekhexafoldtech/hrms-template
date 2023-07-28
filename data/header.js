@@ -26,7 +26,7 @@ const headerData = {
             name: "Holidays",
             description: "Holidays are here",
             icon:`bi bi-calendar-event mx-2`,
-            url: "blank-page",
+            url: "holiday",
         },
     ],
     project: [
