@@ -1,46 +1,34 @@
 <template>
-  <div class="container">
-    <el-form
-      label-position="top"
-      label-width="100px"
-      :model="formLabelAlign"
-    >
-      <div class="row">
-        <div v-for="(field, fieldName) in fileLists" :key="fieldName" class="col-12 col-md-4">
-          <el-form-item :label="capitalizeFirstLetter(fieldName)" :prop="fieldName">
-            <el-upload
-              v-model="fileLists[fieldName]"
-              class="upload-demo"
-              :on-change="handleChange(fieldName)"
-              :on-remove="handleRemove(fieldName)"
-              :before-remove="beforeRemove"
-              :limit="1"
-              :on-exceed="handleExceed"
-              accept=".jpg,.jpeg,.png,.pdf"
-            >
-              <el-button type="primary">Upload {{ capitalizeFirstLetter(fieldName) }}</el-button>
-              <template #tip>
-                <div class="el-upload__tip">
-                  jpg/png/PDF files with a size less than 500KB.
-                </div>
-              </template>
-            </el-upload>
-          </el-form-item>
-          <div v-if="!formValid[fieldName]" class="text-primary">
-            <div v-if="!fileLists[fieldName].length">Please upload {{ capitalizeFirstLetter(fieldName) }}</div>
-            <div v-else-if="!isFileTypeValid(fileLists[fieldName][0])">Invalid file type. Only JPG, PNG, and PDF files are allowed.</div>
-            <div v-else-if="!isFileSizeValid(fileLists[fieldName][0])">File size should be less than 500KB.</div>
-            <!-- Add more custom validation messages as needed -->
-          </div>
+  <el-form label-position="top" label-width="100px" :model="formLabelAlign">
+    <h3 class="form_title">Employee Documents</h3>
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8" v-for="(field, fieldName) in fileLists" :key="fieldName">
+        <el-form-item :label="capitalizeFirstLetter(fieldName)" :prop="fieldName" class="mb-0">
+          <el-upload class="doc_upload" v-model="fileLists[fieldName]" :on-change="handleChange(fieldName)"
+            :on-remove="handleRemove(fieldName)" :before-remove="beforeRemove" :limit="1" :on-exceed="handleExceed"
+            accept=".jpg,.jpeg,.png,.pdf">
+            <el-button>Upload {{ capitalizeFirstLetter(fieldName) }}</el-button>
+            <template #tip>
+              <div class="el-upload__tip">
+                jpg/png/PDF files with a size less than 500KB.
+              </div>
+            </template>
+          </el-upload>
+        </el-form-item>
+        <div v-if="!formValid[fieldName]" class="up_error">
+          <span v-if="!fileLists[fieldName].length">Please upload {{ capitalizeFirstLetter(fieldName) }}</span>
+          <span v-else-if="!isFileTypeValid(fileLists[fieldName][0])">Invalid file type. Only JPG, PNG, and PDF files are
+            allowed.</span>
+          <span v-else-if="!isFileSizeValid(fileLists[fieldName][0])">File size should be less than 500KB.</span>
         </div>
-      </div>
-    </el-form>
-  </div>
+      </el-col>
+    </el-row>
+  </el-form>
 </template>
 
 <script setup>
 import { ref, defineExpose, defineEmits, nextTick } from "vue";
-const emit=defineEmits()
+const emit = defineEmits()
 const fileLists = ref({
   adharCard: [],
   panCard: [],
