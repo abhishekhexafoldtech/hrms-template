@@ -7,8 +7,6 @@
             label-width="100px"
             :model="formData"
             :rules="formValidationRules"
-            style="max-width: 100%; border-radius: 15px; height: 760px"
-            class="bg-white px-5 py-4 rounded-5"
             ref="formRef"
         >
             <el-row :gutter="10">
@@ -65,6 +63,33 @@
                        <el-checkbox  label="Reminder" v-model="formData.isReminder" size="large" />
                     </el-form-item>
                  </el-col>
+
+                 <el-col :xs="8" :sm="8" :lg="8" :xl="8">
+                   &nbsp;
+                 </el-col>
+
+                 <el-col v-if="formData.isRepeat" :xs="8" :sm="8" :lg="8" :xl="8">
+                    <el-form-item label="Repeat every" prop="repeatSamp">
+                        <el-input v-model="formData.repeatSamp" type="number"/>
+                    </el-form-item>
+                 </el-col>
+
+                 <el-col v-if="formData.isRepeat" :xs="8" :sm="8" :lg="8" :xl="8">
+                    <el-form-item label="Event Name" prop="name">
+                        <el-select
+                            v-model="formData.repeatSampVal"
+                            placeholder="Select"
+                            style="width: 240px"
+                            >
+                            <el-option
+                                v-for="item in options"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value"
+                            />
+                        </el-select>
+                    </el-form-item>
+                 </el-col>
               
                 <el-col :xs="24" :sm="24" :lg="24" :xl="24">
                     <el-form-item label="Description" prop="description">
@@ -98,6 +123,7 @@
             <el-button type="primary" style="float:right;" @click="handleFormData">Save</el-button> 
             <el-button  style="float:right; margin-right: 10px;" @click="handleCancle">Back</el-button> 
 
+            <br>
         </el-form>
        </el-card>
 
@@ -123,7 +149,9 @@ const formData = reactive({
     endTime: "",
     isRepeat: "",
     isReminder: "",
-    description: ""
+    description: "",
+    repeatSamp: "",
+    repeatSampVal: ""
 })
 
 const formValidationRules = reactive({
@@ -163,6 +191,25 @@ const formValidationRules = reactive({
         },
     ],
 })
+
+const options = [
+  {
+    value: 'Day(s)',
+    label: 'Day(s)',
+  },
+  {
+    value: 'Week(s)',
+    label: 'Week(s)',
+  },
+  {
+    value: 'Month(s)',
+    label: 'Month(s)',
+  },
+  {
+    value: 'Year(s)',
+    label: 'Year(s)',
+  }
+]
 
 function handleFormData() {
     formRef.value.validate((valid) => {
