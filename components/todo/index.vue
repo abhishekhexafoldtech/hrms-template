@@ -5,7 +5,7 @@
             <h6>Todo List</h6>
             <el-row :gutter="10">
               <el-col :span="18">
-                <el-form :rules="formValidationRules">
+                <el-form :ref="formRef" :rules="formValidationRules">
                   <el-form-item prop="todo" :rules="formValidationRules" class="fw-bold">
                     <el-input
                       v-model="input1"
@@ -14,6 +14,12 @@
                       placeholder="Please Input Todo Here..."
                     />
                   </el-form-item>
+
+                  <!-- Add a new element to display the error message -->
+                  <el-form-item v-if="showSubmitWarning" class="form-error-message">
+                    <span class="el-form-item__error fw-bold">Please enter todo before submit</span>
+                  </el-form-item>
+
                 </el-form>
               </el-col>
               <el-col :span="4" class="mt-1">
@@ -53,35 +59,37 @@ import { ref, onMounted } from 'vue';
 const todos = ref([]);
 const input1 = ref('');
 const editedTodoIndex = ref(-1); // New reactive variable to keep track of the edited todo index
-
-const formValidationRules = reactive({
-  todo: [{
-    required: true,
-        message: "Please enter Todo",
-        trigger: "blur",
-  }]
-})
+// const formRef = ref(null);
+const showSubmitWarning = ref(false); // reactive variable to control the visibility of the submit warning message
 
 
-/// Function to handle form submission and save todo to local storage
+
+
+// Function to handle form submission and save todo to local storage
 const handleSubmit = () => {
-if (input1.value.trim() !== '') {
-  if (editedTodoIndex.value !== -1) {
-    // If we are editing an existing todo
-    todos.value[editedTodoIndex.value].description = input1.value.trim();
-    editedTodoIndex.value = -1; // Reset the editedTodoIndex after editing
-  } else {
-    // Otherwise, add a new todo
-    const newTodo = {
-      description: input1.value.trim(),
-      completed: false,
-    };
-    todos.value.push(newTodo);
-  }
+  if (input1.value.trim() !== '') {
+    if (editedTodoIndex.value !== -1) {
+      // If we are editing an existing todo
+      todos.value[editedTodoIndex.value].description = input1.value.trim();
+      editedTodoIndex.value = -1; // Reset the editedTodoIndex after editing
+    } else {
+      // Otherwise, add a new todo
+      const newTodo = {
+        description: input1.value.trim(),
+        completed: false,
+      };
+      todos.value.push(newTodo);
+    }
 
-  localStorage.setItem('todos', JSON.stringify(todos.value));
-  input1.value = ''; // Reset the input field after submitting the form
-}
+    localStorage.setItem('todos', JSON.stringify(todos.value));
+    input1.value = ''; // Reset the input field after submitting the form
+
+    // Hide the error message
+    showSubmitWarning.value = false;
+  } else {
+    // Show the error message when the input is empty and the user is trying to submit
+    showSubmitWarning.value = true;
+  }
 };
 
 
@@ -139,5 +147,14 @@ localStorage.removeItem('todos'); // Remove todos from localStorage
 
 .eraser-btn{
   height: 47px;
+}
+
+.text-danger {
+  color: red;
+}
+
+.form-error-message {
+  color: red;
+  margin-top: 5px;
 }
 </style>
