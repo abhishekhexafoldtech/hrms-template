@@ -1,102 +1,43 @@
 <template>
-  <div class="form-container">
-    <div class="main-form-container">
-      <div class="ms-3">
-        <span @click="incrementExperience" class="float-end">
-          <i class="ri-add-circle-fill"></i>
-        </span>
+  <div class="title_flex mb-15">
+    <h3 class="form_title">Experience Details</h3>
+    <el-button class="add_btn" @click="incrementExperience"><i class="ri-add-line"></i></el-button>
+  </div>
 
-        <el-form
-          v-for="(form, index) in experienceFormData"
-          :inline="true"
-          key="index"
-          ref="experienceFormRef"
-          :model="form"
-          :rules="experienceFormRules"
-          label-width="120px"
-          label-position="top"
-        >
-          <p class="w-95 text-bg-light">Experience Detail</p>
-          <div class="row">
-            <!-- first row -->
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item label="Occupation" prop="occupation">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Occupation"
-                    v-model="form.occupation"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Company" prop="company">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Company"
-                    v-model="form.company"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item label="Summary" prop="summary">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Summary"
-                    v-model="form.summary"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-            </div>
-
-            <!-- second row -->
-
-            <div class="row">
-              <div class="col-12 col-md-4">
-                <el-form-item label="Duration" prop="duration">
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Duration"
-                    v-model="form.duration"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-
-              <div class="col-12 col-md-4">
-                <el-form-item
-                  label="Currently Work Here"
-                  prop="currently_work_here"
-                >
-                  <el-input
-                    style="width: 100%"
-                    placeholder="Currently Work Here"
-                    v-model="form.currently_work_here"
-                    required
-                  ></el-input>
-                </el-form-item>
-              </div>
-            </div>
-          </div>
-        </el-form>
-        <div class="row">
-          <div class="col-12">
-            <p
-              v-if="experience>1"
-              @click="decrementExperience"
-              class="float-end"
-            >
-              <i class="ri-subtract-line"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <el-form v-for="(form, index) in experienceFormData" :inline="true" key="index" ref="experienceFormRef" :model="form"
+    :rules="experienceFormRules" label-width="120px" label-position="top">
+    <el-row class="w-100">
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Occupation" prop="occupation">
+          <el-input style="width: 100%" placeholder="Occupation" v-model="form.occupation" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Company" prop="company">
+          <el-input style="width: 100%" placeholder="Company" v-model="form.company" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Summary" prop="summary">
+          <el-input style="width: 100%" placeholder="Summary" v-model="form.summary" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Duration" prop="duration">
+          <el-input style="width: 100%" placeholder="Duration" v-model="form.duration" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Currently Work Here" prop="currently_work_here">
+          <el-input style="width: 100%" placeholder="Currently Work Here" v-model="form.currently_work_here"
+            required></el-input>
+        </el-form-item>
+      </el-col>
+    </el-row>
+  </el-form>
+  <div class="title_flex m-0" v-if="experience > 1">
+    <span></span>
+    <el-button class="add_btn" @click="decrementExperience"><i class="ri-subtract-line"></i></el-button>
   </div>
 </template>
 <script setup>
@@ -166,23 +107,23 @@ const decrementExperience = () => {
   experience.value = experience.value - 1;
 };
 
-const experienceFormRef=ref(null)
+const experienceFormRef = ref(null)
 const handleExperienceForm = () => {
   // emit("changeForm")
-  experienceFormData.value.forEach((e,i)=>{
+  experienceFormData.value.forEach((e, i) => {
     experienceFormRef.value[i].validate((valid) => {
-    if (valid) {
-      console.log(
-        "ExperienceForm Data:",
-        JSON.stringify(experienceFormData.value)
-      );
+      if (valid) {
+        console.log(
+          "ExperienceForm Data:",
+          JSON.stringify(experienceFormData.value)
+        );
         emit("changeForm")
-      // Your form submission logic here...
-    } else {
-      // If form validation fails, prevent moving to the next step
-      return false;
-    }
-  });
+        // Your form submission logic here...
+      } else {
+        // If form validation fails, prevent moving to the next step
+        return false;
+      }
+    });
   })
 };
 

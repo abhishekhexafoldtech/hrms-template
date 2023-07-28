@@ -1,12 +1,11 @@
 <template>
-  <p @click="incrementEducation" class="float-end">
-    <i class="ri-add-circle-fill w-50"></i>
-  </p>
-  <h3 class="form_title">Education Details</h3>
-
+  <div class="title_flex mb-15">
+    <h3 class="form_title">Education Details</h3>
+    <el-button class="add_btn" @click="incrementEducation"><i class="ri-add-line"></i></el-button>
+  </div>
   <el-form ref="educationFormRef" v-for="(form, index) in educationFormData" :key="index" :inline="true" :model="form"
     :rules="educationFormRules" label-width="120px" label-position="top">
-    <el-row>
+    <el-row class="w-100">
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
         <el-form-item label="School Name" prop="school_name">
           <el-input placeholder="School Name" v-model="form.school_name" required></el-input>
@@ -34,9 +33,10 @@
       </el-col>
     </el-row>
   </el-form>
-  <p v-if="education > 1" @click="decrementEducation" class="float-end">
-    <i class="ri-subtract-line"></i>
-  </p>
+  <div class="title_flex m-0" v-if="education > 1">
+    <span></span>
+    <el-button class="add_btn" @click="decrementEducation"><i class="ri-subtract-line"></i></el-button>
+  </div>
 </template>
 
 <script setup>
