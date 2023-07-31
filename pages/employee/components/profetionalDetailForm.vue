@@ -1,103 +1,113 @@
 <template>
-  <el-form :inline="true" :model="professionalForm" :rules="professionalFormRules" ref="professionalFormRef"
-    label-width="120px" label-position="top">
+  <el-form :inline="true" :model="professionalForm" :rules="professionalFormRules" ref="professionalFormRef" label-width="120px" label-position="top">
     <h3 class="form_title">Professional Details</h3>
     <el-row>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Experience" prop="experience">
-          <el-input placeholder="Experience" v-model="professionalForm.experience" required></el-input>
+        <el-form-item label="Employee ID" prop="employee_id">
+          <el-input placeholder="Employee ID" v-model="professionalForm.employee_id" required></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Skill Set" prop="skill_set">
-          <el-input placeholder="Skill Set" v-model="professionalForm.skill_set" required></el-input>
+        <el-form-item label="Date of Joining" prop="date_of_joining">
+          <el-date-picker v-model="professionalForm.date_of_joining" type="date" placeholder="Date of Joining"></el-date-picker>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Highest Qualification" prop="highest_qualification">
-          <el-input placeholder="Highest Qualification" v-model="professionalForm.highest_qualification"
-            required></el-input>
+        <el-form-item label="Probation Period" prop="probation_period">
+          <el-input placeholder="Probation Period" v-model="professionalForm.probation_period" required></el-input>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Employee Type" prop="employee_type">
+          <el-select v-model="professionalForm.employee_type" placeholder="Employee Type" style="width: 100%;" required>
+            <el-option label="Full Time" value="Full Time"></el-option>
+            <el-option label="Part Time" value="Part Time"></el-option>
+            <!-- Add more employee types as needed -->
+          </el-select>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Location" prop="location">
-          <el-input placeholder="Location" v-model="professionalForm.location" required></el-input>
+        <el-form-item label="Work Location" prop="work_location">
+          <el-input placeholder="Work Location" v-model="professionalForm.work_location" required></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Current Salary" prop="current_salary">
-          <el-input placeholder="Current Salary" v-model="professionalForm.current_salary" required></el-input>
+        <el-form-item label="Designation" prop="designation">
+          <el-input placeholder="Designation" v-model="professionalForm.designation" required></el-input>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Job Title" prop="job_title">
+          <el-input placeholder="Job Title" v-model="professionalForm.job_title" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Department" prop="department">
+          <el-input placeholder="Department" v-model="professionalForm.department" required></el-input>
         </el-form-item>
       </el-col>
     </el-row>
   </el-form>
 </template>
+
 <script setup>
 import { ref, defineExpose, defineEmits } from "vue";
 const emit = defineEmits();
-//  professionalForm
+
+// Professional Form
 const professionalForm = reactive({
-  experience: "",
-  skill_set: "",
-  highest_qualification: "",
-  location: "",
-  current_salary: "",
+  employee_id: "",
+  date_of_joining: null,
+  probation_period: "",
+  employee_type: "",
+  work_location: "",
+  designation: "",
+  job_title: "",
+  department: "",
 });
 
-//profetional form validation
-
+// Professional form validation
 const professionalFormRules = ref({
-  experience: [
-    {
-      required: true,
-      message: "Please enter your experience",
-      trigger: "blur",
-    },
+  employee_id: [
+    { required: true, message: "Please enter Employee ID", trigger: "blur" },
   ],
-  skill_set: [
-    { required: true, message: "Please enter your skill set", trigger: "blur" },
+  date_of_joining: [
+    { required: true, message: "Please select Date of Joining", trigger: "change" },
   ],
-  highest_qualification: [
-    {
-      required: true,
-      message: "Please enter your highest qualification",
-      trigger: "blur",
-    },
+  probation_period: [
+    { required: true, message: "Please enter Probation Period", trigger: "blur" },
   ],
-  location: [
-    { required: true, message: "Please enter your location", trigger: "blur" },
+  employee_type: [
+    { required: true, message: "Please select Employee Type", trigger: "change" },
   ],
-  current_salary: [
-    {
-      required: true,
-      message: "Please enter your current salary",
-      trigger: "blur",
-    },
-    {
-      validator: (rule, value, callback) => {
-        if (!Number.isNaN(parseFloat(value))) {
-          const salary = parseFloat(value);
-          if (salary < 0) {
-            callback(new Error("Salary must be a positive number"));
-          } else {
-            callback();
-          }
-        } else {
-          callback(new Error("Invalid salary value"));
-        }
-      },
-      trigger: "blur",
-    },
+  work_location: [
+    { required: true, message: "Please enter Work Location", trigger: "blur" },
+  ],
+  designation: [
+    { required: true, message: "Please enter Designation", trigger: "blur" },
+  ],
+  job_title: [
+    { required: true, message: "Please enter Job Title", trigger: "blur" },
+  ],
+  department: [
+    { required: true, message: "Please enter Department", trigger: "blur" },
   ],
 });
 
-//Professional Details
+// Professional Form Ref
 const professionalFormRef = ref(null);
+
+// Handle Professional Form Submission
 const handleProfessionalForm = () => {
-  //  emit("changeForm");
+  console.log("Professional Form Data:", JSON.stringify(professionalForm));
+ emit("changeForm");
   professionalFormRef.value.validate((valid) => {
     if (valid) {
-      console.log("Profetional Form Data:", JSON.stringify(professionalForm));
+      console.log("Professional Form Data:", JSON.stringify(professionalForm));
       // Your form submission logic here...
       emit("changeForm");
     }

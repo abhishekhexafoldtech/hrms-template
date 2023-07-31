@@ -4,16 +4,22 @@
     <el-row>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8" v-for="(field, fieldName) in fileLists" :key="fieldName">
         <el-form-item :label="capitalizeFirstLetter(fieldName)" :prop="fieldName" class="mb-0">
-          <el-upload class="doc_upload" v-model="fileLists[fieldName]" :on-change="handleChange(fieldName)"
-            :on-remove="handleRemove(fieldName)" :before-remove="beforeRemove" :limit="1" :on-exceed="handleExceed"
+          <el-upload 
+            class="doc_upload" 
+            v-model="fileLists[fieldName]" 
+            :on-change="handleChange(fieldName)"
+            :on-remove="handleRemove(fieldName)" 
+            :before-remove="beforeRemove" 
+            :limit="1" 
+            :on-exceed="handleExceed"
             accept=".jpg,.jpeg,.png,.pdf">
             <el-button>Upload {{ capitalizeFirstLetter(fieldName) }}</el-button>
-            <template #tip>
-              <div class="el-upload__tip">
-                jpg/png/PDF files with a size less than 500KB.
-              </div>
-            </template>
-          </el-upload>
+              <template #tip>
+                <div class="el-upload__tip">
+                  jpg/png/PDF files with a size less than 500KB.
+                </div>
+              </template>
+            </el-upload>
         </el-form-item>
         <div v-if="!formValid[fieldName]" class="up_error">
           <span v-if="!fileLists[fieldName].length">Please upload {{ capitalizeFirstLetter(fieldName) }}</span>
@@ -27,13 +33,12 @@
 </template>
 
 <script setup>
-import { ref, defineExpose, defineEmits, nextTick } from "vue";
+import { ref, defineExpose, defineEmits} from "vue";
 const emit = defineEmits()
 const fileLists = ref({
   adharCard: [],
   panCard: [],
   passportPhoto: [],
-  experienceLetter: [],
   otherCertificate: [],
 });
 
@@ -41,11 +46,11 @@ const formValid = ref({
   adharCard: true,
   panCard: true,
   passportPhoto: true,
-  experienceLetter: true,
   otherCertificate: true,
 });
 
-const handleChange = (listName) => (file, fileList) => {
+const handleChange = (listName) => 
+(file, fileList) => {
   // Read the file and convert it to Base64
   const reader = new FileReader();
   reader.readAsDataURL(file.raw);
@@ -76,7 +81,7 @@ const handleChange = (listName) => (file, fileList) => {
 // Handle file removal logic
 const handleRemove = (prop) => (file, fileList) => {
   // Update the reactive fileLists object with the latest file list after removal
-  fileLists.value[prop] = [];
+  fileList.value[prop] = [];
 };
 
 // Handle file removal confirmation logic
@@ -100,10 +105,10 @@ const handleExceed = (files, fileList) => {
 
 const handleDocumentForm = () => {
   // Perform form validation
+  emit("changeForm")
   formValid.value.adharCard = fileLists.value.adharCard.length > 0 && isFileSizeValid(fileLists.value.adharCard[0]);
   formValid.value.panCard = fileLists.value.panCard.length > 0 && isFileSizeValid(fileLists.value.panCard[0]);
   formValid.value.passportPhoto = fileLists.value.passportPhoto.length > 0 && isFileSizeValid(fileLists.value.passportPhoto[0]);
-  formValid.value.experienceLetter = fileLists.value.experienceLetter.length > 0 && isFileSizeValid(fileLists.value.experienceLetter[0]);
   formValid.value.otherCertificate = fileLists.value.otherCertificate.length > 0 && isFileSizeValid(fileLists.value.otherCertificate[0]);
 
   if (Object.values(formValid.value).every((valid) => valid)) {
