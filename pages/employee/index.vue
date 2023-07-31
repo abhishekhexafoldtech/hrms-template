@@ -71,8 +71,8 @@ import educationForm from "./components/educationForm.vue";
 import experienceForm from "./components/experienceForm.vue";
 import documentsForm from "./components/documentsForm.vue";
 import successPage from "./components/successPage.vue";
-
 import { ref, nextTick } from "vue";
+
 const childRef = ref(null);
 const active = ref(0);
 

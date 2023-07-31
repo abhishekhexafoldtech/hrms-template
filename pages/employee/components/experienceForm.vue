@@ -194,9 +194,9 @@
 
 <script setup>
 import { ref, defineExpose, defineEmits } from "vue";
+import { UploadFilled } from "@element-plus/icons-vue";
 const experience = ref(1);
 const emit = defineEmits();
-import { UploadFilled } from "@element-plus/icons-vue";
 
 const fileUploadApi = "";
 
