@@ -3,58 +3,107 @@
     :rules="candidateFormRules">
     <h3 class="form_title">Candidate Details</h3>
     <el-row>
-      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <el-form-item label="Email" prop="email">
-          <el-input placeholder="Email" v-model="candidateForm.email" type="email" required></el-input>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="First Name" prop="firstName">
+          <el-input placeholder="First Name" v-model="candidateForm.firstName" required></el-input>
         </el-form-item>
       </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Middle Name" prop="middleName">
+          <el-input placeholder="Middle Name" v-model="candidateForm.middleName"></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Last Name" prop="lastName">
+          <el-input placeholder="Last Name" v-model="candidateForm.lastName" required></el-input>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Gender" prop="gender">
+          <el-select v-model="candidateForm.gender" placeholder="Gender" style="width: 100%;" required>
+            <el-option label="Male" value="male"></el-option>
+            <el-option label="Female" value="female"></el-option>
+            <el-option label="Other" value="other"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
         <el-form-item label="Phone" prop="phone">
           <el-input placeholder="Phone" v-model="candidateForm.phone" type="tel" required></el-input>
         </el-form-item>
       </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <el-form-item label="Aadhaar Card Number" prop="aadhaar">
-          <el-input placeholder="Aadhaar Card" v-model="candidateForm.aadhaar" required></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <el-form-item label="PAN Card Number" prop="pan">
-          <el-input placeholder="PAN Card" v-model="candidateForm.pan" required></el-input>
-        </el-form-item>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-        <el-form-item label="* Photo" prop="imageUrl">
-          <el-upload :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-            <img v-if="imageUrl" :src="imageUrl" />
-            <el-icon v-else class="avatar-uploader-icon">
-              <i class="ri-add-line"></i>
-            </el-icon>
-          </el-upload>
-          <span v-show="isImageUploaded" class="input_error">plese upload image</span>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Alternate Phone Number" prop="alternatePhone">
+          <el-input placeholder="Alternate Phone" v-model="candidateForm.alternatePhone" type="tel"></el-input>
         </el-form-item>
       </el-col>
     </el-row>
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Blood Group" prop="bloodGroup">
+          <el-input placeholder="Blood Group" v-model="candidateForm.bloodGroup"></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Date of Birth" prop="dob">
+          <el-date-picker v-model="candidateForm.dob" type="date" placeholder="Date of Birth"></el-date-picker>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Marital Status" prop="maritalStatus">
+          <el-select v-model="candidateForm.maritalStatus" style="width: 100%;" placeholder="Marital Status" required>
+            <el-option label="Single" value="single"></el-option>
+            <el-option label="Married" value="married"></el-option>
+            <el-option label="Divorced" value="divorced"></el-option>
+            <el-option label="Widowed" value="widowed"></el-option>
+            <el-option label="Other" value="other"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Email" prop="email">
+          <el-input placeholder="Email" v-model="candidateForm.email" type="email" required></el-input>
+        </el-form-item>
+        </el-col>
+    </el-row>
   </el-form>
 </template>
+
+
 <script setup>
 import { ref, defineExpose, defineEmits } from "vue";
-// candidateForm
+
 const imageUrl = ref("");
-const emit = defineEmits(); //emit
+const emit = defineEmits();
 const candidateForm = reactive({
   firstName: "",
+  middleName: "",
   lastName: "",
   email: "",
   phone: "",
-  aadhaar: "",
-  pan: "",
+  alternatePhone: "",
+  bloodGroup: "",
+  dob: "",
+  gender: "",
+  maritalStatus: "",
 });
-//defineprops
 
-// Candidate from validation
 
 const candidateFormRules = ref({
+  firstName: [
+    { required: true, message: "Please enter the first name", trigger: "blur" },
+  ],
+  middleName: [
+  { required: true, message: "Please enter the middle name", trigger: "blur" },
+
+  ],
+  lastName: [
+    { required: true, message: "Please enter the last name", trigger: "blur" },
+  ],
   email: [
     { required: true, message: "Please enter your email", trigger: "blur" },
     {
@@ -75,34 +124,28 @@ const candidateFormRules = ref({
       trigger: "blur",
     },
   ],
-  aadhaar: [
-    {
-      required: true,
-      message: "Please enter your Aadhaar card number",
-      trigger: "blur",
-    },
-    {
-      // pattern: /^\d{12}$/,
-      message: "Please enter a valid 12-digit Aadhaar card number",
-      trigger: "blur",
-    },
+  alternatePhone: [
+    // Validation rules for alternate phone number can be added here if needed
   ],
-  pan: [
-    {
-      required: true,
-      message: "Please enter your PAN card number",
-      trigger: "blur",
-    },
-    {
-      // pattern: /^\d{4}$/,
-      message: "Please enter a valid PAN card number",
-      trigger: "blur",
-    },
+  bloodGroup: [
+    // Validation rules for blood group can be added here if needed
+    // Example:
+    { required: true, message: "Please enter your blood group", trigger: "blur" },
+  ],
+  dob: [
+    // Validation rules for date of birth can be added here if needed
+    // Example:
+    { required: true, message: "Please enter your date of birth", trigger: "change" },
+  ],
+  gender: [
+    { required: true, message: "Please select your gender", trigger: "change" },
+  ],
+  maritalStatus: [
+    { required: true, message: "Please select your marital status", trigger: "change" },
   ],
 });
-// { pattern: /^([A-Z]){5}([0-9]){4}([A-Z]){1}$/, message: "Please enter a valid PAN card number", trigger: "blur" },
 
-//imageUrl
+
 const isImageUploaded = ref(false);
 
 // Candidate Details start...........
@@ -130,8 +173,8 @@ function beforeAvatarUpload(file) {
 
 const candidateDetailFormRef = ref(null);
 const handleCandidateDetail = () => {
-  // emit("changeForm");
-  // Validate the candidateForm
+  emit("changeForm");
+  console.log("Candidate Form Data:", JSON.stringify(candidateForm));
   candidateDetailFormRef.value.validate((valid) => {
     if (valid && imageUrl.value) {
       isImageUploaded.value = false;
@@ -147,8 +190,10 @@ const handleCandidateDetail = () => {
     return false;
   });
 };
+
 defineExpose({
   handleCandidateDetail,
 });
 </script>
+
 <style></style>

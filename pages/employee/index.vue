@@ -1,7 +1,8 @@
 <template>
   <section class="emp_wrap">
     <div class="container">
-      <h3 class="sec_title">Create Employee</h3>
+      <h3 class="sec_title" v-if="active<6">Create Employee</h3>
+      <h3 class="sec_title" v-if="active>5">Employee Successfully Created</h3>
       <div class="emp_steps">
         <el-steps :active="active" finish-status="success" align-center>
           <el-step title="Candidate Details" />
@@ -48,8 +49,15 @@
           <documentsForm ref="childRef" @changeForm="changeForm" />
         </div>
 
-        <el-button class="btn bg-gradient-primary" @click="next">Next
-          step</el-button>
+        <!-- Success -->
+
+        <div v-if="active === 6">
+          <successPage/>
+        </div>
+
+        <el-button v-if="active < 6" class="btn bg-gradient-primary" @click="next"
+          >Next step</el-button
+        >
       </div>
     </div>
   </section>
@@ -62,6 +70,7 @@ import profetionalDetailForm from "./components/profetionalDetailForm.vue";
 import educationForm from "./components/educationForm.vue";
 import experienceForm from "./components/experienceForm.vue";
 import documentsForm from "./components/documentsForm.vue";
+import successPage from "./components/successPage.vue";
 
 import { ref, nextTick } from "vue";
 const childRef = ref(null);
@@ -93,7 +102,5 @@ const changeForm = () => {
 definePageMeta({
   layout: "layout",
 });
-
-
 </script>
 <style scoped></style>
