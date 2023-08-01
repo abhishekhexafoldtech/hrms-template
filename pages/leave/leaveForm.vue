@@ -104,14 +104,14 @@
           </el-col>
 
           <!-- Form buttons -->
-          <el-col :span="24">
-            <el-form-item>
-              <el-button type="primary" @click="submitForm">Submit</el-button>
-              <el-button @click="resetForm">Reset</el-button>
-            </el-form-item>
-          </el-col>
         </el-row>
       </el-form>
+      <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="submitForm">Submit</el-button>
+      </span>
+    </template>
     </el-dialog>
   </div>
 </template>
