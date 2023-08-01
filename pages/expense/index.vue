@@ -1,7 +1,7 @@
 <template>
-    <div class="mt-8 container-fluid p-3 bg-body rounded w-90 ">
+    <div class="mt-8" style="margin: 15px;">
         <div class="p-2 w-100" style="text-align: right;">
-            <button class="btn btn-primary" @click="handleAddExpense">+ Add Expence</button>
+            <el-button type="primary" @click="handleAddExpense">+ Add Expence</el-button>
         </div>
           
         <Table tableHeading="Expenses" 
@@ -9,8 +9,8 @@
               :tableData="showRoleListData" 
               :tableQuery="listQuery"
               :tableSearchVisibility="false"
-              :viewButtonVisibility="true"
-              :downloadButtonVisibility="true"
+              :viewButtonVisibility="false"
+              :downloadButtonVisibility="false"
               :editButtonVisibility="true"
               :deleteButtonVisibility="true"
               @pagination="handlePagination()" 
