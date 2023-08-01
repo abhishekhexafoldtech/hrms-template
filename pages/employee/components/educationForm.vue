@@ -293,6 +293,6 @@ const handleEducationForm = () => {
 defineExpose({
   handleEducationForm,
 });
-</script>
+</script> 
 
 <style></style>
