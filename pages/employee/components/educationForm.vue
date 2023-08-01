@@ -75,6 +75,28 @@
             <el-input placeholder="University Name" v-model="form.university_name" required></el-input>
           </el-form-item>
         </el-col>
+        <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+            <el-form-item label="Degree Certificate" prop="degree_certificate">
+              <el-upload
+                v-model="form.degree_certificate"
+                class="doc_upload"
+                action="#"
+                multiple
+                :on-change="handleChange(form, index)" 
+                :on-remove="() => handleRemove(index)"
+                :before-remove="beforeRemove"
+                :limit="3"
+                :on-exceed="handleExceed"
+              >
+                <el-button type="primary">Click to upload</el-button>
+                <template #tip>
+                  <div class="el-upload__tip">
+                    jpg/png files with a size less than 500KB.
+                  </div>
+                </template>
+              </el-upload>
+            </el-form-item>
+          </el-col>
       </el-row>
     </el-form>
     <div class="title_flex m-0" v-if="educationFormData.length > 1">
@@ -109,6 +131,7 @@ const educationFormData = ref([
     end_date: "",
     college_name: "",
     university_name: "",
+    degree_certificate: [],
   },
 ]);
 
@@ -122,6 +145,13 @@ const educationFormRules = ref({
   end_date: [{ required: true, message: "Please select end date", trigger: "change" }],
   college_name: [{ required: true, message: "Please enter college name", trigger: "blur" }],
   university_name: [{ required: true, message: "Please enter university name", trigger: "blur" }],
+  degree_certificate: [
+    {
+      required: true,
+      message: "Please upload certificate",
+      trigger: "change",
+    },
+  ],
 });
 
 // Education
@@ -135,6 +165,7 @@ const incrementEducation = () => {
     end_date: "",
     college_name: "",
     university_name: "",
+    degree_certificate: "",
   });
   education.value = educationFormData.value.length;
 };
@@ -143,6 +174,45 @@ const decrementEducation = () => {
   educationFormData.value.pop();
   education.value = educationFormData.value.length;
 };
+
+//store degree certificate
+const handleChange = (form, formIndex) => (file, fileList) => {
+  console.log(JSON.stringify(form, formIndex,file, fileList))
+  // Check if a file is selected
+  if (fileList.length > 0) {
+    // Read the file and convert it to base64
+    const reader = new FileReader();
+    reader.readAsDataURL(file.raw);
+    reader.onload = () => {
+      // Set the base64 data directly in the form data for preview
+      //  in code some bugs
+      educationFormData.value[form.degree_certificate]= [
+        {
+          name: file.name,
+          base64: reader.result,
+        },
+      ];
+    };
+  } else {
+    // If no file is selected, clear the degree_certificate in the form data
+    educationFormData.value[form.degree_certificate] = [];
+  }
+};
+
+const handleRemove = (formIndex) => (file, fileList) => {
+  // Remove the file from the form data
+  educationFormData.value[formIndex].degree_certificate = [];
+};
+
+const beforeRemove = (file, fileList) => {
+  // Custom logic before removing the file (if needed)
+};
+
+const handleExceed = (files, fileList) => {
+  // Handle when the file limit is exceeded (if needed)
+  fileList.splice(1);
+};
+
 
 const educationFormRef = ref(null);
 

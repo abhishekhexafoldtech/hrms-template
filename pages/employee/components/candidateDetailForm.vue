@@ -69,6 +69,11 @@
           <el-input placeholder="Email" v-model="candidateForm.email" type="email" required></el-input>
         </el-form-item>
         </el-col>
+        <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Personal Email" prop="personal_email">
+          <el-input placeholder="Personal Email" v-model="candidateForm.personal_email"></el-input>
+        </el-form-item>
+      </el-col>
     </el-row>
   </el-form>
 </template>
@@ -84,6 +89,7 @@ const candidateForm = reactive({
   middleName: "",
   lastName: "",
   email: "",
+  personal_email:"",
   phone: "",
   alternatePhone: "",
   bloodGroup: "",
@@ -106,6 +112,14 @@ const candidateFormRules = ref({
   ],
   email: [
     { required: true, message: "Please enter your email", trigger: "blur" },
+    {
+      type: "email",
+      message: "Please enter a valid email address",
+      trigger: "blur",
+    },
+  ],
+  personal_email: [
+    { required: true, message: "Please enter your personal email", trigger: "blur" },
     {
       type: "email",
       message: "Please enter a valid email address",
