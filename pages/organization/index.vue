@@ -16,9 +16,9 @@
 
 
 <script setup>
-import Address from '@/pages/organization/components/Address';
-import Basic from '@/pages/organization/components/Basic';
-import SocialProfile from '@/pages/organization/components/SocialProfile';
+import Address from '@/pages/organization/components/Address.vue';
+import Basic from '@/pages/organization/components/Basic.vue';
+import SocialProfile from '@/pages/organization/components/SocialProfile.vue';
 
 const activeName = ref("first");
 const user = ref(true);
