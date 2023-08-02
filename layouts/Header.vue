@@ -172,9 +172,10 @@
                                 <li class="nav-item dropdown dropdown-hover mx-2">
                                     <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                        <a href="javascript:;" class="avatar rounded-circle">
+                                        <!-- <a href="javascript:;" class="avatar rounded-circle">
                                             <img alt="Image placeholder" src="@/assets/img/profile.png">
-                                        </a>
+                                        </a> -->
+                                        <img  class="avatar rounded-circle" src="@/assets/img/profile.png" alt="">
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none" />
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
                                     </a>
