@@ -13,7 +13,7 @@
             <div >
                 <span class="text-bold text-lg"> To : </span>  {{ data.end }}
             </div>
-            </div>form 
+            </div> 
         <div class="mt-3 " v-if="data.description">
             <h5>Description</h5>
             <div>
