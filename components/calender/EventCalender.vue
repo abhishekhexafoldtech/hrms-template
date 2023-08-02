@@ -25,17 +25,12 @@ let events = reactive(
    [
         {
           id: "1",
-          startDate: "2023-07-24",
-          endDate: "2023-07-26",
-          title: "Meeting with client",
+          startDate: "2023-08-15",
+          endDate: "2023-08-15",
+          title: "Independence day",
           
         },
-        {
-          id: "1",
-          startDate: "2023-07-28",
-          endDate: "2023-07-28",
-          title: "Meeting with client",
-        }
+       
     ],
 )
 
