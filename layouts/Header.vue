@@ -173,7 +173,7 @@
                                     <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
 
                                         <a href="javascript:;" class="avatar rounded-circle">
-                                            <img alt="Image placeholder" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png">
+                                            <img alt="Image placeholder" src="@/assets/img/profile.png">
                                         </a>
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none" />
                                         <img src="@/assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto" />
