@@ -85,7 +85,7 @@
                 :on-change="handleChange(form, index)" 
                 :on-remove="() => handleRemove(index)"
                 :before-remove="beforeRemove"
-                :limit="3"
+                :limit="1"
                 :on-exceed="handleExceed"
               >
                 <el-button type="primary">Click to upload</el-button>

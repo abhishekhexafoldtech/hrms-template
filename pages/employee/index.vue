@@ -40,7 +40,7 @@ function handleAddEditHoliday(data) {
   if (data) {
     router.employeeData = data;
   }
-  let r = "create_employee";
+  let r = "create-employee";
   router.push(`employee/${r}`);
 }
 

@@ -19,7 +19,7 @@
 
     <div class="button-container mb-5">
       <router-link to="/employee" class="back-to-form-btn"
-        >Back to Form</router-link
+        >Go Back</router-link
       >
     </div>
   </div>
