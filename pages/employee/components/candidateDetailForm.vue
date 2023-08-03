@@ -9,7 +9,7 @@
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Middle Name" prop="middleName">
+        <el-form-item label="Middle Name">
           <el-input placeholder="Middle Name" v-model="candidateForm.middleName"></el-input>
         </el-form-item>
       </el-col>
@@ -42,7 +42,7 @@
     </el-row>
     <el-row>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Blood Group" prop="bloodGroup">
+        <el-form-item label="Blood Group">
           <el-input placeholder="Blood Group" v-model="candidateForm.bloodGroup"></el-input>
         </el-form-item>
       </el-col>
@@ -52,7 +52,7 @@
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Marital Status" prop="maritalStatus">
+        <el-form-item label="Marital Status">
           <el-select v-model="candidateForm.maritalStatus" style="width: 100%;" placeholder="Marital Status" required>
             <el-option label="Single" value="single"></el-option>
             <el-option label="Married" value="married"></el-option>

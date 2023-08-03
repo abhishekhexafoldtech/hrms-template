@@ -3,7 +3,7 @@
     <h3 class="form_title">Professional Details</h3>
     <el-row>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Employee ID" prop="employee_id">
+        <el-form-item label="Employee ID">
           <el-input placeholder="Employee ID" v-model="professionalForm.employee_id" required></el-input>
         </el-form-item>
       </el-col>
@@ -29,25 +29,30 @@
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Work Location" prop="work_location">
+        <el-form-item label="Work Location">
           <el-input placeholder="Work Location" v-model="professionalForm.work_location" required></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Designation" prop="designation">
+        <el-form-item label="Designation">
           <el-input placeholder="Designation" v-model="professionalForm.designation" required></el-input>
         </el-form-item>
       </el-col>
     </el-row>
     <el-row>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Job Title" prop="job_title">
+        <el-form-item label="Job Title">
           <el-input placeholder="Job Title" v-model="professionalForm.job_title" required></el-input>
         </el-form-item>
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-        <el-form-item label="Department" prop="department">
+        <el-form-item label="Department">
           <el-input placeholder="Department" v-model="professionalForm.department" required></el-input>
+        </el-form-item>
+      </el-col>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
+        <el-form-item label="Current CTC">
+          <el-input placeholder="Current CTC" v-model="professionalForm.current_ctc" required></el-input>
         </el-form-item>
       </el-col>
     </el-row>
@@ -68,6 +73,7 @@ const professionalForm = reactive({
   designation: "",
   job_title: "",
   department: "",
+  current_ctc:""
 });
 
 // Professional form validation
