@@ -1,106 +1,140 @@
 <template>
-  <section class="emp_wrap">
-    <div class="container">
-      <h3 class="sec_title" v-if="active<6">Create Employee</h3>
-      <h3 class="sec_title" v-if="active>5">Employee Successfully Created</h3>
-      <div class="emp_steps">
-        <el-steps :active="active" finish-status="success" align-center>
-          <el-step title="Candidate Details" />
-          <el-step title="Address Details" />
-          <el-step title="Professional Details" />
-          <el-step title="Education" />
-          <el-step title="Experience" />
-          <el-step title="Documents" />
-        </el-steps>
-      </div>
-      <div class="input_form">
-        <!-- Candidate Details start -->
-        <div v-if="active === 0">
-          <candidateDetailForm ref="childRef" @changeForm="changeForm" />
-        </div>
-
-        <!-- Address Details start -->
-
-        <div v-if="active === 1">
-          <addressDetailForm ref="childRef" @changeForm="changeForm" />
-        </div>
-
-        <!-- professionalForm start -->
-
-        <div v-if="active === 2">
-          <profetionalDetailForm ref="childRef" @changeForm="changeForm" />
-        </div>
-
-        <!-- educationForm start -->
-
-        <div v-if="active === 3">
-          <educationForm ref="childRef" @changeForm="changeForm" />
-        </div>
-
-        <!-- experienceForm start -->
-
-        <div v-if="active === 4">
-          <experienceForm ref="childRef" @changeForm="changeForm" />
-        </div>
-
-        <!-- Documents Details -->
-
-        <div v-if="active === 5">
-          <documentsForm ref="childRef" @changeForm="changeForm" />
-        </div>
-
-        <!-- Success -->
-
-        <div v-if="active === 6">
-          <successPage/>
-        </div>
-
-        <el-button v-if="active < 6" class="btn bg-gradient-primary" @click="next"
-          >Next step</el-button
-        >
-      </div>
+  <div class="mt-8" style="margin: 15px">
+    <div class="p-2 w-100" style="text-align: right">
+      <el-button type="primary" @click="handleAddEditHoliday"
+        >+ Add Employee</el-button
+      >
     </div>
-  </section>
+    <Table
+      tableHeading="Employee"
+      :tableConfig="employeeConfig"
+      :tableData="showHolidaysData"
+      :tableQuery="listQuery"
+      :tableSearchVisibility="false"
+      :viewButtonVisibility="true"
+      :downloadButtonVisibility="true"
+      :editButtonVisibility="true"
+      :deleteButtonVisibility="true"
+      @pagination="handlePagination()"
+      @view="handleViewDetails($event)"
+      @dwonload="handleDownload($event)"
+      @edit="handleAddEditHoliday($event)"
+    />
+    <!-- <Overview v-if="overview" @close="handleOverviewClose" :data="overviewData" /> -->
+  </div>
 </template>
 
 <script setup>
-import candidateDetailForm from "./components/candidateDetailForm.vue";
-import addressDetailForm from "./components/addressDetailForm.vue";
-import profetionalDetailForm from "./components/profetionalDetailForm.vue";
-import educationForm from "./components/educationForm.vue";
-import experienceForm from "./components/experienceForm.vue";
-import documentsForm from "./components/documentsForm.vue";
-import successPage from "./components/successPage.vue";
+// import Overview from '@/components/';
+import Table from "@/components/Table.vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const overview = ref(false);
+const overviewData = ref(null);
 
-import { ref, nextTick } from "vue";
-const childRef = ref(null);
-const active = ref(0);
+function handleOverviewClose() {
+  overview.value = false;
+}
 
-//change forms
-const next = async () => {
-  await nextTick();
-  if (active.value === 0) {
-    childRef.value.handleCandidateDetail();
-  } else if (active.value === 1) {
-    childRef.value.handleAddressForm();
-  } else if (active.value === 2) {
-    childRef.value.handleProfessionalForm();
-  } else if (active.value === 3) {
-    childRef.value.handleEducationForm();
-  } else if (active.value === 4) {
-    childRef.value.handleExperienceForm();
-  } else if (active.value === 5) {
-    childRef.value.handleDocumentForm();
+function handleAddEditHoliday(data) {
+  if (data) {
+    router.employeeData = data;
   }
-};
-//Change form
+  let r = "create_employee";
+  router.push(`employee/${r}`);
+}
 
-const changeForm = () => {
-  active.value = active.value + 1;
-};
+function handleViewDetails(data) {
+  overview.value = true;
+  overviewData.value = data;
+  console.log("view", data);
+}
 
+function handleDownload(data) {
+  console.log("download", data);
+}
+
+let employeeData = ref([
+  {
+    serial_number: 1,
+    first_name: "Ganesh",
+    gender: "Male",
+    date_of_birth: "01/01/1999",
+    phone: "9568425186",
+    email:"test@gmail.com"
+  },
+  {
+    serial_number: 1,
+    first_name: "Ganesh",
+    gender: "Male",
+    date_of_birth: "01/01/1999",
+    phone: "9568425186",
+    email:"test@gmail.com"
+  },
+  {
+    serial_number: 1,
+    first_name: "Ganesh",
+    gender: "Male",
+    date_of_birth: "01/01/1999",
+    phone: "9568425186",
+    email:"test@gmail.com"
+  },
+
+]);
+const showHolidaysData = ref(employeeData);
+
+
+onMounted(() => {
+ 
+  
+});
+
+let employeeConfig = reactive([
+  {
+    label: "First Name",
+    prop: "first_name",
+    width: "250",
+    sortable: true,
+    className: "redFont",
+  },
+  {
+    label: "Gender",
+    prop: "gender",
+    width: "250",
+    sortable: true,
+    className: "redFont",
+  },
+  {
+    label: "Date of Birth",
+    prop: "date_of_birth",
+    width: "250",
+    sortable: true,
+    className: "redFont",
+  },
+  {
+    label: "Phone",
+    prop: "phone",
+    width: "250",
+    sortable: true,
+    className: "redFont",
+  },
+  {
+    label: "Email",
+    prop: "email",
+    width: "250",
+    sortable: true,
+    className: "redFont",
+  },
+]);
+let listQuery = {
+  page: 1,
+  limit: 10,
+  search: "",
+  searchJoin: "or",
+  orderBy: "created_at",
+  sortedBy: "desc",
+};
 definePageMeta({
   layout: "layout",
 });
 </script>
-<style scoped></style>
