@@ -6,8 +6,8 @@
         <div class="emp_steps">
           <el-steps :active="active" finish-status="success" align-center>
             <el-step title="Candidate Details" />
+            <el-step title="Professional Details"/>
             <el-step title="Address Details" />
-            <el-step title="Professional Details" />
             <el-step title="Education" />
             <el-step title="Experience" />
             <el-step title="Documents" />
@@ -18,18 +18,19 @@
           <div v-if="active === 0">
             <candidateDetailForm ref="childRef" @changeForm="changeForm" />
           </div>
+
+          <!-- professionalForm start -->
+  
+          <div v-if="active === 1">
+            <profetionalDetailForm ref="childRef" @changeForm="changeForm" />
+          </div>
   
           <!-- Address Details start -->
   
-          <div v-if="active === 1">
+          <div v-if="active === 2">
             <addressDetailForm ref="childRef" @changeForm="changeForm" />
           </div>
   
-          <!-- professionalForm start -->
-  
-          <div v-if="active === 2">
-            <profetionalDetailForm ref="childRef" @changeForm="changeForm" />
-          </div>
   
           <!-- educationForm start -->
   
@@ -55,9 +56,14 @@
             <successPage/>
           </div>
   
-          <el-button v-if="active < 6" class="btn bg-gradient-primary" @click="next"
+          <div class="d-flex justify-content-between">
+            <el-button v-if="active >0 && active < 6" type="primary" class="btn px-5" @click="backPage"
+            > Back </el-button
+          >
+          <el-button v-if="active < 6" class="btn bg-gradient-primary" @click="nextPage"
             >Next step</el-button
           >
+          </div>
         </div>
       </div>
     </section>
@@ -77,14 +83,14 @@
   const active = ref(0);
   
   //change forms
-  const next = async () => {
+  const nextPage = async () => {
     await nextTick();
     if (active.value === 0) {
       childRef.value.handleCandidateDetail();
     } else if (active.value === 1) {
-      childRef.value.handleAddressForm();
-    } else if (active.value === 2) {
       childRef.value.handleProfessionalForm();
+    } else if (active.value === 2) {
+      childRef.value.handleAddressForm();
     } else if (active.value === 3) {
       childRef.value.handleEducationForm();
     } else if (active.value === 4) {
@@ -93,7 +99,14 @@
       childRef.value.handleDocumentForm();
     }
   };
-  //Change form
+
+  //backPage
+
+const backPage=()=>{
+  active.value = active.value - 1;
+}  
+
+//Change form
   
   const changeForm = () => {
     active.value = active.value + 1;
