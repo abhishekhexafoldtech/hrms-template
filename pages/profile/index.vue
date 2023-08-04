@@ -228,9 +228,7 @@ definePageMeta({
 </script>
 
 <style scoped>
-.slct-avatar {
-    border: 1px solid rgb(203, 203, 203);
-}
+
 
 .demo-tabs>.el-tabs__content {
     padding: 32px;
@@ -240,8 +238,4 @@ definePageMeta({
     width: 20%;
 }
 
-.el-tabs--right .el-tabs__content,
-.el-tabs--left .el-tabs__content {
-    height: 100%;
-}
 </style>
