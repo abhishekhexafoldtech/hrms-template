@@ -89,9 +89,12 @@
                 <div class="col-sm-12 mt-4">
                   <template v-if="!editMode">
                     <h6>Website</h6>
-                    <div>{{ formData.website }}</div>
+                    <a :href="getFormattedWebsite(formData.website)" target="_blank">
+                      <div>{{ getWebsiteDisplay(formData.website) }}</div>
+                    </a>
                   </template>
                   <template v-else>
+                    
                     <h6>Website</h6>
                     <el-form-item prop="website">
                       <el-input size="large" placeholder="Enter website URL" v-model="formData.website" />
@@ -147,8 +150,8 @@ const formRef = ref(null);
 const formData = reactive({
   companyName: "Blueray Automation Pvt Ltd",
   officialContact: "8235647565",
-  officialEmail: "amulya40j@gmail.com",
-  website: "www.example.com",
+  officialEmail: "abc.xyz@gmail.com",
+  website: "https://hexafoldtech.com/",
   domainName: "Hexafold technologies"
 });
 
@@ -203,6 +206,19 @@ const toggleEditMode = () => {
 const saveForm = () => {
   // Perform form submission or update here
   editMode.value = false;
+};
+
+const getFormattedWebsite = (url) => {
+  // Add "https://" prefix to the URL if it doesn't already have it
+  if (!/^https?:\/\//i.test(url)) {
+    return `https://${url}`;
+  }
+  return url;
+};
+
+const getWebsiteDisplay = (url) => {
+  // Remove "https://" from the URL before displaying in view mode
+  return url.replace(/^https?:\/\//i, "");
 };
 
 definePageMeta({
