@@ -48,7 +48,7 @@ const handleWishBday = () => {
   height: 385px;
   border-radius: 10px;
   overflow-y: auto;
-  background-color:rgb(250, 250, 255);
+  // background-color:rgb(250, 250, 255);
   /* Use auto instead of scroll for a better user experience */
 }
 
