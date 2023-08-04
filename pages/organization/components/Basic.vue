@@ -4,7 +4,7 @@
       <template #header>
         <div class="card-header d-flex">
           <span class="align-self-center">
-            <h4>Basic Information</h4>
+           <b>Basic Information</b>
           </span>
           <div class="d-flex flex-row-reverse w-85">
             <template v-if="!editMode">

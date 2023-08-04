@@ -4,7 +4,7 @@
       <template #header>
         <div class="card-header d-flex">
           <span class="align-self-center">
-            <h4>Social Profile</h4>
+           <b>Social Profile</b>
           </span>
           <div class="d-flex flex-row-reverse w-90">
             <template v-if="!editMode">
