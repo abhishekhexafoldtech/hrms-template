@@ -52,7 +52,7 @@
             </el-form-item>
           </el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <el-form-item label="PIN" prop="presentAddress.pin">
+            <el-form-item label="PIN">
               <el-input
                 placeholder="PIN"
                 v-model="addressForm.presentAddress.pin"
@@ -112,7 +112,7 @@
             </el-form-item>
           </el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <el-form-item label="PIN" prop="permanentAddress.pin">
+            <el-form-item label="PIN">
               <el-input
                 placeholder="PIN"
                 v-model="addressForm.permanentAddress.pin"
