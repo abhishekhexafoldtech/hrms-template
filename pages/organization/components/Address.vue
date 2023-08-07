@@ -5,7 +5,7 @@
       <template #header>
         <div class="card-header d-flex">
           <span class="align-self-center">
-            <b>Registered office address</b>
+            <h4>Registered office address</h4>
           </span>
           <div class="d-flex flex-row-reverse w-80">
             <template v-if="!editModeRegistered">

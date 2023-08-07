@@ -1,13 +1,13 @@
 <template>
-    <div class="mt-8">
+    <div class="">
+        <el-dialog v-model="dialogFormVisible" width="60%">        
         <span ><h5 style="margin-left:30px;">Add Expense</h5></span>
-        <el-card style="margin:30px;">
             <el-form
                 label-position="top"
                 label-width="100px"
                 :model="formData"
                 :rules="formValidationRules"
-                style="max-width: 100%; border-radius: 15px; height: 760px"
+                style="max-width: 100%; border-radius: 15px; height: fluid"
                 class="bg-white px-5 py-4 rounded-5"
                 ref="formRef"
             >
@@ -45,16 +45,25 @@
             </el-row>
 
                 <el-button type="primary" size="large" style="float:right;" @click="handleFormData">Save</el-button> 
-                <el-button size="large"  style="float:right; margin-right: 10px;" @click="handleCancle">Back</el-button> 
+                <el-button size="large"  style="float:right; margin-right: 10px;" @click="dialogFormVisible = false">Back</el-button> 
 
             </el-form>
-        </el-card>
+    </el-dialog>
     </div>
 </template>
 
 <script setup>
 import { useRouter } from "vue-router"
 const router = useRouter();
+
+
+const dialogFormVisible = ref(false);
+const leaveFormRef = ref(null);
+
+const dialogFormVisibleFun = () => {
+  dialogFormVisible.value = true;
+};
+
 
 const formRef = ref(null);
 const showErrorMessage = ref(false);
@@ -78,7 +87,7 @@ const formValidationRules = reactive({
     purchaseDate: [
         {
         required: true,
-        message: "Please enter purchase date",
+        message: "Please pick purchase date",
         trigger: "blur",
         },
     ],
@@ -113,8 +122,7 @@ function handleCancle() {
 }
 
 
-
-definePageMeta({
-    layout: "layout"
-})
+defineExpose({
+  dialogFormVisibleFun,
+});
 </script>
