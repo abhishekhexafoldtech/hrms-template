@@ -29,12 +29,12 @@
                         <el-form-item label="Purchase Date"  prop="purchaseDate">
                             <el-date-picker
                                 v-model="formData.purchaseDate"
+                                size="large"
                                 type="date"
                                 placeholder="Pick a day"
                             />
                         </el-form-item>
-                    </el-col>
-                
+                    </el-col>                
             </el-row>
             <el-row>
                 <el-col :xs="24" :sm="24" :lg="24" :xl="24">
@@ -115,10 +115,6 @@ function handleFormData() {
         }
     });
 
-}
-
-function handleCancle() {
-    router.push("/expense")
 }
 
 

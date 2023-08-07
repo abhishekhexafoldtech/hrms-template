@@ -42,7 +42,10 @@ export default defineNuxtConfig({
     // "@/assets/img/favicon.png",
     // "@/assets/css/nucleo-icons.css",
     // "@/assets/css/nucleo-svg.css",
+
     "@/assets/css/material-kit-pro.css",
+
+    // "@/assets/css/material-kit-pro.css",
     "@/assets/scss/index.scss",
   ],
   // css: ["@/globals/global.css"],
