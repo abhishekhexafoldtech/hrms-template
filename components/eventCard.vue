@@ -41,6 +41,7 @@ const props = defineProps({
 const handleWishBday = () => {
   console.log("Budy Wishing");
 };
+
 </script>
 
 <style scoped lang="scss">

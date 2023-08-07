@@ -253,4 +253,5 @@ definePageMeta({
 .bg-img-desktop {
   background-image: url("@/assets/img/bg0.jpg") !important;
 }
+
 </style>
