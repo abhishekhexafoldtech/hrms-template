@@ -247,6 +247,7 @@ const upcomingEvents = [
 definePageMeta({
   layout: "layout",
 });
+
 </script>
 
 <style scoped>
