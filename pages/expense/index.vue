@@ -1,7 +1,7 @@
 <template>
     <div class="mt-8" style="margin: 15px;">
         <div class="p-2 w-100" style="text-align: right;">
-            <el-button type="primary" @click="handleAddExpense">+ Add Expence</el-button>
+            <el-button type="primary" @click="handleDialogFormVisible">+ Add Expence</el-button>
         </div>
           
         <Table tableHeading="Expenses" 
@@ -17,7 +17,7 @@
               @view="handleViewDetails($event)" 
               @dwonload="handleDownload($event)"
             />	
-
+          <expenseForm ref="dialogFormVisibleRef"/>
     </div>
 </template>
 
@@ -26,9 +26,17 @@
 <script setup>
 import Table from '@/components/Table.vue';
 import { ref } from 'vue'; // Import the 'ref' and 'computed' functions from Vue
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
+import expenseForm from './expenseForm.vue';
 
-const router = useRouter();
+// const router = useRouter();
+
+//called Child component function
+const dialogFormVisibleRef = ref(null);
+const handleDialogFormVisible = () => {
+  dialogFormVisibleRef.value.dialogFormVisibleFun();
+};
+
 
 
 let roleListData = ref([
