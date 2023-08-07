@@ -43,4 +43,5 @@ const allUsers = [
     img: "",
   },
 ];
+
 </script>
