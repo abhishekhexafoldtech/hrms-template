@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container mx-5 mt-5" style="padding-top:10px">
+    <div class="main-container mx-4 mt-5" style="padding-top:10px">
         <!-- Header -->
         <div class="d-flex justify-content-between w-95 ">
             <div class="d-flex">
