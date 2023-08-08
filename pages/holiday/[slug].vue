@@ -1,7 +1,10 @@
+<!-- adding or editing holidays form -->
 <template>
     <div class="mt-8">
         <span ><h5 style="margin-left:30px;">Add Holiday</h5></span>
+        <!-- element card -->
        <el-card style="margin:30px;">
+        <!-- element form -->
         <el-form
             label-position="top"
             label-width="100px"
@@ -89,7 +92,7 @@ const formData = reactive({
     description: ""
 })
 
-
+// form validation
 const formValidationRules = reactive({
     name: [
         {
@@ -113,7 +116,7 @@ const formValidationRules = reactive({
         },
     ],
 })
-
+// form validation and validation controller function
 function handleFormData() {
     formRef.value.validate((valid) => {
         let val = showErrorMessage.value;
@@ -130,11 +133,11 @@ function handleFormData() {
     });
 
 }
-
+// cancel button controller function
 function handleCancle() {
     router.push("/holiday");
 }
-
+// sets up for editor holiday form
 onMounted(()=>{
     const router = useRouter();
     if(router.holidayData){
@@ -145,8 +148,6 @@ onMounted(()=>{
         router.holidayData = null;
     }
 })
-
-
 definePageMeta({
     layout: "layout"
 })
