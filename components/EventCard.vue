@@ -1,9 +1,12 @@
 <template>
   <el-card class="box-card shadow-lg mt-4">
     <div class="top">
+      <!-- top section -->
       <p class="card-title">{{ props.title }}</p>
       <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
     </div>
+    
+    <!-- main section -->
     <div v-for="event in props.events" :key="event.id" class="card-main-section">
       <el-col :xs="4" :sm="4" :md="4" :lg="4" class="event-icon">
         <el-avatar shape="square" :size="50" :src="event.image" />
