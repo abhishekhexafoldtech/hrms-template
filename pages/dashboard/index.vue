@@ -68,7 +68,8 @@
 import EventCalender from "@/components/calender/EventCalender.vue";
 import ToDoList from "@/components/todo/index.vue";
 import TimeDate from "@/components/timedate/TimeDate.vue";
-import EventCard from "~/components/eventCard.vue";
+import EventCard from "~/components/EventCard.vue";
+
 
 //Upcoming Holidays Data
 const upcomingHlidays = [
