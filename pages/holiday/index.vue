@@ -1,12 +1,16 @@
+<!-- holidays main components -->
 <template>
   <div class="mt-8" style="margin: 15px;">
     <div class="p-2 w-100" style="text-align: right;">
+      <!-- adding new holiday -->
       <el-button type="primary" @click="handleAddEditHoliday">+ Add Holiday</el-button>
     </div>
+    <!-- table for list of holidays -->
     <Table tableHeading="Holidays" :tableConfig="holidaysConfig" :tableData="showHolidaysData" :tableQuery="listQuery"
       :tableSearchVisibility="false" :viewButtonVisibility="true" :downloadButtonVisibility="true"
       :editButtonVisibility="true" :deleteButtonVisibility="true" @pagination="handlePagination()"
       @view="handleViewDetails($event)" @dwonload="handleDownload($event)" @edit="handleAddEditHoliday($event)" />
+      <!-- holiday over vue -->
     <Overview v-if="overview" @close="handleOverviewClose" :data="overviewData" />
   </div>
 </template>
@@ -16,13 +20,15 @@ import Overview from './components/Overview.vue';
 import Table from '@/components/Table.vue';
 import { useRouter } from "vue-router"
 const router = useRouter();
+// overview ref controller
 const overview = ref(false);
+// overview data for passing the props
 const overviewData = ref(null)
-
+// holiday's overview popup closing controller function
 function handleOverviewClose() {
   overview.value = false;
 }
-
+// holidays editing contoller function
 function handleAddEditHoliday(data) {
   if (data) {
     router.holidayData = data;
@@ -30,17 +36,17 @@ function handleAddEditHoliday(data) {
   let r = "add";
   router.push(`holiday/${r}`);
 }
-
+// holiday overview controller function
 function handleViewDetails(data) {
   overview.value = true;
   overviewData.value = data
   console.log('view', data)
 }
-
+// holiday download controller function
 function handleDownload(data) {
   console.log('download', data)
 }
-
+// holidays dable reference table
 let holidayData = ref([
   {
     serial_number: 1,
@@ -62,6 +68,7 @@ let holidayData = ref([
   },
 
 ]);
+// holidays table reference contoller for dynamic changes
 const showHolidaysData = ref(holidayData);
 
 // change date formate to show;
@@ -72,8 +79,7 @@ function setDate(date){
   const year_num = date[3];
   return `${day}-${month}-${year_num}`
 }
-
-
+// setting up the date formate when componnet is at mounting phase
 onMounted(()=>{
   for(let i=0;i<holidayData.value.length;i++){
     const start_date = holidayData.value[i].start_date.split(" ");
@@ -84,7 +90,7 @@ onMounted(()=>{
     holidayData.value[i].end = new_end_date;
   }
 })
-
+// hildays table heders controller
 let holidaysConfig = reactive([
   {
     label: "Occation",

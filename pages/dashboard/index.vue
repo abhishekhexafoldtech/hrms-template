@@ -48,6 +48,11 @@
       <section class="mt-5">
         <ToDoList />
       </section>
+
+      <section class="my-5 py-2">
+        <TimeDate/>
+      </section>
+
       <section class="my-2 py-2">
         <div class="container">
           <div class="row">
@@ -62,7 +67,9 @@
 <script setup>
 import EventCalender from "@/components/calender/EventCalender.vue";
 import ToDoList from "@/components/todo/index.vue";
+import TimeDate from "@/components/timedate/TimeDate.vue";
 import EventCard from "~/components/EventCard.vue";
+
 
 //Upcoming Holidays Data
 const upcomingHlidays = [

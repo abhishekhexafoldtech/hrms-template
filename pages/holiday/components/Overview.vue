@@ -1,4 +1,5 @@
 <template>
+  <!-- element dialog for overview of the holiday -->
     <el-dialog
       v-model="visible"
       :title="data.occation"
@@ -31,13 +32,14 @@
     </el-dialog>
   </template>
   <script  setup>
-  
-  
+  // visibility contoller for element dialog 
   const visible = ref(true);
   let emit = defineEmits();
+  // props data object contaions all the holiday information
   const props = defineProps({
     data:Object
   })
+  // closing dialog controller function
   function handleClose(){
     emit("close")
   }
