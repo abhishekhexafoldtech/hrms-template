@@ -70,13 +70,13 @@
   </template>
   
   <script setup>
-  import candidateDetailForm from "./components/candidateDetailForm.vue";
-  import addressDetailForm from "./components/addressDetailForm.vue";
-  import profetionalDetailForm from "./components/profetionalDetailForm.vue";
-  import educationForm from "./components/educationForm.vue";
-  import experienceForm from "./components/experienceForm.vue";
-  import documentsForm from "./components/documentsForm.vue";
-  import successPage from "./components/successPage.vue";
+  import candidateDetailForm from "./components/CandidateDetailForm.vue";
+  import addressDetailForm from "./components/AddressDetailForm.vue";
+  import profetionalDetailForm from "./components/ProfetionalDetailForm.vue";
+  import educationForm from "./components/EducationForm.vue";
+  import experienceForm from "./components/ExperienceForm.vue";
+  import documentsForm from "./components/DocumentsForm.vue";
+  import successPage from "./components/SuccessPage.vue";
   
   import { ref, nextTick } from "vue";
   const childRef = ref(null);
