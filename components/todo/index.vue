@@ -1,9 +1,13 @@
 <template>
   <ClientOnly>
-      <div class="d-flex justify-content-center">
-          <div class="container-fluid shadow p-3 bg-body rounded mt-2 w-70">
-            <h6>Todo List</h6>
-            <el-row :gutter="10">
+      <div class="d-flex justify-content-center ">
+          <el-card class="box-card shadow-lg w-100">
+    <div class="top">
+      <!-- top section -->
+      <p class="card-title">Todos</p>
+      <span class=""><i class="bi bi-plus-lg fw-bold"></i></span>
+    </div>
+            <!-- <el-row :gutter="10" class="w-100">
               <el-col :span="18">
                 <el-form :ref="formRef" :rules="formValidationRules">
                   <el-form-item prop="todo" :rules="formValidationRules" class="fw-bold">
@@ -13,10 +17,10 @@
                       size="large"
                       placeholder="Please Input Todo Here..."
                     />
-                  </el-form-item>
+                  </el-form-item> -->
 
                   <!-- Add a new element to display the error message -->
-                  <el-form-item v-if="showSubmitWarning" class="form-error-message">
+                  <!-- <el-form-item v-if="showSubmitWarning" class="form-error-message">
                     <span class="el-form-item__error fw-bold">Please enter todo before submit</span>
                   </el-form-item>
 
@@ -28,8 +32,8 @@
               <el-col :span="2" class="mt-1">
                 <button class="btn btn-lg btn-warning eraser-btn " @click="handleClearAll"><i class="bi bi-eraser-fill"></i></button>
               </el-col>
-            </el-row>
-            <el-row>
+            </el-row> -->
+            <el-row class="mt-2">
               <el-col :span="24">
                 <table class="table table-striped">
                   <tbody>
@@ -47,7 +51,8 @@
                 </table>
               </el-col>
             </el-row>
-          </div>
+            </el-card>
+            
         </div>
   </ClientOnly>
   
@@ -140,7 +145,7 @@ localStorage.removeItem('todos'); // Remove todos from localStorage
 
 </script>
 
-<style>
+<style scoped lang="scss">
 .completed-todo {
   text-decoration: line-through;
 }
@@ -157,4 +162,28 @@ localStorage.removeItem('todos'); // Remove todos from localStorage
   color: red;
   margin-top: 5px;
 }
+
+.box-card {
+  height: 385px;
+  border-radius: 10px;
+  overflow-y: auto;
+  // background-color:rgb(250, 250, 255);
+  /* Use auto instead of scroll for a better user experience */
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.card-title {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(71, 68, 68);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+
 </style>
