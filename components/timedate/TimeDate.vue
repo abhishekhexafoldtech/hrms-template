@@ -1,8 +1,8 @@
 <template>
-    <div class="container w-50">
+    <div class="container w-100">
       <div class="row gx-5">
         <!-- Date -->
-        <el-col :span="8">
+        <el-col :span="10">
           <div class="row d-flex align-items-center border rounded shadow">
             <div class="col-2">
               <i class="bi bi-calendar-event fa-2x"></i>
@@ -13,7 +13,7 @@
         </el-col>
   
         <!-- Time -->
-        <el-col :span="8">
+        <el-col :span="10">
           <div class="row d-flex align-items-center border rounded shadow">
             <div class="col-2">
               <i class="bi bi-clock-fill fa-2x"></i>
@@ -24,7 +24,7 @@
         </el-col>
   
         <!-- Button checkIn -->
-        <el-col :span="8">
+        <el-col :span="2">
           <button class="btn btn-primary btn-lg" @click="toggleCheckInStatus">{{ checkInStatus }}</button>
         </el-col>
       </div>
