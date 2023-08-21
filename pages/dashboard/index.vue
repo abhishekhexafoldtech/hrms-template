@@ -19,25 +19,10 @@
     <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
       <section class="mt-10">
         <div class="d-flex flex-wrap">
-          <StatisticsCard
-            :leave="false"
-            header="Working Remotely"
-            :users="allUsers"
-            description="Employees working remotely."
-          />
-          <StatisticsCard
-            :leave="false"
-            header="On Leave Today"
-            :users="allUsers"
-            description="Employees on Leave today."
-          />
-          <StatisticsCard
-            :leave="false"
-            header="Projects Completed"
-            :users="allUsers"
-            description="Projects completed"
-          />
-          <StatisticsCard :leave="true" header="Total Leaves" />
+            <StatisticsCard  :leave="false" header="Working Remotely" :users="allUsers" description="Employees working remotely."/>
+            <StatisticsCard  :leave="false" header="On Leave Today" :users="allUsers" description="Employees on Leave today."/>
+            <StatisticsCard  :leave="false" header="Projects Completed" :users="allUsers" description="Projects completed"/>
+            <StatisticsCard  :leave="true" header="Total Leaves"/>
         </div>
       </section>
       <section class="mt-5">
@@ -50,9 +35,8 @@
             <div class="col col-md-4 mt-md-0">
               <!-- Upcoming Birthdays -->
               <EventCard
-                :events="events"
-                @getEvents="getEvents"
-                title="Birthdays"
+                :events="upcomingBirthdays"
+                title="Up Comming Birthdays"
               />
             </div>
             <div class="col col-md-4 mt-md-0">
@@ -66,7 +50,7 @@
       </section>
 
       <section class="my-5 py-2">
-        <TimeDate />
+        <TimeDate/>
       </section>
 
       <section class="my-2 py-2">
@@ -86,8 +70,9 @@ import ToDoList from "@/components/todo/index.vue";
 import TimeDate from "@/components/timedate/TimeDate.vue";
 import EventCard from "~/components/EventCard.vue";
 
+
 //Upcoming Holidays Data
-var upcomingHlidays = [
+const upcomingHlidays = [
   {
     id: 1,
     name: "Bakrid",
@@ -100,7 +85,7 @@ var upcomingHlidays = [
     id: 2,
     name: "Thiruvalluvar Day",
     day: "Wednesday",
-    days: 11,
+    days: 15,
     image:
       "https://media.istockphoto.com/id/1355669924/photo/happy-holidays-christmas-card-with-close-up-of-pine-tree-branch-and-snow-in-background.jpg?s=612x612&w=0&k=20&c=OUu_A8QmGCE6GwDAVdKve0rYIKSFlKO_NUKDFXO5sVE=",
   },
@@ -177,21 +162,6 @@ const upcomingBirthdays = [
   // Add more events here if needed
 ];
 
-// set events
-const events = ref(upcomingBirthdays);
-
-const getEvents = (event) => {
-  if (event === "Birthdays") {
-    events.value=upcomingBirthdays
-  } else if (event === "Anniversaries") {
-    events.value=upcomingHlidays
-  } else if (event === "Work Anniversaries") {
-    events.value=upcomingEvents
-  }
-};
-
-
-
 //Up Comming Events
 
 const upcomingEvents = [
@@ -237,23 +207,23 @@ const upcomingEvents = [
   // Add more events here if needed
 ];
 
-const allUsers = [
-  {
-    img: "https://imgs.search.brave.com/3jPQ7-D_SmheFuu2NgYZcwM8OY4Gx2mfYNF8RpEVXVY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MDgyMTQ3NTExOTYt/YmNmZDRjYTYwZjkx/P2l4bGliPXJiLTQu/MC4zJml4aWQ9TTN3/eE1qQTNmREI4TUh4/elpXRnlZMmg4Tm54/OGRYTmxjaVV5TUhC/eWIyWnBiR1Y4Wlc1/OE1IeDhNSHg4ZkRB/PSZ3PTEwMDAmcT04/MA.jpeg ",
-  },
-  {
-    img: "https://imgs.search.brave.com/4grtqVAsBIx4XOceE6y0VWcI68dxuBz7EfVB_h_aaMY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9w/b3J0cmFpdC10ZWVu/YWdlLWJveV8yMy0y/MTQ4MTA1NTg1Lmpw/Zz9zaXplPTYyNiZl/eHQ9anBn",
-  },
-  {
-    img: "https://imgs.search.brave.com/UfbSOBeLObpdqJhtiQB6xcCnzA_q9h9XsNJ5pBZdwUk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9w/cmV0dHktc21pbGlu/Zy1qb3lmdWxseS1m/ZW1hbGUtd2l0aC1m/YWlyLWhhaXItZHJl/c3NlZC1jYXN1YWxs/eS1sb29raW5nLXdp/dGgtc2F0aXNmYWN0/aW9uXzE3NjQyMC0x/NTE4Ny5qcGc_c2l6/ZT02MjYmZXh0PWpw/Zw",
-  },
-  {
-    img: "",
-  },
-  {
-    img: "",
-  },
-];
+const allUsers = ([
+       {
+        img:"https://imgs.search.brave.com/3jPQ7-D_SmheFuu2NgYZcwM8OY4Gx2mfYNF8RpEVXVY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MDgyMTQ3NTExOTYt/YmNmZDRjYTYwZjkx/P2l4bGliPXJiLTQu/MC4zJml4aWQ9TTN3/eE1qQTNmREI4TUh4/elpXRnlZMmg4Tm54/OGRYTmxjaVV5TUhC/eWIyWnBiR1Y4Wlc1/OE1IeDhNSHg4ZkRB/PSZ3PTEwMDAmcT04/MA.jpeg "
+       },
+       {
+        img:"https://imgs.search.brave.com/4grtqVAsBIx4XOceE6y0VWcI68dxuBz7EfVB_h_aaMY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9w/b3J0cmFpdC10ZWVu/YWdlLWJveV8yMy0y/MTQ4MTA1NTg1Lmpw/Zz9zaXplPTYyNiZl/eHQ9anBn"
+       },
+       {
+        img:"https://imgs.search.brave.com/UfbSOBeLObpdqJhtiQB6xcCnzA_q9h9XsNJ5pBZdwUk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9w/cmV0dHktc21pbGlu/Zy1qb3lmdWxseS1m/ZW1hbGUtd2l0aC1m/YWlyLWhhaXItZHJl/c3NlZC1jYXN1YWxs/eS1sb29raW5nLXdp/dGgtc2F0aXNmYWN0/aW9uXzE3NjQyMC0x/NTE4Ny5qcGc_c2l6/ZT02MjYmZXh0PWpw/Zw"
+       },
+       {
+        img:""
+       },
+       {
+        img:""
+       }
+    ])
 
 definePageMeta({
   layout: "layout",
