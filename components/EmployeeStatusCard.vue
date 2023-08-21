@@ -95,7 +95,7 @@ const timer = () =>{
     const date = new Date();
     const currentHour = date.getHours();
     const currentMinute = date.getMinutes();
-    if(currentHour <= 10 || currentHour > 19 || (currentHour == 19 && currentMinute > 30)){
+    if(currentHour < 10 || currentHour > 19 || (currentHour == 19 && currentMinute > 30)){
         time.hours = 0;
         time.minutes = 0;
         time.seconds = 0;
