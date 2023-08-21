@@ -1,7 +1,7 @@
 <template>
-    <div class="main-container mx-4 mt-5" style="padding-top:10px">
+    <div class="main-container w-100" style="padding-top:10px">
         <!-- Header -->
-        <div class="d-flex justify-content-between w-95 ">
+        <div class="d-flex justify-content-between w-100 ">
             <div class="d-flex">
                 <div class="head-status"></div>
                 <div class="text-bold text-lg mx-3">{{ header }}</div>
