@@ -73,7 +73,7 @@
 
         </div>
         <div class="col-lg-3">
-          <img class="" src="@/assets/img/user_profile.png" alt="">
+          <img class="w-100" src="@/assets/img/user_profile.png" alt="">
         </div>
       </div>
       <section class="mt-2 w-20">

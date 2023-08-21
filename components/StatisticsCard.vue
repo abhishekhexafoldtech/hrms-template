@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container mt-5 w-100" style="padding-top:10px">
+    <div class="main-container w-100" style="padding-top:10px">
         <!-- Header -->
         <div class="d-flex justify-content-between w-100 ">
             <div class="d-flex">

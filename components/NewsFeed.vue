@@ -10,7 +10,7 @@
             <el-col :span="11" class="mt-2">
                 <img class="w-100" src="@/assets/img/newsfeed.png" alt="">                 
                 <el-row>
-                    <div class="w-100 d-flex justify-content-center ">
+                    <div class="w-100 d-flex justify-content-center mt-n2">
                         <div class="w-50 shadow d-flex justify-content-center news_action">
                             <!-- Like -->
                             <div class="d-flex mx-2">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="input-group mt-3">
-                        <input type="text" class="form-control border comment-input" placeholder="Comment" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control border comment-input" placeholder="Write your comment here..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary " type="button"><i class="bi bi-send-fill "></i></button>
                         </div>
@@ -128,8 +128,8 @@ const feedDescription = ref(`Lorem ipsum dolor sit amet consectetur adipisicing 
     transform: scale(1.5); /* Scale up the image on hover */
 }
 .news_action{
-    position: relative;
-    z-index: 1;
+    border-radius: 5px;
+    background: #ffffff;
 }
 .feed-avatar{
     width: 70px;
