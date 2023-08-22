@@ -1,89 +1,90 @@
 <template>
-    <div class="container w-100">
-      <div class="row gx-5">
-        <!-- Date -->
-        <el-col :span="10">
-          <div class="row d-flex align-items-center border rounded shadow">
-            <div class="col-2">
-              <i class="bi bi-calendar-event fa-2x"></i>
-            </div>
-            <el-divider direction="vertical" />
-            <div class="col-5">{{ currentDate }}</div>
-          </div>
-        </el-col>
-  
-        <!-- Time -->
-        <el-col :span="10">
-          <div class="row d-flex align-items-center border rounded shadow">
-            <div class="col-2">
-              <i class="bi bi-clock-fill fa-2x"></i>
-            </div>
-            <el-divider direction="vertical" />
-            <div class="col-5">{{ formattedTime }}</div>
-          </div>
-        </el-col>
-  
-        <!-- Button checkIn -->
-        <el-col :span="2">
-          <button class="btn btn-primary btn-lg" @click="toggleCheckInStatus">{{ checkInStatus }}</button>
-        </el-col>
-      </div>
+  <div class="container w-100">
+    <div class="row gx-5">
+      <!-- time and date -->
+      <el-col :span="20" class="mt-1">
+        <div class="time-date-container d-flex align-items-center justify-content-end">
+          <div class="h5">IST {{ currentTime }}, {{ currentDay }} {{ currentMonth }}  {{ currentYear }}</div>
+        </div>
+      </el-col>
+
+      <!-- Button checkIn -->
+      <el-col :span="3">
+        <button class="btn button-dark btn-lg " @click="toggleCheckInStatus">{{ checkInStatus }}</button>
+      </el-col>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  
-  const currentDate = ref('');
-  const formattedTime = ref('00:00:00');  
-  let timerId;
-  const checkInStatus = ref('CheckIn');
+  </div>
+</template>
 
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 
-    // Get the current date and format it
-    const now = new Date();
-    currentDate.value = formatDate(now);
+const currentDate = ref('');
+const currentTime = ref('');
+const currentDay = ref('');
+const currentMonth = ref('');
+const currentYear = ref('');
+const checkInStatus = ref('ClockIn');
 
+// Get the current date and format it
+const now = new Date();
+currentDate.value = formatDate(now);
+currentDay.value = now.getDate();
+currentMonth.value = formatMonth(now.getMonth());
+currentYear.value = now.getFullYear();
+currentTime.value = formatTime(now);
 
-    function toggleCheckInStatus() {
-  if (timerId) {
-    clearInterval(timerId);
-    timerId = null;
-    formattedTime.value = '00:00:00';
-    checkInStatus.value = 'CheckIn';
+function toggleCheckInStatus() {
+  if (checkInStatus.value === 'ClockIn') {
+    checkInStatus.value = 'ClockOut';
   } else {
-    startTimer();
-    checkInStatus.value = 'CheckOut';
+    checkInStatus.value = 'ClockIn';
   }
 }
 
-function startTimer() {
-  const startTime = Date.now();
-  timerId = setInterval(() => {
-    const currentTime = Date.now() - startTime;
-    formattedTime.value = formatTime(currentTime);
-  }, 1000);
+function formatDate(date) {
+  // Format the date as 'DD/MM/YY'
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = String(date.getFullYear()).slice(-2);
+  return `${day}/${month}/${year}`;
 }
-  
-  function formatDate(date) {
-    // Format the date as 'DD/MM/YY'
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = String(date.getFullYear()).slice(-2);
-    return `${day}/${month}/${year}`;
-  }
- 
-function formatTime(ms) {
-  // Format the time in milliseconds to 'HH:mm:ss'
-  const hours = String(Math.floor(ms / 3600000)).padStart(2, '0');
-  const minutes = String(Math.floor((ms % 3600000) / 60000)).padStart(2, '0');
-  const seconds = String(Math.floor((ms % 60000) / 1000)).padStart(2, '0');
+
+function formatMonth(month) {
+  // Get the short name of the month
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return months[month];
+}
+
+function formatTime(date) {
+  // Format the time as 'HH:mm:ss'
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
   return `${hours}:${minutes}:${seconds}`;
 }
+
+// Update seconds every second
+const timerId = setInterval(() => {
+  const now = new Date();
+  currentTime.value = formatTime(now);
+}, 1000);
 
 // Optional: To stop the timer when the component is unmounted
 onUnmounted(() => {
   clearInterval(timerId);
 });
-  </script>
+</script>
+ 
+
+<style scoped>
+.time-date-container{
+  height: 50px;
+}
+.button-dark{
+  background-color: #1F281A;
+  color:rgb(255, 255, 255);
+}
+</style>
+
   
