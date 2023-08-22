@@ -76,9 +76,6 @@
                         <div style="background-color:rgba(103, 146, 137, 1);width:4px;height:20px" class="mt-1"></div>
                         <div class="capitalize mx-3 lh-base profile-heading">organization chart</div>
                     </div>
-                    <div>
-                        <i class="fa fa-ellipsis-v"></i>
-                    </div>
                 </div>
                 <!-- components of organization -->
                 <div class="organization rounded-3 w-100 mx-2 mt-2 text-start d-flex justify-content-between" v-for="user in 3" :key="user">
