@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+    <Sidenav />
     <slot />
     <Footer/>
   </div>
@@ -8,5 +9,6 @@
   
 <script setup>
 import Header from "./Header";
+import Sidenav from "./Sidenav.vue";
 import Footer from "./Footer";
 </script>
