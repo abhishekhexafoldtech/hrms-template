@@ -1,10 +1,14 @@
 <template>
-  <div>
-    <Header />
+  <section class="main_wrapper">
     <Sidenav />
-    <slot />
-    <Footer/>
-  </div>
+    <div class="main_content">
+      <div class="content_inner">
+        <!-- <Header /> -->
+        <slot />
+        <!-- <Footer /> -->
+      </div>
+    </div>
+  </section>
 </template>
   
 <script setup>

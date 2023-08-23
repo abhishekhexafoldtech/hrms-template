@@ -4,6 +4,7 @@
 @import "employee/employee.scss";
 
 @import "table/table.scss";
+@import "layout.scss";
 
 :root {
     --font-primary: 'Noto Sans', sans-serif;
@@ -12,6 +13,12 @@
     --text: #333;
     --red: #b72b2b;
     --pink: #D81B60;
+
+    --dark-green: #1F281A;
+    --text-primary: #3E363F;
+    --light-white: #f8f8f8;
+    --grey-bg: #EFF3F9;
+    --light-golden: #FFFACA;
 }
 
 body {

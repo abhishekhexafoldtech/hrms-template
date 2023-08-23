@@ -11,6 +11,7 @@ export default defineNuxtConfig({
         { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap"},
         { rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons+Round"},
         { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"},
+        { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"},
       ],
       script: [
         { src:"https://kit.fontawesome.com/42d5adcbca.js" },
@@ -28,6 +29,7 @@ export default defineNuxtConfig({
         { src:"@/assets/js/plugins/anime.min.js" },
         { src:"https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI" },
         { src:"assets/js/material-kit-pro.min.js?v=3.0.4" },
+        { src:"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" },
         
       ],
     }

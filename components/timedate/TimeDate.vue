@@ -1,18 +1,9 @@
 <template>
-  <div class="container w-100">
-    <div class="row gx-5">
-      <!-- time and date -->
-      <el-col :span="20" class="mt-1">
-        <div class="time-date-container d-flex align-items-center justify-content-end">
-          <div class="h5">IST {{ currentTime }}, {{ currentDay }} {{ currentMonth }}  {{ currentYear }}</div>
-        </div>
-      </el-col>
-
-      <!-- Button checkIn -->
-      <el-col :span="3">
-        <button class="btn button-dark btn-lg " @click="toggleCheckInStatus">{{ checkInStatus }}</button>
-      </el-col>
+  <div class="w-100 d-flex me-4">
+    <div class="time-date-container d-flex align-items-center justify-content-end me-5">
+      <div class="h5">IST {{ currentTime }}, {{ currentDay }} {{ currentMonth }} {{ currentYear }}</div>
     </div>
+    <button class="btn button-dark btn-lg m-0" @click="toggleCheckInStatus">{{ checkInStatus }}</button>
   </div>
 </template>
 
@@ -78,12 +69,13 @@ onUnmounted(() => {
  
 
 <style scoped>
-.time-date-container{
+.time-date-container {
   height: 50px;
 }
-.button-dark{
+
+.button-dark {
   background-color: #1F281A;
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 </style>
 
