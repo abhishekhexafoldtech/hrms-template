@@ -6,11 +6,11 @@
       <!-- top section -->
       <p class="card-title">Todo List</p>
       <!-- add todo Icon -->
-      <span @click="toggleInputAndButton"><i class="bi bi-plus-lg fw-bold"></i></span>
+      <span @click="handleDialogFormVisible"><i class="bi bi-plus-lg fw-bold"></i></span>
     </div>
 
         <!-- Conditionally render input and button based on showInputAndButton and editMode -->
-        <el-row v-if="showInputAndButton || editMode" :gutter="10" class="w-100">
+        <!-- <el-row v-if="showInputAndButton || editMode" :gutter="10" class="w-100">
               <el-col :span="15">
                 <el-form :ref="formRef" :rules="formValidationRules">
                   <el-form-item prop="todo" :rules="formValidationRules" class="fw-bold">
@@ -20,10 +20,10 @@
                       size="large"
                       placeholder="Please Input Todo Here..."
                     />
-                  </el-form-item>
+                  </el-form-item> -->
 
                   <!-- Add a new element to display the error message -->
-                  <el-form-item v-if="showSubmitWarning" class="form-error-message">
+                  <!-- <el-form-item v-if="showSubmitWarning" class="form-error-message">
                     <span class="el-form-item__error fw-bold">Please enter todo before submit</span>
                   </el-form-item>
 
@@ -31,11 +31,11 @@
               </el-col>
               <el-col :span="9" class="mt-1">
                 <button class="button-dark btn btn-lg  w-100" @click="handleSubmit">Submit</button>
-              </el-col>
+              </el-col> -->
               <!-- <el-col :span="2" class="mt-1">
                 <button class="btn btn-lg btn-warning eraser-btn " @click="handleClearAll"><i class="bi bi-eraser-fill"></i></button>
               </el-col> -->
-            </el-row>
+            <!-- </el-row> -->
             <el-row class="list m-0.5 w-100 mt-2" v-for="(todo, index) in todos" :key="index">
               <el-col :span="1" class="m-2 d-flex align-items-center pb-2">
                 <input type="checkbox" v-model="todo.completed" @change="handleCheckboxChange(todo)">
@@ -71,7 +71,7 @@
               </el-col> -->
             </el-row>
             </el-card>
-            
+            <expenseForm ref="dialogFormVisibleRef"/>
         </div>
   </ClientOnly>
   
@@ -79,6 +79,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import expenseForm from './todoForm.vue';
+
 
 const todos = ref([]);
 const input1 = ref('');
@@ -89,6 +91,12 @@ const showInputAndButton = ref(false); // New reactive variable to control visib
 const editMode = ref(false); // New reactive variable for edit mode
 const selectedTodoIndex = ref(-1); // New reactive variable to store the index of the selected todo
 
+
+//called Child component function
+const dialogFormVisibleRef = ref(null);
+const handleDialogFormVisible = () => {
+  dialogFormVisibleRef.value.dialogFormVisibleFun();
+};
 
 const toggleEditDelete = (index) => {
   if (selectedTodoIndex.value === index) {
