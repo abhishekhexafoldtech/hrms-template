@@ -1,52 +1,20 @@
 <template>
   <div>
-    <!-- <header class="header-2">
-      <div class="page-header min-vh-75 bg-img-desktop" loading="lazy">
-        <span class="mask bg-gradient-primary opacity-4"></span>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-7 text-center mx-auto">
-              <h1 class="text-white pt-3 mt-n5">Material Kit 2 PRO</h1>
-              <p class="lead text-white mt-3 px-5">
-                Start the Development With A Bootstrap 5 Design System inspired
-                by Material Design.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header> -->
-
+    <!-- Welcome Section -->
     <section class="wlcm_wrap mb-4">
       <h3>Welcome Vairagi!</h3>
-      <div class="wlcm_right d-flex align-items-center">
+      <div class="wlcm_right">
         <TimeDate />
-        <a class="not_icon" href="#">
-          <i class="ri-notification-3-line"></i>
-          <span></span>
-        </a>
       </div>
     </section>
 
-    <div class="row">
-      <div class="col-lg-9">
-        <div class="wrapper w-100 shadow border">
-          <div class="employees-status-container background d-flex flex-wrap">
-            <div class="d-flex">
-              <EmployeeStatusCard heading="My Desk Time" class="employees-status-card" color="#A368BE"
-                :desk-time="true" />
-              <div class="line"></div>
-            </div>
-            <div class="d-flex">
-              <EmployeeStatusCard :employees="allUsers" heading="Working Remotely"
-                e-description="Employees working remotely" class="employees-status-card" />
-              <div class="line"></div>
-            </div>
-            <div>
-              <EmployeeStatusCard :employees="allUsers" heading="On Leave Today" e-description="Employees on leave"
-                color="#4BC7A9" class="employees-status-card" />
-            </div>
-          </div>
+    <el-row gutter="20">
+      <el-col :xs="24" :sm="24" :md="14" :lg="19" :xl="19">
+        <div class="dash_three_block">
+          <EmployeeStatusCard heading="My Desk Time" :desk-time="true" />
+          <EmployeeStatusCard :employees="allUsers" heading="Working Remotely"
+            e-description="Employees working remotely" />
+          <EmployeeStatusCard :employees="allUsers" heading="On Leave Today" e-description="Employees on leave" />
         </div>
 
         <div class="row mt-4">
@@ -58,30 +26,22 @@
           </div>
         </div>
 
-        <section class="mt-2">
-          <div class="col-lg-12">
-            <div class="row">
-              <div class="col col-md-4 mt-md-0">
-                <!-- Upcoming Holidays -->
-                <EventCard :events="upcomingHlidays" title="Upcoming Holidays" />
-              </div>
-              <div class="col col-md-4 mt-md-0">
-                <!-- Upcoming Birthdays -->
-                <EventCard :events="events" @getEvents="getEvents" title="Birthdays" />
-              </div>
-              <div class="col col-md-4 mt-md-0">
-                <EventCard :events="upcomingEvents" title="Upcoming Event" />
-              </div>
-            </div>
-          </div>
+        <section class="mt-5">
+          <el-row gutter="20">
+            <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
+              <EventCard :events="upcomingHlidays" title="Upcoming Holidays" />
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
+              <EventCard :events="events" @getEvents="getEvents" title="Birthdays" />
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
+              <EventCard :events="upcomingEvents" title="Upcoming Event" />
+            </el-col>
+          </el-row>
         </section>
-
-      </div>
-
-      <!-- Side Profile -->
-      <div class="col-lg-3">
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="10" :lg="5" :xl="5">
         <div class="employee-profile-card profile-card background shadow border w-100" style="text-align: center;">
-
           <div class="profile mt-3">
             <div class="d-flex py-4" style="margin-left:auto;margin-right: auto;width: 130px;">
               <img
@@ -154,8 +114,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </el-col>
+    </el-row>
 
     <!-- <section class="mt-2 w-20">
         <div class="d-flex flex-wrap">
@@ -179,9 +139,6 @@ import ToDoList from "@/components/todo/index.vue";
 import TimeDate from "@/components/timedate/TimeDate.vue";
 import EventCard from "~/components/EventCard.vue";
 import NewsFeed from "~/components/NewsFeed.vue";
-
-
-
 
 //Upcoming Holidays Data
 const upcomingHlidays = [
@@ -365,11 +322,34 @@ definePageMeta({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .wlcm_wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px 0px;
+
+  h3 {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    margin: 0;
+  }
+
+  .wlcm_right {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/*** Style for 3 Blocks in Dashboard ****/
+.dash_three_block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
 }
 
 .bg-img-desktop {
@@ -380,7 +360,7 @@ definePageMeta({
   margin: 0;
 }
 
-background {
+.background {
   border-radius: 10px;
   box-shadow: 0px 3px 15px 0px #0000000D;
   background-color: white;
@@ -431,7 +411,7 @@ background {
   right: 28px;
 }
 
-.profile > div:nth-child(2) {
+.profile>div:nth-child(2) {
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
@@ -440,14 +420,14 @@ background {
 
 }
 
-.profile > div:nth-child(3) {
+.profile>div:nth-child(3) {
   font-size: 20px;
   font-weight: 500;
   line-height: 38px;
   letter-spacing: 0em;
 }
 
-.profile > button {
+.profile>button {
   text-transform: capitalize;
   font-size: 18px;
   font-weight: 500;
@@ -483,7 +463,7 @@ background {
   height: 68px;
 }
 
-.organization > div > img {
+.organization>div>img {
   margin-top: 6px;
 }
 </style>
