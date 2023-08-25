@@ -8,34 +8,6 @@
       <!-- add todo Icon -->
       <span @click="handleDialogFormVisible"><i class="bi bi-plus-lg fw-bold"></i></span>
     </div>
-
-        <!-- Conditionally render input and button based on showInputAndButton and editMode -->
-        <!-- <el-row v-if="showInputAndButton || editMode" :gutter="10" class="w-100">
-              <el-col :span="15">
-                <el-form :ref="formRef" :rules="formValidationRules">
-                  <el-form-item prop="todo" :rules="formValidationRules" class="fw-bold">
-                    <el-input
-                      v-model="input1"
-                      class="w-100 mt-2"
-                      size="large"
-                      placeholder="Please Input Todo Here..."
-                    />
-                  </el-form-item> -->
-
-                  <!-- Add a new element to display the error message -->
-                  <!-- <el-form-item v-if="showSubmitWarning" class="form-error-message">
-                    <span class="el-form-item__error fw-bold">Please enter todo before submit</span>
-                  </el-form-item>
-
-                </el-form>
-              </el-col>
-              <el-col :span="9" class="mt-1">
-                <button class="button-dark btn btn-lg  w-100" @click="handleSubmit">Submit</button>
-              </el-col> -->
-              <!-- <el-col :span="2" class="mt-1">
-                <button class="btn btn-lg btn-warning eraser-btn " @click="handleClearAll"><i class="bi bi-eraser-fill"></i></button>
-              </el-col> -->
-            <!-- </el-row> -->
             <el-row class="list m-0.5 w-100 mt-2" v-for="(todo, index) in todos" :key="index">
               <el-col :span="1" class="m-2 d-flex align-items-center pb-2">
                 <input type="checkbox" v-model="todo.completed" @change="handleCheckboxChange(todo)">
@@ -53,25 +25,39 @@
                 <i class="fa fa-ellipsis-v mx-2 pb-2" aria-hidden="true" @click="toggleEditDelete(index)"></i>
     <!-- ^ When three-dot icon is clicked, toggleEditDelete method is called -->
   </el-col>
-              <!-- <el-col :span="24">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr v-for="(todo, index) in todos" :key="index"> -->
-                      <!-- <td class="pt-3 w-5"> <el-checkbox v-model="checked2" label="Option 2" size="large" /></td> -->
-                      <!-- <td class="pt-3 w-5">
-                          <el-checkbox v-model="todo.completed" @change="handleCheckboxChange(todo)" size="small" />  -->
-                          <!-- <input class="form-check-input" @change="handleCheckboxChange(todo)" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">                        -->
-                      <!-- </td>
-                      <td :class="todoClass(todo) + ' w-90 pt-3 text-bold'">{{ todo.description }}</td> -->
+              
                       <el-button type="success" v-if="selectedTodoIndex === index" @click="editTodo(index)"><i class="bi bi-pencil-square"></i></el-button>
                       <el-button type="danger" v-if="selectedTodoIndex === index" @click="deleteTodo(index)"><i class="bi bi-trash-fill"></i></el-button>
-                    <!-- </tr>
-                  </tbody>
-                </table>
-              </el-col> -->
+                   
             </el-row>
             </el-card>
-            <expenseForm ref="dialogFormVisibleRef"/>
+            
+            <div class="">
+        <el-dialog ref="dialogFormVisibleRef" v-model="dialogFormVisible" width="60%">        
+        <span ><h5 style="margin-left:30px;">{{dialogHeading}}</h5></span>
+            <el-form
+                label-position="top"
+                label-width="100px"
+                :model="formData"
+                :rules="formValidationRules"
+                style="max-width: 100%; border-radius: 15px; height: fluid"
+                class="bg-white px-5 py-4 rounded-5"
+                ref="formRef"
+            >
+            <el-row>
+                <el-col :xs="24" :sm="24" :lg="24" :xl="24">
+                        <el-form-item label="Todo Description" prop="description">
+                            <el-input type="textarea" placeholder="Enter todo here..." v-model="formData.description"/>
+                        </el-form-item>
+                    </el-col>
+            </el-row>
+
+                <el-button type="primary" size="large" style="float:right;" @click="handleFormData">{{dialogButtonText}}</el-button> 
+                <el-button size="large"  style="float:right; margin-right: 10px;" @click="handleBackButton">Back</el-button> 
+
+            </el-form>
+    </el-dialog>
+    </div>
         </div>
   </ClientOnly>
   
@@ -79,23 +65,36 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import expenseForm from './todoForm.vue';
-
 
 const todos = ref([]);
-const input1 = ref('');
 const editedTodoIndex = ref(-1); // New reactive variable to keep track of the edited todo index
-// const formRef = ref(null);
-const showSubmitWarning = ref(false); // reactive variable to control the visibility of the submit warning message
 const showInputAndButton = ref(false); // New reactive variable to control visibility
 const editMode = ref(false); // New reactive variable for edit mode
 const selectedTodoIndex = ref(-1); // New reactive variable to store the index of the selected todo
+const dialogFormVisible = ref(false);
+const dialogHeading = ref('Add Todo'); // Set initial heading
+const dialogButtonText = ref('Save'); // Set initial button text
+const formRef = ref(null);
+
+// Input reactive
+const formData = reactive({
+    description: ""    
+})
+
+const formValidationRules = reactive({
+    description: [
+        {
+        required: true,
+        message: "Please enter todo...",
+        trigger: "blur",
+        },
+    ],
+})
 
 
 //called Child component function
-const dialogFormVisibleRef = ref(null);
 const handleDialogFormVisible = () => {
-  dialogFormVisibleRef.value.dialogFormVisibleFun();
+  dialogFormVisible.value = true; // Set to true when "add" icon is clicked
 };
 
 const toggleEditDelete = (index) => {
@@ -135,62 +134,17 @@ const isSameDate = (date1, date2) => {
   );
 };
 
-// Function to handle form submission and save todo to local storage
-const handleSubmit = () => {
-  if (input1.value.trim() !== '') {
-    if (editedTodoIndex.value !== -1) {
-      // If we are editing an existing todo
-      todos.value[editedTodoIndex.value].description = input1.value.trim();
-      editedTodoIndex.value = -1; // Reset the editedTodoIndex after editing
-
-      // Update the timestamp for edited todos
-      todos.value[editedTodoIndex.value].timestamp = Date.now();
-    } else {
-      // Otherwise, add a new todo
-      // const newTodo = {
-      //   description: input1.value.trim(),
-      //   completed: false,
-      // };
-      // todos.value.push(newTodo);
-
-      // Add timestamp for new todos
-      const newTodo = {
-        description: input1.value.trim(),
-        completed: false,
-        timestamp: Date.now(),
-      };
-      todos.value.push(newTodo);
-    }
-
-    localStorage.setItem('todos', JSON.stringify(todos.value));
-    input1.value = ''; // Reset the input field after submitting the form
-
-    // Hide the error message
-    showSubmitWarning.value = false;
-  } else {
-    // Show the error message when the input is empty and the user is trying to submit
-    showSubmitWarning.value = true;
-  }
-  // Reset editMode after handling submission
-  editMode.value = false;
-};
-
-
-
-
-// const editTodo = (index) => {
-// // Set the editedTodoIndex to the index of the todo being edited
-// editedTodoIndex.value = index;
-// input1.value = todos.value[index].description; // Populate the input with the todo's description
-// };
-
-// Function to handle editing a todo
 const editTodo = (index) => {
-  // Set the editedTodoIndex to the index of the todo being edited
   editedTodoIndex.value = index;
-  input1.value = todos.value[index].description; // Populate the input with the todo's description
-  showInputAndButton.value = true; // Show input and button when editing
+  formData.description = todos.value[index].description; // Populate the input with the todo's description
+  showInputAndButton.value = true;
   editMode.value = true; // Set editMode to true when editing
+  selectedTodoIndex.value = index; // Set selected todo index
+  dialogFormVisible.value = true; // Open the dialog
+
+   // Update dialog heading and button text for editing
+   dialogHeading.value = 'Update Todo';
+  dialogButtonText.value = 'Update';
 };
 
 
@@ -224,17 +178,74 @@ localStorage.setItem('todos', JSON.stringify(todos.value));
 };
 
 // Function to clear all todos
-const handleClearAll = () => {
-todos.value = []; // Remove all todos from the array
-localStorage.removeItem('todos'); // Remove todos from localStorage
+// const handleClearAll = () => {
+// todos.value = []; // Remove all todos from the array
+// localStorage.removeItem('todos'); // Remove todos from localStorage
 
+// };
+
+
+// FORM RELATED
+function handleFormData() {
+  formRef.value.validate((valid) => {
+    if (valid) {
+      if (editMode.value) {
+        // Editing mode
+        todos.value[selectedTodoIndex.value].description = formData.description;
+        todos.value[selectedTodoIndex.value].timestamp = Date.now();
+
+        localStorage.setItem('todos', JSON.stringify(todos.value));
+
+        // Reset editMode and hide dialog
+        editMode.value = false;
+        dialogFormVisible.value = false;
+
+        // Show a success notification or perform any other actions
+        flashNotification('success', 'Todo updated successfully');
+
+         // Reset input field
+         formData.description = '';
+      } else {
+        // Adding mode
+        const newTodo = {
+          description: formData.description,
+          completed: false,
+          timestamp: Date.now(),
+        };
+        todos.value.push(newTodo);
+
+        localStorage.setItem('todos', JSON.stringify(todos.value));
+
+        // Hide the dialog
+        dialogFormVisible.value = false;
+
+        // Clear the form data
+        formData.description = '';
+
+        // Show a success notification or perform any other actions
+        flashNotification('success', 'Todo added successfully');
+
+        // Reset dialog heading and button text
+      dialogHeading.value = 'Add Todo';
+      dialogButtonText.value = 'Save';
+      }
+    }
+  });
+}
+
+// Method to handle the "Back" button click
+const handleBackButton = () => {
+  // Reset input field
+  formData.description = '';
+
+  // Hide the dialog
+  dialogFormVisible.value = false;
+
+  // Reset dialog heading and button text
+  dialogHeading.value = 'Add Todo';
+  dialogButtonText.value = 'Save';
 };
 
-// Function to toggle the visibility of input field and submit button
-const toggleInputAndButton = () => {
-  showInputAndButton.value = !showInputAndButton.value;
-  editMode.value = false; // Reset editMode when toggling
-};
 
 </script>
 
