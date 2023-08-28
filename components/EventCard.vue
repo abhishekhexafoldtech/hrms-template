@@ -32,46 +32,28 @@
       </div>
     </div>
 
-    <div class="ev_inner">
-      <div class="ev_item">
-        <figure>
+    <div class="ev_inner" >
+      <div v-for="event in props.events" :key="event.id" class="ev_item">
+        <figure v-if="title === 'Birthdays'">
+          <img :src="event.image" alt="">
+        </figure>
+        <figure v-else-if="title === 'Upcoming Events'">
+          <i :class="event.icon" class="w-100"></i>
+        </figure>
+        <figure v-else>
           <h4>
-            15
-            <span>Aug</span>
+            {{ event.date }}
+            <span>{{ event.month }}</span>
           </h4>
         </figure>
+        <!-- <figure>
+         <img :src="event.image" alt="">
+        </figure> -->
         <div class="ev_con">
-          <h3>Independence Day</h3>
+          <h3>{{ event.name }}</h3>
           <ul>
-            <li>Tuesday</li>
-            <li>6 days to left</li>
-          </ul>
-        </div>
-      </div>
-      <div class="ev_item">
-        <figure>
-          <img src="@/assets/img/user_profile.png" alt="">
-        </figure>
-        <div class="ev_con">
-          <h3>Ganesh Chaturthi</h3>
-          <ul>
-            <li>Friday</li>
-            <li>41 days to left</li>
-          </ul>
-        </div>
-      </div>
-      <div class="ev_item">
-        <figure>
-          <h4>
-            28
-            <span>Sep</span>
-          </h4>
-        </figure>
-        <div class="ev_con">
-          <h3>Ganesh Visarjan</h3>
-          <ul>
-            <li>Monday</li>
-            <li>49 days to left</li>
+            <li>{{ event.day }}</li>
+            <li>{{ event.daysLeft }} days left</li>
           </ul>
         </div>
       </div>
@@ -137,6 +119,11 @@ const handleWishBday = () => {
 </script>
 
 <style scoped lang="scss">
+figure i{
+  
+  color: #e5e5e5;
+}
+
 .box-card {
   height: 385px;
   border-radius: 10px;

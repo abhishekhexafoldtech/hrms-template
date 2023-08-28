@@ -35,7 +35,7 @@
               <EventCard :events="events" @getEvents="getEvents" title="Birthdays" />
             </el-col>
             <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
-              <EventCard :events="upcomingEvents" title="Upcoming Event" />
+              <EventCard :events="upcomingEvents" title="Upcoming Events" />
             </el-col>
           </el-row>
         </section>
@@ -134,6 +134,8 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 import EventCalender from "@/components/calender/EventCalender.vue";
 import ToDoList from "@/components/todo/index.vue";
 import TimeDate from "@/components/timedate/TimeDate.vue";
@@ -145,43 +147,54 @@ const upcomingHlidays = [
   {
     id: 1,
     name: "Bakrid",
+    date: 18,
+    month: "June",
     day: "Wednesday",
-    days: 10,
+    daysLeft: 10,
     image:
       "https://thumbs.dreamstime.com/b/christmas-decorations-border-text-happy-holidays-red-sparkly-bulb-gold-tree-topper-star-corner-framing-44504444.jpg",
   },
   {
     id: 2,
-    name: "Thiruvalluvar Day",
+    name: "Cristmas",
+    date: 25,
+    month: "Dec",
     day: "Wednesday",
-    days: 15,
+    daysLeft: 12,
     image:
-      "https://media.istockphoto.com/id/1355669924/photo/happy-holidays-christmas-card-with-close-up-of-pine-tree-branch-and-snow-in-background.jpg?s=612x612&w=0&k=20&c=OUu_A8QmGCE6GwDAVdKve0rYIKSFlKO_NUKDFXO5sVE=",
+      "https://thumbs.dreamstime.com/b/christmas-decorations-border-text-happy-holidays-red-sparkly-bulb-gold-tree-topper-star-corner-framing-44504444.jpg",
   },
   {
     id: 3,
-    name: "Gaan-Ngai",
+    name: "Rakshabandhan",
+    date: 18,
+    month: "Jan",
     day: "Wednesday",
-    days: 19,
+    daysLeft: 25,
     image:
-      "https://thumbs.dreamstime.com/b/happy-holidays-lettering-happy-holidays-lettering-winter-blurred-background-101818646.jpg",
+      "https://thumbs.dreamstime.com/b/christmas-decorations-border-text-happy-holidays-red-sparkly-bulb-gold-tree-topper-star-corner-framing-44504444.jpg",
   },
   {
     id: 4,
-    name: "Uzhavar Thirunal",
+    name: "Bakrid",
+    date: 18,
+    month: "Feb",
     day: "Wednesday",
-    days: 22,
+    daysLeft: 10,
     image:
-      "https://media.istockphoto.com/id/513550806/photo/teenager-hipster-friends-partying-by-blowing-colorful-confetti-from-hands.jpg?s=612x612&w=0&k=20&c=BG0BHvW98AiLFyhiNy3NzlPZlGTUwHS-I8iYVvWmR78=",
+      "https://thumbs.dreamstime.com/b/christmas-decorations-border-text-happy-holidays-red-sparkly-bulb-gold-tree-topper-star-corner-framing-44504444.jpg",
   },
   {
     id: 5,
-    name: "Kanuma Panduga",
+    name: "Bakrid",
+    date: 18,
+    month: "Mar",
     day: "Wednesday",
-    days: 30,
+    daysLeft: 10,
     image:
-      "https://www.freepnglogos.com/uploads/happy-birthday-png/happy-birthday-png-design-elements-3.png",
+      "https://thumbs.dreamstime.com/b/christmas-decorations-border-text-happy-holidays-red-sparkly-bulb-gold-tree-topper-star-corner-framing-44504444.jpg",
   },
+  
   // Add more events here if needed
 ];
 
@@ -192,7 +205,7 @@ const upcomingBirthdays = [
     id: 1,
     name: "James Daniel",
     day: "Wednesday",
-    days: 11,
+    daysLeft: 11,
     image:
       "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000",
   },
@@ -200,7 +213,7 @@ const upcomingBirthdays = [
     id: 2,
     name: "Jack William",
     day: "Wednesday",
-    days: 15,
+    daysLeft: 15,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpIoI76wjvQ2pq6t25TLmRAwTxv118OFKZxykoCiY_fWRtR8QRr1nWWcDtG3tHdgCuWu8&usqp=CAU",
   },
@@ -208,7 +221,7 @@ const upcomingBirthdays = [
     id: 3,
     name: "Oliver Henry",
     day: "Wednesday",
-    days: 5,
+    daysLeft: 5,
     image:
       "https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg",
   },
@@ -216,7 +229,7 @@ const upcomingBirthdays = [
     id: 4,
     name: "Alexander Benjamin",
     day: "Wednesday",
-    days: 30,
+    daysLeft: 30,
     image:
       "https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg",
   },
@@ -224,10 +237,10 @@ const upcomingBirthdays = [
     id: 5,
     name: "James Alexander",
     day: "Wednesday",
-    days: 10,
+    daysLeft: 10,
     image:
       "https://t4.ftcdn.net/jpg/04/41/19/91/360_F_441199112_nm3XCB735HW3pSgWEbIBaCsfsbDy6Ot0.jpg",
-  },
+  }
   // Add more events here if needed
 ];
 
@@ -236,40 +249,45 @@ const upcomingBirthdays = [
 const upcomingEvents = [
   {
     id: 1,
-    name: "T-20 Cricket",
+    icon: 'ri-computer-line',
+    name: "Demo on Onboarding of Nova",
     day: "Wednesday",
-    days: 4,
+    daysLeft: 4,
     image:
       "https://cdn1.vectorstock.com/i/1000x1000/08/20/realistic-golden-trophy-with-winner-ribbon-vector-25530820.jpg",
   },
   {
     id: 2,
-    name: "FIFA World Cup",
-    day: "Wednesday",
-    days: 11,
+    icon: 'ri-video-chat-line',    
+    name: "Training session on Vue Js",
+    day: "Monday",
+    daysLeft: 11,
     image: "https://images.meesho.com/images/products/278009053/3c7x8_512.webp",
   },
   {
     id: 3,
-    name: "Tour de France",
+    icon: 'ri-article-line',
+    name: "Schedule to meeting with Clients",
     day: "Wednesday",
-    days: 25,
+    daysLeft: 25,
     image:
       "https://t3.ftcdn.net/jpg/05/65/98/14/360_F_565981433_mGOyipXL7CGia8xa9kjOpoI39pP9DAka.jpg",
   },
   {
     id: 4,
-    name: "Uzhavar Thirunal",
+    icon: 'ri-article-line',
+    name: "Digital agency meeting",
     day: "Wednesday",
-    days: 24,
+    daysLeft: 24,
     image:
       "https://media.istockphoto.com/id/1182465245/photo/gold-winners-trophy-champion-cup-with-falling-confetti.jpg?s=612x612&w=0&k=20&c=oL7XQ2GgDptAOYAZY_63kYjRrAnb_Zhn0GUdNLy4rpY=",
   },
   {
     id: 5,
+    icon: 'ri-video-chat-line',
     name: "Rugby World Cup",
     day: "Wednesday",
-    days: 30,
+    daysLeft: 30,
     image:
       "https://www.freepnglogos.com/uploads/happy-birthday-png/happy-birthday-png-design-elements-3.png",
   },
