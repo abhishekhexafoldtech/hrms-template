@@ -78,13 +78,6 @@ h6 {
   }
 }
 
-.ev_box {
-  border-radius: 10px;
-  background-color: var(--white);
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
-  padding: 15px;
-}
-
 /**** Style for all Box Heading (Common) ****/
 .box_heading {
   display: flex;
@@ -142,15 +135,43 @@ h6 {
   }
 }
 
-/**** Style for Box Event List ****/
+/**** Style for Event Box ****/
+.ev_box {
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+}
+/**** Style for Upcoming Holiday / Uocoming Event List ****/
 .ev_inner {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-height: 200px;
+  margin: 0 -10px;
+  padding: 0 10px;
+  overflow: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c9c9c9;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--grey-bg);
+    border-radius: 100px;
+  }
 
   .ev_item {
     figure {
       margin: 0;
+      text-align: center;
       display: inline-block;
       vertical-align: middle;
       width: 55px;
@@ -165,6 +186,12 @@ h6 {
         height: 100%;
         object-fit: cover;
         object-position: center;
+      }
+
+      i {
+        font-size: 25px;
+        color: var(--white);
+        line-height: 55px;
       }
 
       h4 {
@@ -200,6 +227,10 @@ h6 {
         font-weight: 600;
         margin: 0;
         margin-bottom: 6px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
       }
 
       ul {
@@ -242,14 +273,46 @@ h6 {
       }
     }
   }
+
+  &.uc_events {
+    .ev_item {
+      &:first-child {
+        figure {
+          background-color: var(--violet);
+        }
+      }
+      &:nth-child(2) {
+        figure {
+          background-color: var(--brown);
+        }
+      }
+      &:nth-child(3) {
+        figure {
+          background-color: var(--blue);
+        }
+      }
+      &:nth-child(4) {
+        figure {
+          background-color: var(--cyan);
+        }
+      }
+      &:nth-child(5) {
+        figure {
+          background-color: var(--orange);
+        }
+      }
+    }
+  }
 }
 
+/**** Style for Birthday Event List ****/
 .bday_tab {
   .el-tabs__nav-wrap {
     min-width: auto;
     margin: 0;
     background-color: var(--grey-bg);
     border-radius: 5px;
+    height: 35px;
   }
 
   &.el-tabs--card > .el-tabs__header {
@@ -259,11 +322,12 @@ h6 {
 
   &.el-tabs--card > .el-tabs__header .el-tabs__item {
     border: none;
-    padding: 10px 15px !important;
+    padding: 5px 15px !important;
     color: var(--text-primary);
     font-size: 13px;
     font-weight: 500;
     border-radius: 5px;
+    height: 35px;
   }
 
   &.el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:nth-child(2),
@@ -276,12 +340,12 @@ h6 {
     color: var(--white);
   }
 }
-
 .bday_box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-top: -3px;
+  margin-bottom: 10px;
 
   .dropdown {
     height: 25px;
@@ -314,139 +378,5 @@ h6 {
 
   .dropdown .dropdown-menu.dropdown-menu-end:before {
     right: 15px;
-  }
-}
-
-/**** Style for Right Side Profile - Dashboard ****/
-.right_profile {
-  border-radius: 10px;
-  background-color: var(--white);
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
-  padding: 25px 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  .pr_box {
-    text-align: center;
-
-    figure {
-      width: 125px;
-      height: 125px;
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 20px;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        border-radius: 50%;
-        overflow: hidden;
-      }
-
-      button {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        background-color: var(--white);
-        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
-        border: none;
-        font-size: 18px;
-        color: var(--text-primary);
-      }
-    }
-    h2 {
-      color: var(--text-primary);
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 24px;
-      margin: 0;
-      margin-bottom: 3px;
-    }
-    p {
-      color: var(--text-grey);
-      font-size: 15px;
-      font-weight: 500;
-      margin: 0;
-    }
-  }
-}
-
-/**** Style for Organization Chart - Dashboard ****/
-.org_chart {
-  .oc_inner {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    .oc_item {
-      background-color: var(--grey-bg);
-      padding: 6px 10px;
-      border-radius: 10px;
-      img {
-        width: 55px;
-        height: 55px;
-        border-radius: 10px;
-        object-fit: cover;
-        object-position: center;
-        display: inline-block;
-        vertical-align: middle;
-      }
-      .oc_con {
-        display: inline-block;
-        vertical-align: middle;
-        position: relative;
-        padding-left: 8px;
-        width: calc(100% - 55px);
-
-        h3 {
-          color: var(--text-primary);
-          font-size: 16px;
-          font-weight: 600;
-          margin: 0;
-          margin-bottom: 3px;
-          text-transform: capitalize;
-        }
-        p {
-          color: var(--text-grey);
-          font-size: 14px;
-          line-height: 20px;
-          font-weight: 500;
-          margin: 0;
-          text-transform: capitalize;
-        }
-
-        i {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          font-size: 20px;
-          height: 22px;
-          line-height: 20px;
-          color: var(--orange);
-        }
-      }
-
-      &:first-child {
-        .oc_con {
-          i {
-            display: none;
-          }
-        }
-      }
-      &:last-child {
-        .oc_con {
-          i {
-            color: var(--cyan);
-          }
-        }
-      }
-    }
   }
 }

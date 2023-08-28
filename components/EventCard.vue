@@ -32,23 +32,42 @@
       </div>
     </div>
 
-    <div class="ev_inner" >
+    <div class="ev_inner" v-if="title === 'Upcoming Holidays'">
       <div v-for="event in props.events" :key="event.id" class="ev_item">
-        <figure v-if="title === 'Birthdays'">
-          <img :src="event.image" alt="">
-        </figure>
-        <figure v-else-if="title === 'Upcoming Events'">
-          <i :class="event.icon" class="w-100"></i>
-        </figure>
-        <figure v-else>
+        <figure >
           <h4>
             {{ event.date }}
             <span>{{ event.month }}</span>
           </h4>
         </figure>
-        <!-- <figure>
-         <img :src="event.image" alt="">
-        </figure> -->
+        <div class="ev_con">
+          <h3>{{ event.name }}</h3>
+          <ul>
+            <li>{{ event.day }}</li>
+            <li>{{ event.daysLeft }} days left</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ev_inner" v-if="title === 'Birthdays'">
+      <div v-for="event in props.events" :key="event.id" class="ev_item">
+        <figure>
+          <img :src="event.image" alt="">
+        </figure>
+        <div class="ev_con">
+          <h3>{{ event.name }}</h3>
+          <ul>
+            <li>{{ event.day }}</li>
+            <li>{{ event.daysLeft }} days left</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ev_inner uc_events" v-else-if="title === 'Upcoming Events'">
+      <div v-for="event in props.events" :key="event.id" class="ev_item">
+        <figure>
+          <i :class="event.icon" class="w-100"></i>
+        </figure>
         <div class="ev_con">
           <h3>{{ event.name }}</h3>
           <ul>
@@ -119,64 +138,4 @@ const handleWishBday = () => {
 </script>
 
 <style scoped lang="scss">
-figure i{
-  
-  color: #e5e5e5;
-}
-
-.box-card {
-  height: 385px;
-  border-radius: 10px;
-  overflow-y: auto;
-  // background-color:rgb(250, 250, 255);
-  /* Use auto instead of scroll for a better user experience */
-}
-
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-main-section {
-  display: flex;
-  padding: 14px 0px;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.card-title {
-  font-family: Arial, Helvetica, sans-serif;
-  color: rgb(71, 68, 68);
-  font-weight: 600;
-  font-size: 18px;
-  margin: 0;
-}
-
-.event-icon {
-  display: flex;
-  margin-right: 12px;
-}
-
-.event-name {
-  flex: 1;
-  line-height: 1;
-}
-
-.event-days {
-  line-height: 28px;
-  float: right;
-
-  span {
-    float: right;
-  }
-}
-
-//tab css
-
-.demo-tabs>.el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-}
 </style>

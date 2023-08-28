@@ -1,90 +1,89 @@
 <template>
-  <div>
-    <!-- Welcome Section -->
-    <section class="wlcm_wrap mb-4">
-      <h3>Welcome Vairagi!</h3>
-      <div class="wlcm_right">
-        <TimeDate />
+  <!-- Welcome Section -->
+  <section class="wlcm_wrap mb-4">
+    <h3>Welcome Vairagi!</h3>
+    <div class="wlcm_right">
+      <TimeDate />
+    </div>
+  </section>
+
+  <el-row gutter="20">
+    <el-col :xs="24" :sm="24" :md="14" :lg="19" :xl="19">
+      <div class="dash_three_block">
+        <EmployeeStatusCard heading="My Desk Time" :desk-time="true" />
+        <EmployeeStatusCard
+          :employees="allUsers"
+          heading="Working Remotely"
+          e-description="Employees working remotely"
+        />
+        <EmployeeStatusCard
+          :employees="allUsers"
+          heading="On Leave Today"
+          e-description="Employees on leave"
+        />
       </div>
-    </section>
 
-    <el-row gutter="20">
-      <el-col :xs="24" :sm="24" :md="14" :lg="19" :xl="19">
-        <div class="dash_three_block">
-          <EmployeeStatusCard heading="My Desk Time" :desk-time="true" />
-          <EmployeeStatusCard
-            :employees="allUsers"
-            heading="Working Remotely"
-            e-description="Employees working remotely"
-          />
-          <EmployeeStatusCard
-            :employees="allUsers"
-            heading="On Leave Today"
-            e-description="Employees on leave"
-          />
+      <div class="row mt-4">
+        <div class="col-lg-4">
+          <ToDoList />
         </div>
-
-        <div class="row mt-4">
-          <div class="col-lg-4">
-            <ToDoList />
-          </div>
-          <div class="col-lg-8">
-            <NewsFeed />
-          </div>
+        <div class="col-lg-8">
+          <NewsFeed />
         </div>
+      </div>
 
-        <section class="mt-5">
-          <el-row gutter="20">
-            <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
-              <EventCard :events="upcomingHlidays" title="Upcoming Holidays" />
-            </el-col>
-            <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
-              <EventCard
-                :events="events"
-                @getEvents="getEvents"
-                title="Birthdays"
-              />
-            </el-col>
-            <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
-              <EventCard :events="upcomingEvents" title="Upcoming Events" />
-            </el-col>
-          </el-row>
-        </section>
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="10" :lg="5" :xl="5">
-        <div class="right_profile">
-          <div class="pr_box">
-            <figure>
-              <img
-                src="https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZN9afA%3AVt72dmaIt2BR1PZqQPqS2QbVKVJz-XLdbfBnh0uvLCjwPFxq_3PzS0wAowtDVuqPgmjYks4I7v5zqILtMal9xA"
-                alt=""
-              />
-              <button><i class="ri-edit-2-line"></i></button>
-            </figure>
-            <h2>Kiran Kumar</h2>
-            <p>VueJs Developer</p>
+      <section class="mt-5">
+        <el-row gutter="20">
+          <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
+            <EventCard :events="upcomingHlidays" title="Upcoming Holidays" />
+          </el-col>
+          <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
+            <EventCard
+              :events="events"
+              @getEvents="getEvents"
+              title="Birthdays"
+            />
+          </el-col>
+          <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
+            <EventCard :events="upcomingEvents" title="Upcoming Events" />
+          </el-col>
+        </el-row>
+      </section>
+    </el-col>
+    <el-col :xs="24" :sm="24" :md="10" :lg="5" :xl="5">
+      <div class="right_profile">
+        <div class="pr_box">
+          <figure>
+            <img
+              src="https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZN9afA%3AVt72dmaIt2BR1PZqQPqS2QbVKVJz-XLdbfBnh0uvLCjwPFxq_3PzS0wAowtDVuqPgmjYks4I7v5zqILtMal9xA"
+              alt=""
+            />
+            <button><i class="ri-edit-2-line"></i></button>
+          </figure>
+          <h2>Kiran Kumar</h2>
+          <p>VueJs Developer</p>
+        </div>
+        <hr />
+        <div class="org_chart">
+          <div class="box_heading">
+            <h3>Organization Chart</h3>
           </div>
-          <hr />
-          <div class="org_chart">
-            <div class="box_heading">
-              <h3>Organization Chart</h3>
-            </div>
-            <div class="oc_inner">
-              <div class="oc_item" v-for="user in 3" :key="user">
-                <img :src="allUsers[user].img" alt="" />
-                <div class="oc_con">
-                  <h3>{{ allUsers[user].name }}</h3>
-                  <p>{{ allUsers[user].profession }}</p>
-                  <i class="ri-arrow-up-line"></i>
-                </div>
+          <div class="oc_inner">
+            <div class="oc_item" v-for="user in 3" :key="user">
+              <img :src="allUsers[user].img" alt="" />
+              <div class="oc_con">
+                <h3>{{ allUsers[user].name }}</h3>
+                <p>{{ allUsers[user].profession }}</p>
+                <i class="ri-arrow-up-line"></i>
               </div>
             </div>
           </div>
         </div>
-      </el-col>
-    </el-row>
+      </div>
+    </el-col>
+  </el-row>
 
-    <!-- <section class="mt-2 w-20">
+  <!-- <section class="mt-2 w-20">
         <div class="d-flex flex-wrap">
           <StatisticsCard :leave="true" header="Total Leaves" />
         </div>
@@ -97,7 +96,6 @@
           </div>
         </div>
       </section> -->
-  </div>
 </template>
 
 <script setup>
@@ -161,7 +159,7 @@ const upcomingHlidays = [
     image:
       "https://thumbs.dreamstime.com/b/christmas-decorations-border-text-happy-holidays-red-sparkly-bulb-gold-tree-topper-star-corner-framing-44504444.jpg",
   },
-  
+
   // Add more events here if needed
 ];
 
@@ -207,7 +205,7 @@ const upcomingBirthdays = [
     daysLeft: 10,
     image:
       "https://t4.ftcdn.net/jpg/04/41/19/91/360_F_441199112_nm3XCB735HW3pSgWEbIBaCsfsbDy6Ot0.jpg",
-  }
+  },
   // Add more events here if needed
 ];
 
@@ -215,7 +213,7 @@ const upcomingBirthdays = [
 const upcomingEvents = [
   {
     id: 1,
-    icon: 'ri-computer-line',
+    icon: "ri-computer-line",
     name: "Demo on Onboarding of Nova",
     day: "Wednesday",
     daysLeft: 4,
@@ -224,7 +222,7 @@ const upcomingEvents = [
   },
   {
     id: 2,
-    icon: 'ri-video-chat-line',    
+    icon: "ri-video-chat-line",
     name: "Training session on Vue Js",
     day: "Monday",
     daysLeft: 11,
@@ -232,7 +230,7 @@ const upcomingEvents = [
   },
   {
     id: 3,
-    icon: 'ri-article-line',
+    icon: "ri-article-line",
     name: "Schedule to meeting with Clients",
     day: "Wednesday",
     daysLeft: 25,
@@ -241,7 +239,7 @@ const upcomingEvents = [
   },
   {
     id: 4,
-    icon: 'ri-article-line',
+    icon: "ri-article-line",
     name: "Digital agency meeting",
     day: "Wednesday",
     daysLeft: 24,
@@ -250,7 +248,7 @@ const upcomingEvents = [
   },
   {
     id: 5,
-    icon: 'ri-video-chat-line',
+    icon: "ri-video-chat-line",
     name: "Rugby World Cup",
     day: "Wednesday",
     daysLeft: 30,
@@ -330,5 +328,139 @@ definePageMeta({
   border-radius: 10px;
   background-color: var(--white);
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+/**** Style for Right Side Profile - Dashboard ****/
+.right_profile {
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .pr_box {
+    text-align: center;
+
+    figure {
+      width: 125px;
+      height: 125px;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: var(--white);
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+        border: none;
+        font-size: 18px;
+        color: var(--text-primary);
+      }
+    }
+    h2 {
+      color: var(--text-primary);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+      margin: 0;
+      margin-bottom: 3px;
+    }
+    p {
+      color: var(--text-grey);
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+}
+
+/**** Style for Organization Chart - Dashboard ****/
+.org_chart {
+  .oc_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .oc_item {
+      background-color: var(--grey-bg);
+      padding: 6px 10px;
+      border-radius: 10px;
+      img {
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .oc_con {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-left: 8px;
+        width: calc(100% - 55px);
+
+        h3 {
+          color: var(--text-primary);
+          font-size: 16px;
+          font-weight: 600;
+          margin: 0;
+          margin-bottom: 3px;
+          text-transform: capitalize;
+        }
+        p {
+          color: var(--text-grey);
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 500;
+          margin: 0;
+          text-transform: capitalize;
+        }
+
+        i {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          font-size: 20px;
+          height: 22px;
+          line-height: 20px;
+          color: var(--orange);
+        }
+      }
+
+      &:first-child {
+        .oc_con {
+          i {
+            display: none;
+          }
+        }
+      }
+      &:last-child {
+        .oc_con {
+          i {
+            color: var(--cyan);
+          }
+        }
+      }
+    }
+  }
 }
 </style>
