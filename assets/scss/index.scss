@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap");
 
 // Style for Employee Module
 @import "employee/employee.scss";
@@ -7,24 +7,24 @@
 @import "layout.scss";
 
 :root {
-  --font-primary: 'Noto Sans', sans-serif;
-  --white: #FFF;
+  --font-primary: "Noto Sans", sans-serif;
+  --white: #fff;
   --heading: #344767;
   --text: #333;
   --red: #b72b2b;
-  --pink: #D81B60;
+  --pink: #d81b60;
 
-  --dark-green: #1F281A;
-  --text-primary: #3E363F;
+  --dark-green: #1f281a;
+  --text-primary: #3e363f;
   --text-grey: #666;
   --light-white: #f8f8f8;
-  --grey-bg: #EFF3F9;
-  --light-golden: #FFFACA;
-  --cyan: #4BC7A9;
-  --violet: #A368BE;
-  --orange: #FD7D55;
-  --blue: #378FE9;
-  --brown: #7E5920;
+  --grey-bg: #eff3f9;
+  --light-golden: #fffaca;
+  --cyan: #4bc7a9;
+  --violet: #a368be;
+  --orange: #fd7d55;
+  --blue: #378fe9;
+  --brown: #7e5920;
 }
 
 body {
@@ -65,7 +65,7 @@ h6 {
     width: 0;
     background: var(--grey-bg);
     border-radius: 5px;
-    transition: .5s;
+    transition: 0.5s;
   }
 
   &:hover {
@@ -252,12 +252,12 @@ h6 {
     border-radius: 5px;
   }
 
-  &.el-tabs--card>.el-tabs__header {
+  &.el-tabs--card > .el-tabs__header {
     border: none;
     margin: 0;
   }
 
-  &.el-tabs--card>.el-tabs__header .el-tabs__item {
+  &.el-tabs--card > .el-tabs__header .el-tabs__item {
     border: none;
     padding: 10px 15px !important;
     color: var(--text-primary);
@@ -266,12 +266,12 @@ h6 {
     border-radius: 5px;
   }
 
-  &.el-tabs--top.el-tabs--card>.el-tabs__header .el-tabs__item:nth-child(2),
-  &.el-tabs--top.el-tabs--card>.el-tabs__header .el-tabs__item:nth-child(3) {
+  &.el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:nth-child(2),
+  &.el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:nth-child(3) {
     padding: 10px 15px !important;
   }
 
-  &.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+  &.el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
     background-color: var(--dark-green);
     color: var(--white);
   }
@@ -314,5 +314,139 @@ h6 {
 
   .dropdown .dropdown-menu.dropdown-menu-end:before {
     right: 15px;
+  }
+}
+
+/**** Style for Right Side Profile - Dashboard ****/
+.right_profile {
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .pr_box {
+    text-align: center;
+
+    figure {
+      width: 125px;
+      height: 125px;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: var(--white);
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+        border: none;
+        font-size: 18px;
+        color: var(--text-primary);
+      }
+    }
+    h2 {
+      color: var(--text-primary);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+      margin: 0;
+      margin-bottom: 3px;
+    }
+    p {
+      color: var(--text-grey);
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+}
+
+/**** Style for Organization Chart ****/
+.org_chart {
+  .oc_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .oc_item {
+      background-color: var(--grey-bg);
+      padding: 6px 10px;
+      border-radius: 10px;
+      img {
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .oc_con {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-left: 8px;
+        width: calc(100% - 55px);
+
+        h3 {
+          color: var(--text-primary);
+          font-size: 16px;
+          font-weight: 600;
+          margin: 0;
+          margin-bottom: 3px;
+          text-transform: capitalize;
+        }
+        p {
+          color: var(--text-grey);
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 500;
+          margin: 0;
+          text-transform: capitalize;
+        }
+
+        i {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          font-size: 20px;
+          height: 22px;
+          line-height: 20px;
+          color: var(--orange);
+        }
+      }
+
+      &:first-child {
+        .oc_con {
+          i {
+            display: none;
+          }
+        }
+      }
+      &:last-child {
+        .oc_con {
+          i {
+            color: var(--cyan);
+          }
+        }
+      }
+    }
   }
 }
