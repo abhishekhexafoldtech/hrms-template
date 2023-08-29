@@ -151,7 +151,7 @@
                         }
                     }
 
-                    &.my_acc_submenu{
+                    &.my_acc_submenu {
                         top: auto;
                         bottom: 0;
                         transform-origin: left bottom;
@@ -230,8 +230,30 @@
         }
     }
 }
-.fix_width_container{
+.fix_width_container {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
+}
+
+/**** Style for Todo List - Dashboard ****/
+.todo_wrap {
+    border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+
+    .box_heading {
+        .add_todo_btn {
+            background-color: transparent;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            font-size: 24px;
+            line-height: 20px;
+            color: var(--text-primary);
+            border: none;
+            margin-right: -5px;
+        }
+    }
 }

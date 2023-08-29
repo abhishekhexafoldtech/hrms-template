@@ -112,6 +112,11 @@ onMounted(() => {
 
 <style scoped lang="scss">
 /*** Style for 3 Blocks in Dashboard ****/
+@keyframes width_animate {
+  0%   {width: 0px; max-width: 0px;}
+  100%  {max-width: 100%;}
+}
+
 .block_item {
     padding: 20px 25px;
 
@@ -164,6 +169,7 @@ onMounted(() => {
             .progress-bar {
                 background: linear-gradient(270.49deg, var(--violet) -10.52%, rgba(163, 104, 190, 0.15) 91.88%);
                 height: 10px;
+                animation: width_animate 1s;
             }
         }
 

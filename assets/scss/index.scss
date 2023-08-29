@@ -154,12 +154,12 @@ h6 {
   overflow-x: hidden;
 
   &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #c9c9c9;
+    background: #ddd;
     border-radius: 100px;
   }
 
@@ -174,8 +174,8 @@ h6 {
       text-align: center;
       display: inline-block;
       vertical-align: middle;
-      width: 55px;
-      height: 55px;
+      width: 50px;
+      height: 50px;
       position: relative;
       background-color: var(--blue);
       border-radius: 10px;
@@ -191,26 +191,25 @@ h6 {
       i {
         font-size: 25px;
         color: var(--white);
-        line-height: 55px;
+        line-height: 50px;
       }
 
       h4 {
         color: var(--white);
         text-align: center;
-        font-size: 22px;
-        line-height: 30px;
+        font-size: 20px;
+        line-height: 24px;
         font-weight: 700;
         margin: 0;
-        margin-top: 3px;
+        margin-top: 4px;
 
         span {
           display: block;
           text-align: center;
-          font-size: 13px;
+          font-size: 12px;
           line-height: 13px;
           font-weight: 600;
           letter-spacing: 0.5px;
-          text-transform: uppercase;
         }
       }
     }
@@ -218,7 +217,7 @@ h6 {
     .ev_con {
       display: inline-block;
       vertical-align: middle;
-      width: calc(100% - 55px);
+      width: calc(100% - 50px);
       padding-left: 12px;
 
       h3 {
@@ -226,7 +225,7 @@ h6 {
         font-size: 16px;
         font-weight: 600;
         margin: 0;
-        margin-bottom: 6px;
+        margin-bottom: 5px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
@@ -244,6 +243,7 @@ h6 {
           display: block;
           color: var(--text-grey);
           font-size: 13px;
+          line-height: 16px;
           font-weight: 500;
         }
       }

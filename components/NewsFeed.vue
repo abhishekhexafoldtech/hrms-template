@@ -1,106 +1,81 @@
 <template>
-    <el-card class="box-card shadow-lg ">
-        <div class="top ">
-          <!-- top section -->
-          <p class="card-title">News</p>
-          <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
-        </div>
-
-        <el-row :gutter="20">
-            <el-col :span="11" class="mt-2">
-                <img class="w-100" src="@/assets/img/newsfeed.png" alt="">                 
-                <el-row>
-                    <div class="w-100 d-flex justify-content-center ">
-                        <div class="w-50 shadow d-flex justify-content-center news_action mt-n3">
-                            <!-- Like -->
-                            <div class="d-flex mx-2">
-                                <i class="bi bi-hand-thumbs-up"></i>
-                                <span>{{likeCount}}</span>
-                            </div>
-                            <div class="d-flex mx-2">
-                                <i class="bi bi-chat-left-dots"></i>
-                                <span>{{commentCount}}</span>
-                            </div>
-                            <div class="d-flex mx-2">
-                                <i class="bi bi-emoji-smile"></i>
-                                <span>{{reactionCount}}</span>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                </el-row>
-                
-            </el-col>
-            <el-col :span="13">
-                <el-row>
-                    <div class="d-flex mt-2">
-                        <!-- Avatar -->
-                        <img class="feed-avatar" src='@/assets/img/avatar1.png' alt="">
-                        <div>
-                            <!-- Name of user -->
-                            <h6 class="h6 mx-2">{{userName}}</h6>
-                            <!-- Department of user -->
-                            <p class="mx-2">{{userDepartment}}</p>
-                        </div>
-                    </div>
-                </el-row>
-                <el-row>
-                    <div class="description">
-                       <p class="mt-2">                        
-                            {{ feedDescription }}
-                        </p> 
-                    </div>
-                    <div class="emo-container py-2 px-2  w-45 rounded ">
-                        <div class="rounded d-flex justify-content-around">
-                            <img src="@/assets/img/emoji/thumb-emo.png" alt="">
-                            <img src="@/assets/img/emoji/smiling-face-emo.png" alt="">
-                            <img src="@/assets/img/emoji/cry-emo.png" alt="">
-                            <img src="@/assets/img/emoji/party-emo.png" alt="">
-                            <img src="@/assets/img/emoji/popper-emo.png" alt="">
-                        </div>
-                    </div>
-                    <div class="input-group mt-3">
-                        <input type="text" class="form-control border comment-input" placeholder="Write your comment here..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary " type="button"><i class="bi bi-send-fill "></i></button>
-                        </div>
-                    </div>
-
-                </el-row>
-            </el-col>
-        </el-row>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <!-- News Feed Image -->
-        
-                    <div class="d-flex justify-content-center mb-3">
-                        
-                    </div>
-        
-                </div>
-                <div class="col-lg-7">
-                    
-                    <div class="row mt-2 h-30">
-                        
-                    </div>
-        
-                    
-                    
-        
-        
-                </div>
+  <div class="rn_wrap">
+    <div class="box_heading">
+      <h3>News</h3>
+      <div class="dropdown">
+        <button
+          class="dropdown-toggle"
+          type="button"
+          id="upcomingHolidayDrop"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="ri-more-2-fill"></i>
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="upcomingHolidayDrop"
+        >
+          <li><a class="dropdown-item" href="#">Add Holidays</a></li>
+          <li><a class="dropdown-item" href="#">View All</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rn_con">
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="24" :md="10" :lg="11">
+          <figure class="rn_img">
+            <img src="@/assets/img/newsfeed.png" alt="" />
+            <ul class="lc_count_box">
+              <li>
+                <i class="ri-thumb-up-line"></i>
+                <span>{{ likeCount }}</span>
+              </li>
+              <li>
+                <i class="ri-message-2-line"></i>
+                <span>{{ commentCount }}</span>
+              </li>
+              <li>
+                <i class="ri-emotion-line"></i>
+                <span>{{ reactionCount }}</span>
+              </li>
+            </ul>
+          </figure>
+        </el-col>
+        <el-col :xs="24" :sm="24" :md="14" :lg="13">
+          <div class="rn_right">
+            <div class="nu_box">
+              <img src="@/assets/img/avatar1.png" alt="" />
+              <div class="nu_con">
+                <h3>{{ userName }}</h3>
+                <p>{{ userDepartment }}</p>
+              </div>
             </div>
-        </div>
-    
-</el-card>
+            <p class="rn_desc">
+              {{ feedDescription }}
+            </p>
+            <ul class="rn_emoji">
+              <li><img src="@/assets/img/emoji/thumb-emo.png" alt="" /></li>
+              <li>
+                <img src="@/assets/img/emoji/smiling-face-emo.png" alt="" />
+              </li>
+              <li><img src="@/assets/img/emoji/cry-emo.png" alt="" /></li>
+              <li><img src="@/assets/img/emoji/party-emo.png" alt="" /></li>
+              <li><img src="@/assets/img/emoji/popper-emo.png" alt="" /></li>
+            </ul>
+            <div class="rn_comment">
+              <input placeholder="Write your comment here..." type="text" />
+              <button><i class="ri-send-plane-fill"></i></button>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const newsTitle = ref("News");
 // const newsImage = ref(require('@/assets/img/newsfeed.png'));
@@ -110,60 +85,198 @@ const reactionCount = ref(20);
 // const userAvatar = ref("@/assets/img/avatar1.png");
 const userName = ref("Nicole T. Hinerman");
 const userDepartment = ref("Web developer");
-const feedDescription = ref(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta minus recusandae distinctio tempore nihil quas necessitatibus qui, voluptatibus, vero facilis fugit incidunt iure molestias, amet temporibus ipsam sint eos assumenda?
+const feedDescription =
+  ref(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta minus recusandae distinctio tempore nihil quas necessitatibus qui, voluptatibus, vero facilis fugit incidunt iure molestias, amet temporibus ipsam sint eos assumenda?
                         `);
-
 </script>
 
-<style  scoped lang="scss">
-.emo-container {
-    background-color: #f4f4f4;
-}
-
-.emo-container img {
-    transition: transform 0.3s ease; /* Add a smooth transition to the transform property */
-}
-
-.emo-container img:hover {
-    transform: scale(1.5); /* Scale up the image on hover */
-}
-.news_action{
-    background: #f4f4f4;
-    position: relative;
-    z-index: 1;
-}
-.feed-avatar{
-    width: 70px;
-    height: 70px;
-    border-radius: 20px;
-}
-.box-card {
-  height: 385px;
+<style scoped lang="scss">
+.rn_wrap {
   border-radius: 10px;
-  // background-color:rgb(250, 250, 255);
-  /* Use auto instead of scroll for a better user experience */
-}
+  background-color: var(--white);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+  padding: 15px;
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .rn_con {
+    padding: 10px 0;
+    padding-top: 0;
 
+    .rn_img {
+      width: 100%;
+      height: 275px;
+      margin: 0;
+      position: relative;
+      margin-bottom: 20px;
 
-.card-title {
-  font-family: Arial, Helvetica, sans-serif;
-  color: rgb(71, 68, 68);
-  font-weight: 600;
-  font-size: 18px;
-  margin: 0;
-}
-.description{
-    height: 150px;
-}
-.comment-input{
-    height:42px
-}
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 5px;
+        overflow: hidden;
+      }
 
+      .lc_count_box {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        display: flex;
+        align-items: center;
+        background-color: var(--white);
+        border-radius: 5px;
+        box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1);
+        margin: 0;
+        padding-inline-start: 0;
+        padding: 0px 5px;
 
+        li {
+          display: block;
+          padding: 10px 0;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--text-grey);
+          min-width: 65px;
+          text-align: center;
+          cursor: pointer;
+
+          i {
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            font-weight: normal;
+            vertical-align: text-top;
+          }
+
+          &:first-child {
+            i {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+
+    .rn_right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+
+      .nu_box {
+        img {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 5px;
+          overflow: hidden;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .nu_con {
+          display: inline-block;
+          vertical-align: middle;
+          width: calc(100% - 60px);
+          padding-left: 15px;
+
+          h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+            margin-bottom: 3px;
+          }
+
+          p {
+            color: var(--text-grey);
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0;
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      .rn_desc {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 24px;
+        color: var(--text-primary);
+        margin: 0;
+      }
+      .rn_emoji {
+        padding-inline-start: 0;
+        margin: 0;
+        background-color: var(--grey-bg);
+        border-radius: 5px;
+        margin-bottom: 10px;
+
+        li {
+          display: inline-block;
+          padding: 4px 8px;
+
+          img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            object-position: center;
+          }
+        }
+      }
+      .rn_comment {
+        position: relative;
+        width: 100%;
+
+        input {
+          display: block;
+          width: 100%;
+          background-color: transparent;
+          border-radius: 5px;
+          border: 1px solid #cacaca;
+          color: var(--text-primary);
+          font-size: 14px;
+          font-weight: normal;
+          padding: 8px 12px;
+          padding-right: 40px;
+          border-radius: 5px;
+          outline: none;
+          transition: all 250ms ease-in-out;
+
+          &:focus {
+            border-color: var(--text-primary);
+          }
+        }
+        button {
+          background-color: var(--grey-bg);
+          color: var(--text-primary);
+          border: none;
+          position: absolute;
+          top: 5px;
+          right: 6px;
+          width: 30px;
+          height: 30px;
+          padding: 0;
+          border-radius: 5px;
+          padding-right: 4px;
+          transition: all 250ms ease-in-out;
+
+          i {
+            display: block;
+            transform: rotate(45deg);
+          }
+
+          &:hover {
+            background-color: var(--text-primary);
+            color: var(--white);
+          }
+        }
+      }
+    }
+  }
+}
 </style>
