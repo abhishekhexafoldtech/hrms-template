@@ -3,19 +3,11 @@
     <div class="box_heading">
       <h3>News</h3>
       <div class="dropdown">
-        <button
-          class="dropdown-toggle"
-          type="button"
-          id="upcomingHolidayDrop"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
+        <button class="dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
+          aria-expanded="false">
           <i class="ri-more-2-fill"></i>
         </button>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="upcomingHolidayDrop"
-        >
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="upcomingHolidayDrop">
           <li><a class="dropdown-item" href="#">Add Holidays</a></li>
           <li><a class="dropdown-item" href="#">View All</a></li>
         </ul>
@@ -96,6 +88,7 @@ const feedDescription =
   background-color: var(--white);
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
   padding: 15px;
+  min-height: 365px;
 
   .rn_con {
     padding: 10px 0;
@@ -103,7 +96,7 @@ const feedDescription =
 
     .rn_img {
       width: 100%;
-      height: 275px;
+      height: 265px;
       margin: 0;
       position: relative;
       margin-bottom: 20px;
@@ -178,6 +171,7 @@ const feedDescription =
           display: inline-block;
           vertical-align: middle;
         }
+
         .nu_con {
           display: inline-block;
           vertical-align: middle;
@@ -208,7 +202,12 @@ const feedDescription =
         line-height: 24px;
         color: var(--text-primary);
         margin: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
       }
+
       .rn_emoji {
         padding-inline-start: 0;
         margin: 0;
@@ -228,6 +227,7 @@ const feedDescription =
           }
         }
       }
+
       .rn_comment {
         position: relative;
         width: 100%;
@@ -251,6 +251,7 @@ const feedDescription =
             border-color: var(--text-primary);
           }
         }
+
         button {
           background-color: var(--grey-bg);
           color: var(--text-primary);

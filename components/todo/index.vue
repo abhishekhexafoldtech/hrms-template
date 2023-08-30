@@ -7,17 +7,28 @@
           <i class="ri-add-line"></i>
         </button>
       </div>
-      <el-row
-        class="list m-0.5 w-100 mt-2"
-        v-for="(todo, index) in todos"
-        :key="index"
-      >
+      <div class="todo_inner">
+        <div class="todo_item" v-for="(todo, index) in todos" :key="index">
+          <el-checkbox v-model="todo.completed" @change="handleCheckboxChange(todo)"></el-checkbox>
+          <div class="todo_con">
+            <h4 :class="[todoClass(todo),]">{{ todo.description }}</h4>
+            <p>{{ formatDate(todo.timestamp) }}</p>
+          </div>
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="ri-more-2-fill"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="upcomingHolidayDrop">
+              <li><a class="dropdown-item" @click="editTodo(index)">Edit</a></li>
+              <li><a class="dropdown-item" @click="deleteTodo(index)">Delete</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <el-row class="list m-0.5 w-100 mt-2" v-for="(todo, index) in todos" :key="index">
         <el-col :span="1" class="m-2 d-flex align-items-center pb-2">
-          <input
-            type="checkbox"
-            v-model="todo.completed"
-            @change="handleCheckboxChange(todo)"
-          />
+          <input type="checkbox" v-model="todo.completed" @change="handleCheckboxChange(todo)" />
         </el-col>
         <el-col :span="20" class="mt-2">
           <div :class="[todoClass(todo), 'todo-description', 'text-bold']">
@@ -27,73 +38,34 @@
             {{ formatDate(todo.timestamp) }}
           </div>
         </el-col>
-        <!-- three dot icon -->
         <el-col :span="1" class="mt-2 d-flex align-items-center">
-          <i
-            class="fa fa-ellipsis-v mx-2 pb-2"
-            aria-hidden="true"
-            @click="toggleEditDelete(index)"
-          ></i>
-          <!-- ^ When three-dot icon is clicked, toggleEditDelete method is called -->
+          <i class="fa fa-ellipsis-v mx-2 pb-2" aria-hidden="true" @click="toggleEditDelete(index)"></i>
         </el-col>
 
-        <el-button
-          type="success"
-          v-if="selectedTodoIndex === index"
-          @click="editTodo(index)"
-          ><i class="bi bi-pencil-square"></i
-        ></el-button>
-        <el-button
-          type="danger"
-          v-if="selectedTodoIndex === index"
-          @click="deleteTodo(index)"
-          ><i class="bi bi-trash-fill"></i
-        ></el-button>
-      </el-row>
+        <el-button type="success" v-if="selectedTodoIndex === index" @click="editTodo(index)"><i
+            class="bi bi-pencil-square"></i></el-button>
+        <el-button type="danger" v-if="selectedTodoIndex === index" @click="deleteTodo(index)"><i
+            class="bi bi-trash-fill"></i></el-button>
+      </el-row> -->
     </div>
     <div class="">
-      <el-dialog
-        ref="dialogFormVisibleRef"
-        v-model="dialogFormVisible"
-        width="60%"
-      >
+      <el-dialog ref="dialogFormVisibleRef" v-model="dialogFormVisible" width="50%">
         <span>
           <h5 style="margin-left: 30px">{{ dialogHeading }} 134</h5>
         </span>
-        <el-form
-          label-position="top"
-          label-width="100px"
-          :model="formData"
-          :rules="formValidationRules"
-          style="max-width: 100%; border-radius: 15px; height: fluid"
-          class="bg-white px-5 py-4 rounded-5"
-          ref="formRef"
-        >
+        <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules"
+          style="max-width: 100%; border-radius: 15px; height: fluid" class="bg-white px-5 py-4 rounded-5" ref="formRef">
           <el-row>
             <el-col :xs="24" :sm="24" :lg="24" :xl="24">
               <el-form-item label="Todo Description" prop="description">
-                <el-input
-                  type="textarea"
-                  placeholder="Enter todo here..."
-                  v-model="formData.description"
-                />
+                <el-input type="textarea" placeholder="Enter todo here..." v-model="formData.description" />
               </el-form-item>
             </el-col>
           </el-row>
 
-          <el-button
-            type="primary"
-            size="large"
-            style="float: right"
-            @click="handleFormData"
-            >{{ dialogButtonText }}</el-button
-          >
-          <el-button
-            size="large"
-            style="float: right; margin-right: 10px"
-            @click="handleBackButton"
-            >Back</el-button
-          >
+          <el-button type="primary" size="large" style="float: right" @click="handleFormData">{{ dialogButtonText
+          }}</el-button>
+          <el-button size="large" style="float: right; margin-right: 10px" @click="handleBackButton">Back</el-button>
         </el-form>
       </el-dialog>
     </div>

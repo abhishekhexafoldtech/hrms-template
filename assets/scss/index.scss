@@ -25,6 +25,7 @@
   --orange: #fd7d55;
   --blue: #378fe9;
   --brown: #7e5920;
+  --pastle-green: #679289;
 }
 
 body {
@@ -86,6 +87,7 @@ h6 {
   margin: -15px;
   margin-bottom: 0;
   padding: 15px;
+  padding-right: 10px;
 
   h3 {
     color: var(--text-primary);
@@ -101,7 +103,7 @@ h6 {
       left: -15px;
       width: 4px;
       height: 24px;
-      background-color: var(--cyan);
+      background-color: var(--pastle-green);
     }
   }
 
@@ -121,9 +123,13 @@ h6 {
     }
   }
 
-  .dropdown .dropdown-menu {
-    box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
-    min-width: 125px;
+  .dropdown {
+    width: 25px;
+    height: 25px;
+    .dropdown-menu {
+      box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
+      min-width: 125px;
+    }
   }
 
   .dropdown:not(.dropdown-hover) .dropdown-menu.show {
@@ -141,6 +147,7 @@ h6 {
   background-color: var(--white);
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
   padding: 15px;
+  min-height: 270px;
 }
 /**** Style for Upcoming Holiday / Uocoming Event List ****/
 .ev_inner {
@@ -344,11 +351,12 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -3px;
-  margin-bottom: 10px;
+  margin-top: -5px;
+  margin-bottom: 5px;
 
   .dropdown {
     height: 25px;
+    margin-right: -5px;
   }
 
   .dropdown-toggle {

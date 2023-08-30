@@ -242,6 +242,7 @@
     background-color: var(--white);
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
     padding: 15px;
+    min-height: 365px;
 
     .box_heading {
         .add_todo_btn {
@@ -255,5 +256,132 @@
             border: none;
             margin-right: -5px;
         }
+    }
+
+    .todo_inner {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 295px;
+        margin: 0 -10px;
+        padding: 0 10px;
+        overflow: auto;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #ddd;
+            border-radius: 100px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: var(--grey-bg);
+            border-radius: 100px;
+        }
+
+        .todo_item {
+            background-color: var(--grey-bg);
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+            padding-left: 40px;
+
+            .el-checkbox {
+                height: 16px;
+                margin: 0;
+                padding: 0;
+                display: block;
+                position: absolute;
+                top: 13px;
+                left: 12px;
+            }
+            .el-checkbox__inner {
+                width: 16px;
+                height: 16px;
+                border: solid 1px #cacaca;
+                border-radius: 3px;
+
+                &:hover {
+                    border-color: var(--pastle-green);
+                }
+            }
+            .el-checkbox__input.is-checked .el-checkbox__inner {
+                background-color: var(--pastle-green);
+                border-color: var(--pastle-green);
+            }
+            .el-checkbox__inner::after {
+                border-width: 2px;
+                width: 8px;
+                width: 4px;
+                top: 1px;
+                left: 5px;
+            }
+            .todo_con {
+                display: inline-block;
+                vertical-align: middle;
+                width: calc(100% - 25px);
+
+                h4 {
+                    color: var(--text-primary);
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-weight: 500;
+                    margin: 0;
+                    margin-bottom: 5px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                }
+
+                p {
+                    color: var(--text-grey);
+                    font-size: 13px;
+                    line-height: 16px;
+                    font-weight: 500;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .dropdown-toggle {
+        background-color: transparent;
+        padding: 0;
+        width: 25px;
+        height: 25px;
+        font-size: 24px;
+        line-height: 20px;
+        color: var(--text-primary);
+        border: none;
+        margin-right: -5px;
+
+        &::after {
+            content: none;
+        }
+    }
+
+    .dropdown {
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        vertical-align: middle;
+
+        .dropdown-menu {
+            box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
+            min-width: 125px;
+        }
+    }
+
+    .dropdown:not(.dropdown-hover) .dropdown-menu.show {
+        margin-top: 40px !important;
+    }
+
+    .dropdown .dropdown-menu.dropdown-menu-end:before {
+        right: 15px;
     }
 }

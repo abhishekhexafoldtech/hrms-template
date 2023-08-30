@@ -34,7 +34,7 @@
 
     <div class="ev_inner" v-if="title === 'Upcoming Holidays'">
       <div v-for="event in props.events" :key="event.id" class="ev_item">
-        <figure >
+        <figure>
           <h4>
             {{ event.date }}
             <span>{{ event.month }}</span>
@@ -137,5 +137,4 @@ const handleWishBday = () => {
 };
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
