@@ -48,24 +48,25 @@
             class="bi bi-trash-fill"></i></el-button>
       </el-row> -->
     </div>
-    <div class="">
-      <el-dialog ref="dialogFormVisibleRef" v-model="dialogFormVisible" width="50%">
-        <span>
-          <h5 style="margin-left: 30px">{{ dialogHeading }} 134</h5>
-        </span>
-        <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules"
-          style="max-width: 100%; border-radius: 15px; height: fluid" class="bg-white px-5 py-4 rounded-5" ref="formRef">
-          <el-row>
-            <el-col :xs="24" :sm="24" :lg="24" :xl="24">
-              <el-form-item label="Todo Description" prop="description">
-                <el-input type="textarea" placeholder="Enter todo here..." v-model="formData.description" />
-              </el-form-item>
-            </el-col>
-          </el-row>
+    <div class="todo_dialogue">
+      <el-dialog ref="dialogFormVisibleRef" v-model="dialogFormVisible" align-center :show-close="false">
+        <template #header="{ close, titleId }">
+          <h4 :id="titleId">{{ dialogHeading }}</h4>
+          <button @click="close">
+            <i class="ri-close-line"></i>
+          </button>
+        </template>
+        <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules" ref="formRef">
+          <div class="fieldrow">
+            <el-form-item label="Todo Description" prop="description">
+              <el-input type="textarea" placeholder="Write your todo here..." v-model="formData.description" />
+            </el-form-item>
+          </div>
 
-          <el-button type="primary" size="large" style="float: right" @click="handleFormData">{{ dialogButtonText
-          }}</el-button>
-          <el-button size="large" style="float: right; margin-right: 10px" @click="handleBackButton">Back</el-button>
+          <div class="frm_action">
+            <button class="btn_cancel" @click="handleBackButton">Cancel</button>
+            <button @click="handleFormData">{{ dialogButtonText }}</button>
+          </div>
         </el-form>
       </el-dialog>
     </div>
@@ -145,7 +146,7 @@ const formatDate = (timestamp) => {
   } else {
     const options = {
       year: "numeric",
-      month: "long",
+      month: "short",
       day: "numeric",
       hour: "numeric",
       minute: "numeric",
@@ -280,49 +281,153 @@ const handleBackButton = () => {
 .completed-todo {
   text-decoration: line-through;
 }
+/**** Style for Todo List - Dashboard ****/
+.todo_wrap {
+    border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    min-height: 365px;
 
-.eraser-btn {
-  height: 47px;
-}
+    .box_heading {
+        .add_todo_btn {
+            background-color: transparent;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            font-size: 24px;
+            line-height: 20px;
+            color: var(--text-primary);
+            border: none;
+            margin-right: -5px;
+        }
+    }
 
-.text-danger {
-  color: red;
-}
+    .todo_inner {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 295px;
+        margin: 0 -10px;
+        padding: 0 10px;
+        overflow: auto;
+        overflow-x: hidden;
 
-.form-error-message {
-  color: red;
-  margin-top: 5px;
-}
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
 
-.box-card {
-  height: 385px;
-  border-radius: 10px;
-  overflow-y: auto;
-  // background-color:rgb(250, 250, 255);
-  /* Use auto instead of scroll for a better user experience */
-}
+        &::-webkit-scrollbar-thumb {
+            background: #ddd;
+            border-radius: 100px;
+        }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        &::-webkit-scrollbar-track {
+            background: var(--grey-bg);
+            border-radius: 100px;
+        }
 
-.button-dark {
-  background-color: #1f281a;
-  color: rgb(255, 255, 255);
-}
+        .todo_item {
+            background-color: var(--grey-bg);
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+            padding-left: 40px;
 
-.list {
-  background-color: #eff3f9;
-  border-radius: 10px;
-}
+            .el-checkbox {
+                height: 16px;
+                margin: 0;
+                padding: 0;
+                display: block;
+                position: absolute;
+                top: 13px;
+                left: 12px;
+            }
+            .el-checkbox__inner {
+                width: 16px;
+                height: 16px;
+                border: solid 1px #cacaca;
+                border-radius: 3px;
 
-.card-title {
-  font-family: Arial, Helvetica, sans-serif;
-  color: rgb(71, 68, 68);
-  font-weight: 600;
-  font-size: 18px;
-  margin: 0;
+                &:hover {
+                    border-color: var(--pastle-green);
+                }
+            }
+            .el-checkbox__input.is-checked .el-checkbox__inner {
+                background-color: var(--pastle-green);
+                border-color: var(--pastle-green);
+            }
+            .el-checkbox__inner::after {
+                border-width: 2px;
+                height: 8px;
+                width: 4px;
+                top: 1px;
+                left: 4px;
+            }
+            .todo_con {
+                display: inline-block;
+                vertical-align: middle;
+                width: calc(100% - 25px);
+
+                h4 {
+                    color: var(--text-primary);
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-weight: 500;
+                    margin: 0;
+                    margin-bottom: 5px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                }
+
+                p {
+                    color: var(--text-grey);
+                    font-size: 13px;
+                    line-height: 16px;
+                    font-weight: 500;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .dropdown-toggle {
+        background-color: transparent;
+        padding: 0;
+        width: 25px;
+        height: 25px;
+        font-size: 24px;
+        line-height: 20px;
+        color: var(--text-primary);
+        border: none;
+        margin-right: -5px;
+
+        &::after {
+            content: none;
+        }
+    }
+
+    .dropdown {
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        vertical-align: middle;
+
+        .dropdown-menu {
+            box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
+            min-width: 125px;
+        }
+    }
+
+    .dropdown:not(.dropdown-hover) .dropdown-menu.show {
+        margin-top: 40px !important;
+    }
+
+    .dropdown .dropdown-menu.dropdown-menu-end:before {
+        right: 15px;
+    }
 }
 </style>

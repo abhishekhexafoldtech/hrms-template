@@ -11,16 +11,8 @@
     <el-col :xs="24" :sm="24" :md="14" :lg="19" :xl="19">
       <div class="dash_three_block">
         <EmployeeStatusCard heading="My Desk Time" :desk-time="true" />
-        <EmployeeStatusCard
-          :employees="allUsers"
-          heading="Working Remotely"
-          e-description="Employees working remotely"
-        />
-        <EmployeeStatusCard
-          :employees="allUsers"
-          heading="On Leave Today"
-          e-description="Employees on leave"
-        />
+        <EmployeeStatusCard :employees="allUsers" heading="Working Remotely" e-description="Employees working remotely" />
+        <EmployeeStatusCard :employees="allUsers" heading="On Leave Today" e-description="Employees on leave" />
       </div>
 
       <div class="row mt-4">
@@ -38,11 +30,7 @@
             <EventCard :events="upcomingHlidays" title="Upcoming Holidays" />
           </el-col>
           <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="10">
-            <EventCard
-              :events="events"
-              @getEvents="getEvents"
-              title="Birthdays"
-            />
+            <EventCard :events="events" @getEvents="getEvents" title="Birthdays" />
           </el-col>
           <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
             <EventCard :events="upcomingEvents" title="Upcoming Events" />
@@ -56,12 +44,35 @@
           <figure>
             <img
               src="https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZN9afA%3AVt72dmaIt2BR1PZqQPqS2QbVKVJz-XLdbfBnh0uvLCjwPFxq_3PzS0wAowtDVuqPgmjYks4I7v5zqILtMal9xA"
-              alt=""
-            />
+              alt="" />
             <button><i class="ri-edit-2-line"></i></button>
           </figure>
           <h2>Kiran Kumar</h2>
           <p>VueJs Developer</p>
+        </div>
+        <hr />
+        <div class="quick_acc">
+          <div class="box_heading">
+            <h3>Quick Access</h3>
+          </div>
+          <div class="qc_inner">
+            <a class="qc_item" href="#">
+              <img src="@/assets/img/dismissal.png" alt="">
+              <span>Leave Request</span>
+            </a>
+            <a class="qc_item" href="#">
+              <img src="@/assets/img/timetable.png" alt="">
+              <span>Time Sheets</span>
+            </a>
+            <a class="qc_item" href="#">
+              <img src="@/assets/img/calendar.png" alt="">
+              <span>Calender</span>
+            </a>
+            <a class="qc_item" href="#">
+              <img src="@/assets/img/sunbed.png" alt="">
+              <span>Holidays</span>
+            </a>
+          </div>
         </div>
         <hr />
         <div class="org_chart">
@@ -374,6 +385,7 @@ definePageMeta({
         color: var(--text-primary);
       }
     }
+
     h2 {
       color: var(--text-primary);
       font-size: 20px;
@@ -382,6 +394,7 @@ definePageMeta({
       margin: 0;
       margin-bottom: 3px;
     }
+
     p {
       color: var(--text-grey);
       font-size: 15px;
@@ -402,6 +415,7 @@ definePageMeta({
       background-color: var(--grey-bg);
       padding: 6px 10px;
       border-radius: 10px;
+
       img {
         width: 55px;
         height: 55px;
@@ -411,6 +425,7 @@ definePageMeta({
         display: inline-block;
         vertical-align: middle;
       }
+
       .oc_con {
         display: inline-block;
         vertical-align: middle;
@@ -426,6 +441,7 @@ definePageMeta({
           margin-bottom: 3px;
           text-transform: capitalize;
         }
+
         p {
           color: var(--text-grey);
           font-size: 14px;
@@ -453,6 +469,7 @@ definePageMeta({
           }
         }
       }
+
       &:last-child {
         .oc_con {
           i {
