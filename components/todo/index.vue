@@ -20,8 +20,8 @@
               <i class="ri-more-2-fill"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="upcomingHolidayDrop">
-              <li><a class="dropdown-item" @click="editTodo(index)">Edit</a></li>
-              <li><a class="dropdown-item" @click="deleteTodo(index)">Delete</a></li>
+              <li><a class="dropdown-item" @click="editTodo(index, $event)">Edit</a></li>
+              <li><a class="dropdown-item" @click="deleteTodo(index, $event)">Delete</a></li>
             </ul>
           </div>
         </div>
@@ -64,8 +64,8 @@
           </div>
 
           <div class="frm_action">
-            <button class="btn_cancel" @click="handleBackButton">Cancel</button>
-            <button @click="handleFormData">{{ dialogButtonText }}</button>
+            <button class="btn_cancel" @click="handleBackButton($event)">Cancel</button>
+            <button @click="handleFormData($event)">{{ dialogButtonText }}</button>
           </div>
         </el-form>
       </el-dialog>
@@ -164,7 +164,8 @@ const isSameDate = (date1, date2) => {
   );
 };
 
-const editTodo = (index) => {
+const editTodo = (index, event) => {
+  event.preventDefault();
   editedTodoIndex.value = index;
   formData.description = todos.value[index].description; // Populate the input with the todo's description
   showInputAndButton.value = true;
@@ -178,7 +179,8 @@ const editTodo = (index) => {
 };
 
 // Function to delete a todo
-const deleteTodo = (index) => {
+const deleteTodo = (index, event) => {
+  event.preventDefault();
   todos.value.splice(index, 1);
   localStorage.setItem("todos", JSON.stringify(todos.value));
   // Show a success for Delete Todo
@@ -216,7 +218,8 @@ const handleCheckboxChange = (todo) => {
 // };
 
 // FORM RELATED
-function handleFormData() {
+function handleFormData(event) {
+  event.preventDefault();
   formRef.value.validate((valid) => {
     if (valid) {
       if (editMode.value) {
@@ -264,7 +267,9 @@ function handleFormData() {
 }
 
 // Method to handle the "Back" button click
-const handleBackButton = () => {
+const handleBackButton = (event) => {
+  event.preventDefault(); // Prevent default anchor tag behavior
+
   // Reset input field
   formData.description = "";
 

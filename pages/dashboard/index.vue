@@ -124,7 +124,7 @@ const upcomingHlidays = [
     id: 1,
     name: "Bakrid",
     date: 18,
-    month: "June",
+    month: "Jun",
     day: "Wednesday",
     daysLeft: 10,
     image:
@@ -171,7 +171,6 @@ const upcomingHlidays = [
       "https://thumbs.dreamstime.com/b/christmas-decorations-border-text-happy-holidays-red-sparkly-bulb-gold-tree-topper-star-corner-framing-44504444.jpg",
   },
 
-  // Add more events here if needed
 ];
 
 //Up Comming Birthdays
