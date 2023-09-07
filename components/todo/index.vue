@@ -61,6 +61,24 @@
             <el-form-item label="Todo Description" prop="description">
               <el-input type="textarea" placeholder="Write your todo here..." v-model="formData.description" />
             </el-form-item>
+            <div class="row mb-3">
+              <div class="col-6">
+                <el-date-picker
+                  v-model="formData.customDate"
+                  size="large"
+                  type="date"
+                  placeholder="Select a date"
+                />
+              </div>
+              <div class="col-6">
+                <el-time-picker
+                  v-model="formData.customTime"
+                  type="time"
+                  size="large"
+                  placeholder="Select a time"
+                />
+              </div>
+            </div>
           </div>
 
           <div class="frm_action">
