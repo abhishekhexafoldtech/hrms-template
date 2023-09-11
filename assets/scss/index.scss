@@ -1,21 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap");
 
 // Style for Employee Module
 @import "employee/employee.scss";
 
 @import "table/table.scss";
+@import "layout.scss";
 
 :root {
-    --font-primary: 'Noto Sans', sans-serif;
-    --white: #FFF;
-    --heading: #344767;
-    --text: #333;
-    --red: #b72b2b;
-    --pink: #D81B60;
+  --font-primary: "Noto Sans", sans-serif;
+  --white: #fff;
+  --heading: #344767;
+  --text: #333;
+  --red: #b72b2b;
+  --pink: #d81b60;
+
+  --dark-green: #1f281a;
+  --text-primary: #3e363f;
+  --text-grey: #666;
+  --light-white: #f8f8f8;
+  --grey-bg: #eff3f9;
+  --light-golden: #fffaca;
+  --cyan: #4bc7a9;
+  --violet: #a368be;
+  --orange: #fd7d55;
+  --blue: #378fe9;
+  --brown: #7e5920;
+  --pastle-green: #679289;
 }
 
 body {
-    font-family: var(--font-primary);
+  font-family: var(--font-primary);
 }
 
 h1,
@@ -24,6 +38,353 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-primary);
-    letter-spacing: -0.5px;
+  font-family: var(--font-primary);
+  letter-spacing: -0.5px;
+}
+
+/*** Style for Theme Black Button ****/
+.theme_black_btn {
+  background-color: var(--dark-green);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: solid 1px var(--dark-green);
+  outline: none;
+  position: relative;
+  z-index: 1;
+  transition: 0.5s;
+
+  &::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: var(--grey-bg);
+    border-radius: 5px;
+    transition: 0.5s;
+  }
+
+  &:hover {
+    color: var(--dark-green);
+
+    &::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+/**** Style for all Box Heading (Common) ****/
+.box_heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -15px;
+  margin-bottom: 0;
+  padding: 15px;
+  padding-right: 10px;
+
+  h3 {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: -15px;
+      width: 4px;
+      height: 24px;
+      background-color: var(--pastle-green);
+    }
+  }
+
+  .dropdown-toggle {
+    background-color: transparent;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 24px;
+    line-height: 20px;
+    color: var(--text-primary);
+    border: none;
+    margin-right: -5px;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .dropdown {
+    width: 25px;
+    height: 25px;
+    .dropdown-menu {
+      box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
+      min-width: 125px;
+    }
+  }
+
+  .dropdown:not(.dropdown-hover) .dropdown-menu.show {
+    margin-top: 40px !important;
+  }
+
+  .dropdown .dropdown-menu.dropdown-menu-end:before {
+    right: 15px;
+  }
+}
+
+/**** Style for Event Box ****/
+.ev_box {
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  min-height: 270px;
+}
+/**** Style for Upcoming Holiday / Uocoming Event List ****/
+.ev_inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 200px;
+  margin: 0 -10px;
+  padding: 0 10px;
+  overflow: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--grey-bg);
+    border-radius: 100px;
+  }
+
+  .ev_item {
+    figure {
+      margin: 0;
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      position: relative;
+      background-color: var(--blue);
+      border-radius: 10px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      i {
+        font-size: 25px;
+        color: var(--white);
+        line-height: 50px;
+      }
+
+      h4 {
+        color: var(--white);
+        text-align: center;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 700;
+        margin: 0;
+        margin-top: 4px;
+
+        span {
+          display: block;
+          text-align: center;
+          font-size: 12px;
+          line-height: 13px;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+
+    .ev_con {
+      display: inline-block;
+      vertical-align: middle;
+      width: calc(100% - 50px);
+      padding-left: 12px;
+
+      h3 {
+        color: var(--text-primary);
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        margin-bottom: 5px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+      }
+
+      ul {
+        padding-inline-start: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        li {
+          display: block;
+          color: var(--text-grey);
+          font-size: 13px;
+          line-height: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      figure {
+        background-color: var(--orange);
+      }
+    }
+
+    &:nth-child(3) {
+      figure {
+        background-color: var(--cyan);
+      }
+    }
+
+    &:nth-child(4) {
+      figure {
+        background-color: var(--brown);
+      }
+    }
+
+    &:nth-child(5) {
+      figure {
+        background-color: var(--violet);
+      }
+    }
+  }
+
+  &.uc_events {
+    .ev_item {
+      &:first-child {
+        figure {
+          background-color: var(--violet);
+        }
+      }
+      &:nth-child(2) {
+        figure {
+          background-color: var(--brown);
+        }
+      }
+      &:nth-child(3) {
+        figure {
+          background-color: var(--blue);
+        }
+      }
+      &:nth-child(4) {
+        figure {
+          background-color: var(--cyan);
+        }
+      }
+      &:nth-child(5) {
+        figure {
+          background-color: var(--orange);
+        }
+      }
+    }
+  }
+}
+
+/**** Style for Birthday Event List ****/
+.bday_tab {
+  .el-tabs__nav-wrap {
+    min-width: auto;
+    margin: 0;
+    background-color: var(--grey-bg);
+    border-radius: 5px;
+    height: 35px;
+  }
+
+  &.el-tabs--card > .el-tabs__header {
+    border: none;
+    margin: 0;
+  }
+
+  &.el-tabs--card > .el-tabs__header .el-tabs__item {
+    border: none;
+    padding: 5px 15px !important;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 5px;
+    height: 35px;
+  }
+
+  &.el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:nth-child(2),
+  &.el-tabs--top.el-tabs--card > .el-tabs__header .el-tabs__item:nth-child(3) {
+    padding: 10px 15px !important;
+  }
+
+  &.el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+    background-color: var(--dark-green);
+    color: var(--white);
+  }
+}
+.bday_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -5px;
+  margin-bottom: 5px;
+
+  .dropdown {
+    height: 25px;
+    margin-right: -5px;
+  }
+
+  .dropdown-toggle {
+    background-color: transparent;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 24px;
+    line-height: 20px;
+    color: var(--text-primary);
+    border: none;
+    margin-right: -5px;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .dropdown .dropdown-menu {
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
+    min-width: 125px;
+  }
+
+  .dropdown:not(.dropdown-hover) .dropdown-menu.show {
+    margin-top: 40px !important;
+  }
+
+  .dropdown .dropdown-menu.dropdown-menu-end:before {
+    right: 15px;
+  }
 }

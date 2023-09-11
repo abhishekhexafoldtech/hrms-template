@@ -1,283 +1,491 @@
 <template>
   <ClientOnly>
-      <div class="d-flex justify-content-center ">
-          <el-card class="box-card shadow-lg w-100">
-    <div class="top">
-      <!-- top section -->
-      <p class="card-title">Todo List</p>
-      <!-- add todo Icon -->
-      <span @click="toggleInputAndButton"><i class="bi bi-plus-lg fw-bold"></i></span>
-    </div>
-
-        <!-- Conditionally render input and button based on showInputAndButton and editMode -->
-        <el-row v-if="showInputAndButton || editMode" :gutter="10" class="w-100">
-              <el-col :span="15">
-                <el-form :ref="formRef" :rules="formValidationRules">
-                  <el-form-item prop="todo" :rules="formValidationRules" class="fw-bold">
-                    <el-input
-                      v-model="input1"
-                      class="w-100 mt-2"
-                      size="large"
-                      placeholder="Please Input Todo Here..."
-                    />
-                  </el-form-item>
-
-                  <!-- Add a new element to display the error message -->
-                  <el-form-item v-if="showSubmitWarning" class="form-error-message">
-                    <span class="el-form-item__error fw-bold">Please enter todo before submit</span>
-                  </el-form-item>
-
-                </el-form>
-              </el-col>
-              <el-col :span="9" class="mt-1">
-                <button class="button-dark btn btn-lg  w-100" @click="handleSubmit">Submit</button>
-              </el-col>
-              <!-- <el-col :span="2" class="mt-1">
-                <button class="btn btn-lg btn-warning eraser-btn " @click="handleClearAll"><i class="bi bi-eraser-fill"></i></button>
-              </el-col> -->
-            </el-row>
-            <el-row class="list m-0.5 w-100 mt-2" v-for="(todo, index) in todos" :key="index">
-              <el-col :span="1" class="m-2 d-flex align-items-center pb-2">
-                <input type="checkbox" v-model="todo.completed" @change="handleCheckboxChange(todo)">
-              </el-col>
-              <el-col :span="20" class="mt-2">
-                <div :class="[todoClass(todo), 'todo-description', 'text-bold']">
-                  {{ todo.description }}
-                </div>
-                <div>
-                  {{ formatDate(todo.timestamp) }}
-                </div>
-              </el-col>
-              <!-- three dot icon -->
-              <el-col :span="1" class="mt-2 d-flex align-items-center">
-                <i class="fa fa-ellipsis-v mx-2 pb-2" aria-hidden="true" @click="toggleEditDelete(index)"></i>
-    <!-- ^ When three-dot icon is clicked, toggleEditDelete method is called -->
-  </el-col>
-              <!-- <el-col :span="24">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr v-for="(todo, index) in todos" :key="index"> -->
-                      <!-- <td class="pt-3 w-5"> <el-checkbox v-model="checked2" label="Option 2" size="large" /></td> -->
-                      <!-- <td class="pt-3 w-5">
-                          <el-checkbox v-model="todo.completed" @change="handleCheckboxChange(todo)" size="small" />  -->
-                          <!-- <input class="form-check-input" @change="handleCheckboxChange(todo)" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">                        -->
-                      <!-- </td>
-                      <td :class="todoClass(todo) + ' w-90 pt-3 text-bold'">{{ todo.description }}</td> -->
-                      <el-button type="success" v-if="selectedTodoIndex === index" @click="editTodo(index)"><i class="bi bi-pencil-square"></i></el-button>
-                      <el-button type="danger" v-if="selectedTodoIndex === index" @click="deleteTodo(index)"><i class="bi bi-trash-fill"></i></el-button>
-                    <!-- </tr>
-                  </tbody>
-                </table>
-              </el-col> -->
-            </el-row>
-            </el-card>
-            
+    <div class="todo_wrap">
+      <div class="box_heading">
+        <h3>Today's Todo</h3>
+        <button class="add_todo_btn" @click="handleDialogFormVisible()">
+          <i class="ri-add-line"></i>
+        </button>
+      </div>
+      <div class="todo_inner">
+        <div class="todo_item" v-for="(todo, index) in todos" :key="index">
+          <el-checkbox v-model="todo.completed" @change="handleCheckboxChange(todo)"></el-checkbox>
+          <div class="todo_con">
+            <h4 :class="[todoClass(todo),]">{{ todo.description }}</h4>
+            <!-- time and date -->
+            <!-- <p>{{ todo.timestampFormatted }}</p> -->
+            <p>{{ todo.timestampFormatted }}</p>
+          </div>
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="ri-more-2-fill"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="upcomingHolidayDrop">
+              <li><a class="dropdown-item" @click="editTodo(index, $event)">Edit</a></li>
+              <li><a class="dropdown-item" @click="deleteTodo(index, $event)">Delete</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
+      <!-- <el-row class="list m-0.5 w-100 mt-2" v-for="(todo, index) in todos" :key="index">
+        <el-col :span="1" class="m-2 d-flex align-items-center pb-2">
+          <input type="checkbox" v-model="todo.completed" @change="handleCheckboxChange(todo)" />
+        </el-col>
+        <el-col :span="20" class="mt-2">
+          <div :class="[todoClass(todo), 'todo-description', 'text-bold']">
+            {{ todo.description }}
+          </div>
+          <div>
+            {{ formatDate(todo.timestamp) }}
+          </div>
+        </el-col>
+        <el-col :span="1" class="mt-2 d-flex align-items-center">
+          <i class="fa fa-ellipsis-v mx-2 pb-2" aria-hidden="true" @click="toggleEditDelete(index)"></i>
+        </el-col>
+
+        <el-button type="success" v-if="selectedTodoIndex === index" @click="editTodo(index)"><i
+            class="bi bi-pencil-square"></i></el-button>
+        <el-button type="danger" v-if="selectedTodoIndex === index" @click="deleteTodo(index)"><i
+            class="bi bi-trash-fill"></i></el-button>
+      </el-row> -->
+    </div>
+    <div class="todo_dialogue">
+      <el-dialog ref="dialogFormVisibleRef" v-model="dialogFormVisible" align-center :show-close="false">
+        <template #header="{ close, titleId }">
+          <h4 :id="titleId">{{ dialogHeading }}</h4>
+          <button @click="close">
+            <i class="ri-close-line"></i>
+          </button>
+        </template>
+        <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules" ref="formRef">
+          <div class="fieldrow">
+            <el-form-item label="Todo Description" prop="description">
+              <el-input type="textarea" placeholder="Write your todo here..." v-model="formData.description" />
+            </el-form-item>
+            <!-- Input time and Date -->
+            <div class="row mb-3">
+              <div class="col-6">
+                <el-date-picker
+                  v-model="selectedDate"
+                  size="large"
+                  type="date"
+                  placeholder="Select a date"
+                />
+              </div>
+              <div class="col-6">
+                <el-time-picker
+                  v-model="selectedTime"
+                  type="time"
+                  size="large"
+                  placeholder="Select a time"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="frm_action">
+            <button class="btn_cancel" @click="handleBackButton($event)">Cancel</button>
+            <button @click="handleFormData($event)">{{ dialogButtonText }}</button>
+          </div>
+        </el-form>
+      </el-dialog>
+    </div>
   </ClientOnly>
-  
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 const todos = ref([]);
-const input1 = ref('');
 const editedTodoIndex = ref(-1); // New reactive variable to keep track of the edited todo index
-// const formRef = ref(null);
-const showSubmitWarning = ref(false); // reactive variable to control the visibility of the submit warning message
 const showInputAndButton = ref(false); // New reactive variable to control visibility
 const editMode = ref(false); // New reactive variable for edit mode
 const selectedTodoIndex = ref(-1); // New reactive variable to store the index of the selected todo
+const dialogFormVisible = ref(false);
+const dialogHeading = ref("Add Todo"); // Set initial heading
+const dialogButtonText = ref("Save"); // Set initial button text
+const formRef = ref(null);
+const selectedDate = ref(null);
+const selectedTime = ref(null);
 
 
-const toggleEditDelete = (index) => {
-  if (selectedTodoIndex.value === index) {
-    // If the same todo's three-dot icon is clicked again, hide the edit and delete buttons
-    selectedTodoIndex.value = -1;
+// Input reactive
+const formData = reactive({
+  description: "",
+});
+
+const formValidationRules = reactive({
+  description: [
+    {
+      required: true,
+      message: "Please enter todo...",
+      trigger: "blur",
+    },
+  ],
+});
+
+
+const handleDialogFormVisible = (index = -1) => {
+  if (index === -1) {
+    // Adding a new todo
+    dialogFormVisible.value = true; // Set to true when the dialog is opened
+    dialogHeading.value = "Add Todo";
+    dialogButtonText.value = "Save";
+    selectedDate.value = null; // Clear the selected date
+    selectedTime.value = null; // Clear the selected time
   } else {
-    // Otherwise, show the edit and delete buttons for the clicked todo
-    selectedTodoIndex.value = index;
+    // Editing an existing todo
+    dialogHeading.value = "Edit Todo";
+    dialogButtonText.value = "Update";
+    const todo = todos.value[index];
+    selectedDate.value = new Date(todo.timestamp); // Set the selected date
+    selectedTime.value = new Date(todo.timestamp); // Set the selected time
   }
+  dialogFormVisible.value = true; // Set to true when the dialog is opened
+  editedTodoIndex.value = index;
+  formData.description = index === -1 ? "" : todos.value[index].description; // Populate the input with the todo's description
+  showInputAndButton.value = true;
+  editMode.value = index !== -1; // Set editMode to true when editing
+  selectedTodoIndex.value = index; // Set the selected todo index
 };
+
+
+// const toggleEditDelete = (index) => {
+//   if (selectedTodoIndex.value === index) {
+//     // If the same todo's three-dot icon is clicked again, hide the edit and delete buttons
+//     selectedTodoIndex.value = -1;
+//   } else {
+//     // Otherwise, show the edit and delete buttons for the clicked todo
+//     selectedTodoIndex.value = index;
+//   }
+// };
 
 // const formatDate = (timestamp) => {
 //   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
 //   return new Date(timestamp).toLocaleString(undefined, options);
 // };
 
-const formatDate = (timestamp) => {
-  const now = new Date();
-  const todoDate = new Date(timestamp);
-
-  if (isSameDate(now, todoDate)) {
-    return 'Today ' + todoDate.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true });
-  } else if (isSameDate(now, new Date(todoDate.getTime() + 86400000))) {
-    return 'Yesterday ' + todoDate.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true });
-  } else {
-    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-    return todoDate.toLocaleString(undefined, options);
-  }
-};
-
-const isSameDate = (date1, date2) => {
-  return (
-    date1.getFullYear() === date2.getFullYear() &&
-    date1.getMonth() === date2.getMonth() &&
-    date1.getDate() === date2.getDate()
-  );
-};
-
-// Function to handle form submission and save todo to local storage
-const handleSubmit = () => {
-  if (input1.value.trim() !== '') {
-    if (editedTodoIndex.value !== -1) {
-      // If we are editing an existing todo
-      todos.value[editedTodoIndex.value].description = input1.value.trim();
-      editedTodoIndex.value = -1; // Reset the editedTodoIndex after editing
-
-      // Update the timestamp for edited todos
-      todos.value[editedTodoIndex.value].timestamp = Date.now();
-    } else {
-      // Otherwise, add a new todo
-      // const newTodo = {
-      //   description: input1.value.trim(),
-      //   completed: false,
-      // };
-      // todos.value.push(newTodo);
-
-      // Add timestamp for new todos
-      const newTodo = {
-        description: input1.value.trim(),
-        completed: false,
-        timestamp: Date.now(),
-      };
-      todos.value.push(newTodo);
-    }
-
-    localStorage.setItem('todos', JSON.stringify(todos.value));
-    input1.value = ''; // Reset the input field after submitting the form
-
-    // Hide the error message
-    showSubmitWarning.value = false;
-  } else {
-    // Show the error message when the input is empty and the user is trying to submit
-    showSubmitWarning.value = true;
-  }
-  // Reset editMode after handling submission
-  editMode.value = false;
-};
-
-
-
-
-// const editTodo = (index) => {
-// // Set the editedTodoIndex to the index of the todo being edited
-// editedTodoIndex.value = index;
-// input1.value = todos.value[index].description; // Populate the input with the todo's description
-// };
-
-// Function to handle editing a todo
-const editTodo = (index) => {
-  // Set the editedTodoIndex to the index of the todo being edited
+const editTodo = (index, event) => {
+  event.preventDefault();
   editedTodoIndex.value = index;
-  input1.value = todos.value[index].description; // Populate the input with the todo's description
-  showInputAndButton.value = true; // Show input and button when editing
+  const todo = todos.value[index];
+  formData.description = todo.description; // Populate the input with the todo's description
+  selectedDate.value = new Date(todo.timestamp); // Set the selected date
+  selectedTime.value = new Date(todo.timestamp); // Set the selected time
+  showInputAndButton.value = true;
   editMode.value = true; // Set editMode to true when editing
-};
+  selectedTodoIndex.value = index; // Set selected todo index
+  dialogFormVisible.value = true; // Open the dialog
 
+  // Update dialog heading and button text for editing
+  dialogHeading.value = "Update Todo";
+  dialogButtonText.value = "Update";
+};
 
 // Function to delete a todo
-const deleteTodo = (index) => {
+const deleteTodo = (index, event) => {
+  event.preventDefault();
   todos.value.splice(index, 1);
-  localStorage.setItem('todos', JSON.stringify(todos.value));
+  localStorage.setItem("todos", JSON.stringify(todos.value));
+  // Show a success for Delete Todo
+  flashNotification("success", "Todo Deleted successfully");
 };
 
 // Computed property to add a CSS class based on todo completion state
 const todoClass = (todo) => {
-return todo.completed ? 'completed-todo' : '';
+  return todo.completed ? "completed-todo" : "";
 };
 
 // Load todos from local storage on component mount (if available)
 onMounted(() => {
-try {
-  const storedTodos = localStorage.getItem('todos');
-  if (storedTodos) {
-    todos.value = JSON.parse(storedTodos);
+  try {
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+      todos.value = JSON.parse(storedTodos);
+    }
+  } catch (error) {
+    console.error("Error loading todos from localStorage:", error.message);
+    todos.value = [];
   }
-} catch (error) {
-  console.error('Error loading todos from localStorage:', error.message);
-  todos.value = [];
-}
 });
 
 // Function to handle checkbox change event and update localStorage
 const handleCheckboxChange = (todo) => {
-localStorage.setItem('todos', JSON.stringify(todos.value));
+  localStorage.setItem("todos", JSON.stringify(todos.value));
 };
 
 // Function to clear all todos
-const handleClearAll = () => {
-todos.value = []; // Remove all todos from the array
-localStorage.removeItem('todos'); // Remove todos from localStorage
+// const handleClearAll = () => {
+// todos.value = []; // Remove all todos from the array
+// localStorage.removeItem('todos'); // Remove todos from localStorage
 
+// };
+
+// FORM RELATED
+function handleFormData(event) {
+  event.preventDefault();
+  formRef.value.validate((valid) => {
+    if (valid) {
+      if (editMode.value) {
+        // Editing mode
+        const updatedTodo = todos.value[selectedTodoIndex.value];
+        updatedTodo.description = formData.description;
+        
+        // Update the timestamp with the combined date and time values
+        updatedTodo.timestamp = new Date(selectedDate.value);
+        updatedTodo.timestamp.setHours(selectedTime.value.getHours());
+        updatedTodo.timestamp.setMinutes(selectedTime.value.getMinutes());
+
+
+        // Update the formatted timestamp
+        const formattedDate = updatedTodo.timestamp.toLocaleString('en-us', {
+          day: 'numeric',
+          month: 'short',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        });
+        updatedTodo.timestampFormatted = formattedDate;
+
+        localStorage.setItem("todos", JSON.stringify(todos.value));
+        // const updatedTodo = todos.value[selectedTodoIndex.value];
+        // updatedTodo.description = formData.description;
+        // updatedTodo.timestamp = new Date(selectedDate.value);
+        // updatedTodo.timestamp.setHours(selectedTime.value.getHours());
+        // updatedTodo.timestamp.setMinutes(selectedTime.value.getMinutes());
+
+        // localStorage.setItem("todos", JSON.stringify(todos.value));
+
+        // Reset editMode and hide dialog
+        editMode.value = false;
+        dialogFormVisible.value = false;
+
+        // Show a success notification or perform any other actions
+        flashNotification("success", "Todo updated successfully");
+
+        // Reset input field
+        formData.description = "";
+      } else {
+        // Adding mode
+        const newTodo = {
+          description: formData.description,
+          completed: false,
+          timestamp: new Date(selectedDate.value),
+        };
+
+        // Extract the hours and minutes from selectedTime
+        const hours = selectedTime.value.getHours();
+        const minutes = selectedTime.value.getMinutes();
+
+        // Set the hours and minutes in the timestamp
+        newTodo.timestamp.setHours(hours);
+        newTodo.timestamp.setMinutes(minutes);
+
+        // Format the timestamp in the desired format
+        const formattedDate = newTodo.timestamp.toLocaleString('en-us', {
+          day: 'numeric',
+          month: 'short',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        });
+
+newTodo.timestampFormatted = formattedDate; // Add formatted timestamp to the todo object
+
+todos.value.push(newTodo);
+
+
+        localStorage.setItem("todos", JSON.stringify(todos.value));
+
+        // Hide the dialog
+        dialogFormVisible.value = false;
+
+        // Clear the form data
+        formData.description = "";
+        formData.customDate = null; // Reset the selected date
+        formData.customTime = null; // Reset the selected time
+
+        // Show a success notification or perform any other actions
+        flashNotification("success", "Todo added successfully");
+
+        // Reset dialog heading and button text
+        dialogHeading.value = "Add Todo";
+        dialogButtonText.value = "Save";
+      }
+    }
+  });
+}
+
+
+
+// Method to handle the "Back" button click
+const handleBackButton = (event) => {
+  event.preventDefault(); // Prevent default anchor tag behavior
+
+  // Reset input field
+  formData.description = "";
+
+  // Hide the dialog
+  dialogFormVisible.value = false;
+
+  // Reset dialog heading and button text
+  dialogHeading.value = "Add Todo";
+  dialogButtonText.value = "Save";
 };
-
-// Function to toggle the visibility of input field and submit button
-const toggleInputAndButton = () => {
-  showInputAndButton.value = !showInputAndButton.value;
-  editMode.value = false; // Reset editMode when toggling
-};
-
 </script>
 
 <style scoped lang="scss">
 .completed-todo {
   text-decoration: line-through;
 }
+/**** Style for Todo List - Dashboard ****/
+.todo_wrap {
+    border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    min-height: 365px;
 
-.eraser-btn{
-  height: 47px;
+    .box_heading {
+        .add_todo_btn {
+            background-color: transparent;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            font-size: 24px;
+            line-height: 20px;
+            color: var(--text-primary);
+            border: none;
+            margin-right: -5px;
+        }
+    }
+
+    .todo_inner {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 295px;
+        margin: 0 -10px;
+        padding: 0 10px;
+        overflow: auto;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #ddd;
+            border-radius: 100px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: var(--grey-bg);
+            border-radius: 100px;
+        }
+
+        .todo_item {
+            background-color: var(--grey-bg);
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+            padding-left: 40px;
+
+            .el-checkbox {
+                height: 16px;
+                margin: 0;
+                padding: 0;
+                display: block;
+                position: absolute;
+                top: 13px;
+                left: 12px;
+            }
+            .el-checkbox__inner {
+                width: 16px;
+                height: 16px;
+                border: solid 1px #cacaca;
+                border-radius: 3px;
+
+                &:hover {
+                    border-color: var(--pastle-green);
+                }
+            }
+            .el-checkbox__input.is-checked .el-checkbox__inner {
+                background-color: var(--pastle-green);
+                border-color: var(--pastle-green);
+            }
+            .el-checkbox__inner::after {
+                border-width: 2px;
+                height: 8px;
+                width: 4px;
+                top: 1px;
+                left: 4px;
+            }
+            .todo_con {
+                display: inline-block;
+                vertical-align: middle;
+                width: calc(100% - 25px);
+
+                h4 {
+                    color: var(--text-primary);
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-weight: 500;
+                    margin: 0;
+                    margin-bottom: 5px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                }
+
+                p {
+                    color: var(--text-grey);
+                    font-size: 13px;
+                    line-height: 16px;
+                    font-weight: 500;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .dropdown-toggle {
+        background-color: transparent;
+        padding: 0;
+        width: 25px;
+        height: 25px;
+        font-size: 24px;
+        line-height: 20px;
+        color: var(--text-primary);
+        border: none;
+        margin-right: -5px;
+
+        &::after {
+            content: none;
+        }
+    }
+
+    .dropdown {
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        vertical-align: middle;
+
+        .dropdown-menu {
+            box-shadow: 0px 0px 20px rgb(0 0 0 / 15%);
+            min-width: 125px;
+        }
+    }
+
+    .dropdown:not(.dropdown-hover) .dropdown-menu.show {
+        margin-top: 40px !important;
+    }
+
+    .dropdown .dropdown-menu.dropdown-menu-end:before {
+        right: 15px;
+    }
 }
-
-.text-danger {
-  color: red;
-}
-
-.form-error-message {
-  color: red;
-  margin-top: 5px;
-}
-
-.box-card {
-  height: 385px;
-  border-radius: 10px;
-  overflow-y: auto;
-  // background-color:rgb(250, 250, 255);
-  /* Use auto instead of scroll for a better user experience */
-}
-
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.button-dark{
-  background-color: #1F281A;
-  color:rgb(255, 255, 255);
-
-}
-.list{
-  background-color: #EFF3F9;
-  border-radius: 10px;
-}
-
-
-.card-title {
-  font-family: Arial, Helvetica, sans-serif;
-  color: rgb(71, 68, 68);
-  font-weight: 600;
-  font-size: 18px;
-  margin: 0;
-}
-
 </style>

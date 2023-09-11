@@ -1,19 +1,16 @@
 <template>
-  <div class="container w-100">
-    <div class="row gx-5">
-      <!-- time and date -->
-      <el-col :span="20" class="mt-1">
-        <div class="time-date-container d-flex align-items-center justify-content-end">
-          <div class="h5">IST {{ currentTime }}, {{ currentDay }} {{ currentMonth }}  {{ currentYear }}</div>
-        </div>
-      </el-col>
-
-      <!-- Button checkIn -->
-      <el-col :span="3">
-        <button class="btn button-dark btn-lg " @click="toggleCheckInStatus">{{ checkInStatus }}</button>
-      </el-col>
-    </div>
-  </div>
+  <ul class="hr_actions">
+    <li>
+      <p>IST {{ currentTime }}, {{ currentDay }} {{ currentMonth }} {{ currentYear }}</p>
+    </li>
+    <li><button class="theme_black_btn" @click="toggleCheckInStatus">{{ checkInStatus }}</button></li>
+    <li>
+      <a class="not_icon" href="#">
+        <i class="ri-notification-3-line"></i>
+        <span></span>
+      </a>
+    </li>
+  </ul>
 </template>
 
 <script setup>
@@ -24,7 +21,7 @@ const currentTime = ref('');
 const currentDay = ref('');
 const currentMonth = ref('');
 const currentYear = ref('');
-const checkInStatus = ref('ClockIn');
+const checkInStatus = ref('Clock In');
 
 // Get the current date and format it
 const now = new Date();
@@ -35,10 +32,10 @@ currentYear.value = now.getFullYear();
 currentTime.value = formatTime(now);
 
 function toggleCheckInStatus() {
-  if (checkInStatus.value === 'ClockIn') {
-    checkInStatus.value = 'ClockOut';
+  if (checkInStatus.value === 'Clock In') {
+    checkInStatus.value = 'Clock Out';
   } else {
-    checkInStatus.value = 'ClockIn';
+    checkInStatus.value = 'Clock In';
   }
 }
 
@@ -77,13 +74,48 @@ onUnmounted(() => {
 </script>
  
 
-<style scoped>
-.time-date-container{
-  height: 50px;
-}
-.button-dark{
-  background-color: #1F281A;
-  color:rgb(255, 255, 255);
+<style scoped lang="scss">
+.hr_actions {
+  padding-inline-start: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0px 30px;
+
+  li {
+    display: block;
+
+    p {
+      color: var(--text-primary);
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .not_icon {
+      background-color: transparent;
+      color: var(--text-primary);
+      display: block;
+      font-size: 26px;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      position: relative;
+
+      span {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        display: block;
+        width: 14px;
+        height: 14px;
+        background-color: #E04040;
+        border: solid 2px var(--white);
+        border-radius: 50%;
+      }
+    }
+  }
 }
 </style>
 
