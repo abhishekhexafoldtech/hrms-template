@@ -43,12 +43,12 @@
         <div class="pr_box">
           <figure>
             <img
-              src="https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZN9afA%3AVt72dmaIt2BR1PZqQPqS2QbVKVJz-XLdbfBnh0uvLCjwPFxq_3PzS0wAowtDVuqPgmjYks4I7v5zqILtMal9xA"
+              src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000"
               alt="" />
             <button><i class="ri-edit-2-line"></i></button>
           </figure>
-          <h2>Kiran Kumar</h2>
-          <p>VueJs Developer</p>
+          <h2>James Daniel</h2>
+          <p>NuxtJs Developer</p>
         </div>
         <hr />
         <div class="quick_acc">
@@ -56,10 +56,13 @@
             <h3>Quick Access</h3>
           </div>
           <div class="qc_inner">
-            <a class="qc_item" href="#">
+            <nuxt-link to="leave">
+              <a class="qc_item" href="#">
               <img src="@/assets/img/dismissal.png" alt="">
               <span>Leave Request</span>
             </a>
+            </nuxt-link>
+            
             <a class="qc_item" href="#">
               <img src="@/assets/img/timetable.png" alt="">
               <span>Time Sheets</span>
@@ -180,6 +183,8 @@ const upcomingBirthdays = [
     id: 1,
     name: "James Daniel",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 11,
     image:
       "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000",
@@ -188,6 +193,8 @@ const upcomingBirthdays = [
     id: 2,
     name: "Jack William",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 15,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpIoI76wjvQ2pq6t25TLmRAwTxv118OFKZxykoCiY_fWRtR8QRr1nWWcDtG3tHdgCuWu8&usqp=CAU",
@@ -196,6 +203,8 @@ const upcomingBirthdays = [
     id: 3,
     name: "Oliver Henry",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 5,
     image:
       "https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg",
@@ -204,6 +213,8 @@ const upcomingBirthdays = [
     id: 4,
     name: "Alexander Benjamin",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 30,
     image:
       "https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg",
@@ -212,6 +223,8 @@ const upcomingBirthdays = [
     id: 5,
     name: "James Alexander",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 10,
     image:
       "https://t4.ftcdn.net/jpg/04/41/19/91/360_F_441199112_nm3XCB735HW3pSgWEbIBaCsfsbDy6Ot0.jpg",
@@ -226,6 +239,8 @@ const upcomingEvents = [
     icon: "ri-computer-line",
     name: "Demo on Onboarding of Nova",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 4,
     image:
       "https://cdn1.vectorstock.com/i/1000x1000/08/20/realistic-golden-trophy-with-winner-ribbon-vector-25530820.jpg",
@@ -235,6 +250,8 @@ const upcomingEvents = [
     icon: "ri-video-chat-line",
     name: "Training session on Vue Js",
     day: "Monday",
+    date: 18,
+    month: "Feb",
     daysLeft: 11,
     image: "https://images.meesho.com/images/products/278009053/3c7x8_512.webp",
   },
@@ -243,6 +260,8 @@ const upcomingEvents = [
     icon: "ri-article-line",
     name: "Schedule to meeting with Clients",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 25,
     image:
       "https://t3.ftcdn.net/jpg/05/65/98/14/360_F_565981433_mGOyipXL7CGia8xa9kjOpoI39pP9DAka.jpg",
@@ -252,6 +271,8 @@ const upcomingEvents = [
     icon: "ri-article-line",
     name: "Digital agency meeting",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 24,
     image:
       "https://media.istockphoto.com/id/1182465245/photo/gold-winners-trophy-champion-cup-with-falling-confetti.jpg?s=612x612&w=0&k=20&c=oL7XQ2GgDptAOYAZY_63kYjRrAnb_Zhn0GUdNLy4rpY=",
@@ -261,6 +282,8 @@ const upcomingEvents = [
     icon: "ri-video-chat-line",
     name: "Rugby World Cup",
     day: "Wednesday",
+    date: 18,
+    month: "Feb",
     daysLeft: 30,
     image:
       "https://www.freepnglogos.com/uploads/happy-birthday-png/happy-birthday-png-design-elements-3.png",
@@ -269,22 +292,21 @@ const upcomingEvents = [
 ];
 
 const allUsers = [
-  {
-    img: "https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZN9afA%3AVt72dmaIt2BR1PZqQPqS2QbVKVJz-XLdbfBnh0uvLCjwPFxq_3PzS0wAowtDVuqPgmjYks4I7v5zqILtMal9xA",
+  {    img: "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=2000",
   },
   {
-    img: "https://media-protected.taiga.io/user/c/5/5/f/3912cb3cfa54175d0ac606d99fa1057a8e054ac3d8c8f562f9d45c5ec400/a.jpg.80x80_q85_crop.jpg?token=ZN9V3A%3ABi5HhixCZH4LIPkpfta4NLqHfH7CvP1WsY5N7uTeevhV6qnrI4uNnQhWoc2nUvMMLOFq_2hlJSuss5ZYTgJNrA",
-    name: "abhisheck",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpIoI76wjvQ2pq6t25TLmRAwTxv118OFKZxykoCiY_fWRtR8QRr1nWWcDtG3tHdgCuWu8&usqp=CAU",
+    name: "Jack William",
+    profession: "senior python developer",
+  },
+  {
+    img: "https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg",
+    name: "Alexander Benjamin",
     profession: "senior developer",
   },
   {
-    img: "https://media-protected.taiga.io/user/5/d/7/f/713e2adb889ba0288eaeaf6870ffb74a362c332eb5b39565b2f117080184/16726594728082.jpg.80x80_q85_crop.jpg?token=ZN9V3A%3AwqHWDi3a8xJiixi7XDUARbHeQZrs8Vs6J_2HRgEwW48XcTaTZenNG7dgdc_cp_i794_uyt0keb8SMojhoqS0Ng",
-    name: "Pallavi",
-    profession: "senior developer",
-  },
-  {
-    img: "https://media-protected.taiga.io/user/f/0/c/f/44310b7f150ee54b3ead22f4c0e2f3ec1a74ad415152ef32d132e3412506/vishal_image.jpg.300x300_q85_crop.jpg?token=ZONANw%3AdGkujlgqk2AS4DahQTP7_5650LNNWK9nnfojHLVjhZnnxeHh-60TfpDg2CMdJ1GkqiXNsfuQ6ojiiHvz3aOLug",
-    name: "Vishal",
+    img: "https://t4.ftcdn.net/jpg/04/41/19/91/360_F_441199112_nm3XCB735HW3pSgWEbIBaCsfsbDy6Ot0.jpg",
+    name: "James Alexander",
     profession: "senior developer",
   },
   {

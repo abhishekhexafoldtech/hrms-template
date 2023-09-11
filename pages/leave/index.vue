@@ -1,9 +1,15 @@
 <template>
-  <div class="mt-8" style="margin: 15px;">
-    <div class="p-2 w-100" style="text-align: right;">
-      <el-button type="primary" @click="handleDialogFormVisible">+ Apply Leave </el-button>
+  <section class="leave_wrap mb-">
+    <h3>Leaves</h3>
+    <div class="leave_right">
+      <button class="theme_black_btn" @click="handleDialogFormVisible">+ Apply Leave </button>
     </div>
-    <Table tableHeading="Leaves" 
+  </section>
+  <div class="mt-8" style="margin: 15px;">
+    <!-- <div class="p-2 w-100" style="text-align: right;">
+      <el-button type="primary" @click="handleDialogFormVisible">+ Apply Leave </el-button>
+    </div> -->
+    <Table tableHeading="" 
       :tableConfig="policiesConfig" 
       :tableData="showRoleListData" 
       :tableQuery="listQuery"
@@ -101,4 +107,24 @@ definePageMeta({
   layout: "layout",
 });
 </script>
-<style></style>
+<style scoped lang="scss">
+.leave_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 0px;
+
+  h3 {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    margin: 0;
+  }
+
+  .leave_right {
+    display: flex;
+    align-items: center;
+  }
+}
+</style>

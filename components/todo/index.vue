@@ -3,7 +3,7 @@
     <div class="todo_wrap">
       <div class="box_heading">
         <h3>Today's Todo</h3>
-        <button class="add_todo_btn" @click="handleDialogFormVisible">
+        <button class="add_todo_btn" @click="handleDialogFormVisible()">
           <i class="ri-add-line"></i>
         </button>
       </div>
@@ -12,7 +12,9 @@
           <el-checkbox v-model="todo.completed" @change="handleCheckboxChange(todo)"></el-checkbox>
           <div class="todo_con">
             <h4 :class="[todoClass(todo),]">{{ todo.description }}</h4>
-            <p>{{ formatDate(todo.timestamp) }}</p>
+            <!-- time and date -->
+            <!-- <p>{{ todo.timestampFormatted }}</p> -->
+            <p>{{ todo.timestampFormatted }}</p>
           </div>
           <div class="dropdown">
             <button class="dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
@@ -61,10 +63,11 @@
             <el-form-item label="Todo Description" prop="description">
               <el-input type="textarea" placeholder="Write your todo here..." v-model="formData.description" />
             </el-form-item>
+            <!-- Input time and Date -->
             <div class="row mb-3">
               <div class="col-6">
                 <el-date-picker
-                  v-model="formData.customDate"
+                  v-model="selectedDate"
                   size="large"
                   type="date"
                   placeholder="Select a date"
@@ -72,7 +75,7 @@
               </div>
               <div class="col-6">
                 <el-time-picker
-                  v-model="formData.customTime"
+                  v-model="selectedTime"
                   type="time"
                   size="large"
                   placeholder="Select a time"
@@ -103,6 +106,9 @@ const dialogFormVisible = ref(false);
 const dialogHeading = ref("Add Todo"); // Set initial heading
 const dialogButtonText = ref("Save"); // Set initial button text
 const formRef = ref(null);
+const selectedDate = ref(null);
+const selectedTime = ref(null);
+
 
 // Input reactive
 const formData = reactive({
@@ -119,73 +125,54 @@ const formValidationRules = reactive({
   ],
 });
 
-//called Child component function
-const handleDialogFormVisible = () => {
-  dialogFormVisible.value = true; // Set to true when "add" icon is clicked
+
+const handleDialogFormVisible = (index = -1) => {
+  if (index === -1) {
+    // Adding a new todo
+    dialogFormVisible.value = true; // Set to true when the dialog is opened
+    dialogHeading.value = "Add Todo";
+    dialogButtonText.value = "Save";
+    selectedDate.value = null; // Clear the selected date
+    selectedTime.value = null; // Clear the selected time
+  } else {
+    // Editing an existing todo
+    dialogHeading.value = "Edit Todo";
+    dialogButtonText.value = "Update";
+    const todo = todos.value[index];
+    selectedDate.value = new Date(todo.timestamp); // Set the selected date
+    selectedTime.value = new Date(todo.timestamp); // Set the selected time
+  }
+  dialogFormVisible.value = true; // Set to true when the dialog is opened
+  editedTodoIndex.value = index;
+  formData.description = index === -1 ? "" : todos.value[index].description; // Populate the input with the todo's description
+  showInputAndButton.value = true;
+  editMode.value = index !== -1; // Set editMode to true when editing
+  selectedTodoIndex.value = index; // Set the selected todo index
 };
 
-const toggleEditDelete = (index) => {
-  if (selectedTodoIndex.value === index) {
-    // If the same todo's three-dot icon is clicked again, hide the edit and delete buttons
-    selectedTodoIndex.value = -1;
-  } else {
-    // Otherwise, show the edit and delete buttons for the clicked todo
-    selectedTodoIndex.value = index;
-  }
-};
+
+// const toggleEditDelete = (index) => {
+//   if (selectedTodoIndex.value === index) {
+//     // If the same todo's three-dot icon is clicked again, hide the edit and delete buttons
+//     selectedTodoIndex.value = -1;
+//   } else {
+//     // Otherwise, show the edit and delete buttons for the clicked todo
+//     selectedTodoIndex.value = index;
+//   }
+// };
 
 // const formatDate = (timestamp) => {
 //   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
 //   return new Date(timestamp).toLocaleString(undefined, options);
 // };
 
-const formatDate = (timestamp) => {
-  const now = new Date();
-  const todoDate = new Date(timestamp);
-
-  if (isSameDate(now, todoDate)) {
-    return (
-      "Today " +
-      todoDate.toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      })
-    );
-  } else if (isSameDate(now, new Date(todoDate.getTime() + 86400000))) {
-    return (
-      "Yesterday " +
-      todoDate.toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      })
-    );
-  } else {
-    const options = {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    };
-    return todoDate.toLocaleString(undefined, options);
-  }
-};
-
-const isSameDate = (date1, date2) => {
-  return (
-    date1.getFullYear() === date2.getFullYear() &&
-    date1.getMonth() === date2.getMonth() &&
-    date1.getDate() === date2.getDate()
-  );
-};
-
 const editTodo = (index, event) => {
   event.preventDefault();
   editedTodoIndex.value = index;
-  formData.description = todos.value[index].description; // Populate the input with the todo's description
+  const todo = todos.value[index];
+  formData.description = todo.description; // Populate the input with the todo's description
+  selectedDate.value = new Date(todo.timestamp); // Set the selected date
+  selectedTime.value = new Date(todo.timestamp); // Set the selected time
   showInputAndButton.value = true;
   editMode.value = true; // Set editMode to true when editing
   selectedTodoIndex.value = index; // Set selected todo index
@@ -242,10 +229,33 @@ function handleFormData(event) {
     if (valid) {
       if (editMode.value) {
         // Editing mode
-        todos.value[selectedTodoIndex.value].description = formData.description;
-        todos.value[selectedTodoIndex.value].timestamp = Date.now();
+        const updatedTodo = todos.value[selectedTodoIndex.value];
+        updatedTodo.description = formData.description;
+        
+        // Update the timestamp with the combined date and time values
+        updatedTodo.timestamp = new Date(selectedDate.value);
+        updatedTodo.timestamp.setHours(selectedTime.value.getHours());
+        updatedTodo.timestamp.setMinutes(selectedTime.value.getMinutes());
+
+
+        // Update the formatted timestamp
+        const formattedDate = updatedTodo.timestamp.toLocaleString('en-us', {
+          day: 'numeric',
+          month: 'short',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        });
+        updatedTodo.timestampFormatted = formattedDate;
 
         localStorage.setItem("todos", JSON.stringify(todos.value));
+        // const updatedTodo = todos.value[selectedTodoIndex.value];
+        // updatedTodo.description = formData.description;
+        // updatedTodo.timestamp = new Date(selectedDate.value);
+        // updatedTodo.timestamp.setHours(selectedTime.value.getHours());
+        // updatedTodo.timestamp.setMinutes(selectedTime.value.getMinutes());
+
+        // localStorage.setItem("todos", JSON.stringify(todos.value));
 
         // Reset editMode and hide dialog
         editMode.value = false;
@@ -261,9 +271,30 @@ function handleFormData(event) {
         const newTodo = {
           description: formData.description,
           completed: false,
-          timestamp: Date.now(),
+          timestamp: new Date(selectedDate.value),
         };
-        todos.value.push(newTodo);
+
+        // Extract the hours and minutes from selectedTime
+        const hours = selectedTime.value.getHours();
+        const minutes = selectedTime.value.getMinutes();
+
+        // Set the hours and minutes in the timestamp
+        newTodo.timestamp.setHours(hours);
+        newTodo.timestamp.setMinutes(minutes);
+
+        // Format the timestamp in the desired format
+        const formattedDate = newTodo.timestamp.toLocaleString('en-us', {
+          day: 'numeric',
+          month: 'short',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        });
+
+newTodo.timestampFormatted = formattedDate; // Add formatted timestamp to the todo object
+
+todos.value.push(newTodo);
+
 
         localStorage.setItem("todos", JSON.stringify(todos.value));
 
@@ -272,6 +303,8 @@ function handleFormData(event) {
 
         // Clear the form data
         formData.description = "";
+        formData.customDate = null; // Reset the selected date
+        formData.customTime = null; // Reset the selected time
 
         // Show a success notification or perform any other actions
         flashNotification("success", "Todo added successfully");
@@ -283,6 +316,8 @@ function handleFormData(event) {
     }
   });
 }
+
+
 
 // Method to handle the "Back" button click
 const handleBackButton = (event) => {

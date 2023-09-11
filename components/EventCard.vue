@@ -57,7 +57,7 @@
         <div class="ev_con">
           <h3>{{ event.name }}</h3>
           <ul>
-            <li>{{ event.day }}</li>
+            <li>{{ event.date }} {{ event.month}} - {{event.day}}</li>
             <li>{{ event.daysLeft }} days left</li>
           </ul>
         </div>
@@ -71,7 +71,7 @@
         <div class="ev_con">
           <h3>{{ event.name }}</h3>
           <ul>
-            <li>{{ event.day }}</li>
+            <li>{{ event.date }} {{ event.month}} - {{event.day}}</li>
             <li>{{ event.daysLeft }} days left</li>
           </ul>
         </div>
