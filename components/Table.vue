@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card class="card">
     <el-skeleton :throttle="100" :loading="tableLoadingStatus" :rows="10" animated/>
     <div v-show="!tableLoadingStatus" class="table-component">
       <!-- Top heading  -->
@@ -20,8 +20,10 @@
 
       <!-- Table -->
       <el-table
+        class="theme_table"
         :data="tableDataItems"
         @selection-change="handleMultipleSelectionChange"
+        :download-visibility="true"
       >
         <!-- CHECKBOX  -->
         <el-table-column
@@ -271,3 +273,10 @@ function handleMultipleSelectionChange(val) {
   emit("multipleSelection", multipleSelection);
 }
 </script>
+
+<style scoped>
+.card{
+  border-radius: 20px;
+  
+}
+</style>

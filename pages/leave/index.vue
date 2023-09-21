@@ -1,11 +1,11 @@
 <template>
-  <section class="leave_wrap mb-">
+  <section class="leave_wrap ">
     <h3>Leaves</h3>
     <div class="leave_right">
       <button class="theme_black_btn" @click="handleDialogFormVisible">+ Apply Leave </button>
     </div>
   </section>
-  <div class="mt-8" style="margin: 15px;">
+  <div class="mt-3 table-area" >
     <!-- <div class="p-2 w-100" style="text-align: right;">
       <el-button type="primary" @click="handleDialogFormVisible">+ Apply Leave </el-button>
     </div> -->
@@ -50,9 +50,66 @@ let roleListData = ref([
     status: "Pending"
 
   },
- 
+  {
+    type: "Leave 2",
+    duration: "Half Day",
+    start_date: "29-07-2023",
+    end_date: "30-07-2023",
+    status: "Pending"
 
+  },
+  {
+    type: "Leave 2",
+    duration: "Half Day",
+    start_date: "29-07-2023",
+    end_date: "30-07-2023",
+    status: "Pending"
+
+  },
+  {
+    type: "Leave 2",
+    duration: "Half Day",
+    start_date: "29-07-2023",
+    end_date: "30-07-2023",
+    status: "Pending"
+
+  },
+  {
+    type: "Leave 2",
+    duration: "Half Day",
+    start_date: "29-07-2023",
+    end_date: "30-07-2023",
+    status: "Pending"
+
+  },
+  {
+    type: "Leave 2",
+    duration: "Half Day",
+    start_date: "29-07-2023",
+    end_date: "30-07-2023",
+    status: "Pending"
+
+  },
+  {
+    type: "Leave 2",
+    duration: "Half Day",
+    start_date: "29-07-2023",
+    end_date: "30-07-2023",
+    status: "Pending"
+
+  },
+  {
+    type: "Leave 2",
+    duration: "Half Day",
+    start_date: "29-07-2023",
+    end_date: "30-07-2023",
+    status: "Pending"
+
+  },
+ 
 ]);
+
+
 const showRoleListData = ref(roleListData);
 let policiesConfig = reactive([
 {

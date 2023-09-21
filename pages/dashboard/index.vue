@@ -71,10 +71,13 @@
               <img src="@/assets/img/calendar.png" alt="">
               <span>Calender</span>
             </a>
-            <a class="qc_item" href="#">
-              <img src="@/assets/img/sunbed.png" alt="">
-              <span>Holidays</span>
-            </a>
+            <nuxt-link to="payroll">
+              <a class="qc_item" href="#">
+                <img src="@/assets/img/sunbed.png" alt="">
+                <span>Payroll</span>
+              </a>
+            </nuxt-link>
+            
           </div>
         </div>
         <hr />
