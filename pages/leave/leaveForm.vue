@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10">
+  <div class="mt-10 todo_dialogue">
     <el-dialog v-model="dialogFormVisible" width="60%" title="Apply Leave">
       <el-form
         :model="formData"
@@ -109,7 +109,7 @@
       <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogFormVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="submitForm">Submit</el-button>
+        <el-button  type="primary" @click="submitForm">Submit</el-button>
       </span>
     </template>
     </el-dialog>
